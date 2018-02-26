@@ -1,6 +1,6 @@
 container:
   type: ColumnPanel
-  properties: {col_widths: '{}'}
+  properties: {col_widths: '{"RLKNDU":50,"QNYRWQ":10}'}
 components:
 - type: Label
   properties: {role: null, width: default, align: left, border: '', foreground: '',
@@ -8,4 +8,13 @@ components:
     spacing_below: small, italic: false, background: '', bold: false, underline: false,
     icon: ''}
   name: label_1
-  layout_properties: {grid_position: 'MDRSAU,GSXPIY'}
+  layout_properties: {grid_position: 'LSVFGT,RLKNDU MDRSAU,GSXPIY'}
+- type: Label
+  properties: {}
+  name: label_2
+  layout_properties: {grid_position: 'LSVFGT,RLKNDU EBHWJY,OXGTQN'}
+- type: Canvas
+  properties: {role: null, width: default, height: 62, border: '', foreground: '',
+    visible: true, spacing_above: small, spacing_below: small, background: '#68d242'}
+  name: canvas_1
+  layout_properties: {grid_position: 'LSVFGT,QNYRWQ'}

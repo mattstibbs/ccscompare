@@ -1,4 +1,11 @@
 package_name: DoSTools
+secrets:
+  dos_username:
+    value: {? '' : d/Pk6OsMRHsO1EN7Vtp6fl8BrsGR6VdbXNzoCqhm7CnnbzG/DbezZHcL229mCImSw/iVaiKegeO9sEzvOYIZvPse4pqZJRTgvAW0HGvYy1CPYCGXyIk=}
+    type: secret
+  dos_password:
+    value: {? '' : 0EzjNqJwH/1OwNhK/C3ouYPDVZTZXLMg7kaz0Onop4tq2/FVf09eD6X2PrB5Tfd4KcN6D88uboojBtvwabsc5GUs43YL5l8+vAhHmKVyvUFs8NqD4GIxUTcUjati4A==}
+    type: secret
 name: DoS Tools
 startup_form: Dashboard
 renamed: true

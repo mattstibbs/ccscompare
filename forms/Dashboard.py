@@ -9,7 +9,6 @@ class Dashboard (DashboardTemplate):
     self.init_components(**properties)
 
     self.dd_sg.items = anvil.server.call('get_sg_list')
-    self.dd_sg.selected_value = self.dd_sg.selected_value
     
 
   def btn_search_click (self, **event_args):
@@ -17,12 +16,17 @@ class Dashboard (DashboardTemplate):
 
   def dd_sg_change (self, **event_args):
     self.dd_sd.items = anvil.server.call('get_sd_list', self.dd_sg.selected_value)
+    print(self.dd_sg.selected_value.replace('SG', ''))
 
   def txt_postcode_pressed_enter (self, **event_args):
-     anvil.server.call('get_surgeries', self.txt_postcode.text)
+     self.dd_surgery.items = anvil.server.call('get_surgeries', self.txt_postcode.text)
 
   def txt_postcode_lost_focus (self, **event_args):
-     anvil.server.call('get_surgeries', self.txt_postcode.text)
+     self.dd_surgery.items = anvil.server.call('get_surgeries', self.txt_postcode.text)
+
+  def dd_sd_change (self, **event_args):
+    print(self.dd_sd.selected_value.replace('SD', ''))
+
 
 
 
