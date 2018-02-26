@@ -7,7 +7,7 @@ secrets:
     value: {? '' : 0EzjNqJwH/1OwNhK/C3ouYPDVZTZXLMg7kaz0Onop4tq2/FVf09eD6X2PrB5Tfd4KcN6D88uboojBtvwabsc5GUs43YL5l8+vAhHmKVyvUFs8NqD4GIxUTcUjati4A==}
     type: secret
 name: DoS Tools
-startup_form: ImportForm
+startup_form: Dashboard
 renamed: true
 runtime_options: {server_version: python3-full}
 services:

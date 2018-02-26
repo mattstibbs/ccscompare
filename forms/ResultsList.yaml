@@ -15,3 +15,5 @@ components:
       background: ''}
     name: repeating_panel_1
     layout_properties: {grid_position: 'WJDZDU,ULBGMR', full_width_row: true}
+custom_component: true
+events: []
