@@ -3,8 +3,7 @@ import anvil.server
 import tables
 from tables import app_tables
 
-class Form1(Form1Template):
-
+class ImportForm (ImportFormTemplate):
   def __init__(self, **properties):
     # You must call self.init_components() before doing anything else in this function
     self.init_components(**properties)
@@ -13,4 +12,9 @@ class Form1(Form1Template):
     
   def file_loader_1_change (self, files, **event_args):
     for f in files:
-      anvil.server.call('read_csv',f)
+      anvil.server.call('import_sgsd_csv',f)
+
+  def file_loader_2_change (self, file, **event_args):
+    for f in files:
+      anvil.server.call('import_dispositions',f)    
+

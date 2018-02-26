@@ -1,6 +1,6 @@
 package_name: DoSTools
 name: DoS Tools
-startup_form: Form1
+startup_form: Dashboard
 renamed: true
 runtime_options: {server_version: python3-full}
 services:
