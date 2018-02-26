@@ -1,0 +1,4 @@
+name: MaterialDesign2
+runtime_options: {server_version: python2-sandbox}
+services: []
+package_name: MaterialDesign2
