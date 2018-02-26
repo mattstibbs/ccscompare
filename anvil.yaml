@@ -7,7 +7,7 @@ secrets:
     value: {? '' : 0EzjNqJwH/1OwNhK/C3ouYPDVZTZXLMg7kaz0Onop4tq2/FVf09eD6X2PrB5Tfd4KcN6D88uboojBtvwabsc5GUs43YL5l8+vAhHmKVyvUFs8NqD4GIxUTcUjati4A==}
     type: secret
 name: DoS Tools
-startup_form: Dashboard
+startup_form: ImportForm
 renamed: true
 runtime_options: {server_version: python3-full}
 services:
@@ -16,4 +16,8 @@ services:
   server_config: {}
 - source: /runtime/services/tables.yml
   client_config: {}
-  server_config: {auto_create_missing_columns: false}
+  server_config: {auto_create_missing_columns: true}
+- source: /runtime/services/anvil/users.yml
+  client_config: {allow_signup: true, enable_automatically: true, use_email: true,
+    confirm_email: true, allow_remember_me: true, remember_me_days: 7}
+  server_config: {user_table: 9063}

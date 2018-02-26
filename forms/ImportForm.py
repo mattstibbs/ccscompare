@@ -1,4 +1,5 @@
 from anvil import *
+import anvil.users
 import anvil.server
 import tables
 from tables import app_tables
@@ -14,7 +15,7 @@ class ImportForm (ImportFormTemplate):
     for f in files:
       anvil.server.call('import_sgsd_csv',f)
 
-  def file_loader_2_change (self, file, **event_args):
+  def file_loader_2_change (self, files, **event_args):
     for f in files:
       anvil.server.call('import_dispositions',f)    
 

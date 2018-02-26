@@ -1,3 +1,4 @@
+import anvil.users
 import tables
 from tables import app_tables
 import anvil.secrets
@@ -27,6 +28,6 @@ def import_dispositions(csv_object):
   line_list=csv_string.split('\n')
   reader = csv.DictReader(line_list)
   for row in reader:
-    app_tables.sg_sd.add_row(sg_code=row['SG'], sg_description=row['SGDescription'], sd_code=row['SD'], sd_description=row['SDDescription'])
+    app_tables.dispositions.add_row(DispoCode=row['DispoCode'], DispoDescription=row['DispoDescription'], CMSGroup=row['CMSGroup'])
 
 
