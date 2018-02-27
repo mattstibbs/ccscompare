@@ -10,3 +10,10 @@ class ResultItem (ResultItemTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run when the form opens.
+    
+  def get_bg_colour(self):
+    if self.item['different']:
+      return ''
+    else:
+      return '#ece3b1'
+    

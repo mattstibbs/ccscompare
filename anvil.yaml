@@ -1,10 +1,16 @@
 package_name: DoSTools
 secrets:
-  dos_username:
+  dos_username_uat1:
     value: {? '' : d/Pk6OsMRHsO1EN7Vtp6fl8BrsGR6VdbXNzoCqhm7CnnbzG/DbezZHcL229mCImSw/iVaiKegeO9sEzvOYIZvPse4pqZJRTgvAW0HGvYy1CPYCGXyIk=}
     type: secret
-  dos_password:
+  dos_password_uat1:
     value: {? '' : 0EzjNqJwH/1OwNhK/C3ouYPDVZTZXLMg7kaz0Onop4tq2/FVf09eD6X2PrB5Tfd4KcN6D88uboojBtvwabsc5GUs43YL5l8+vAhHmKVyvUFs8NqD4GIxUTcUjati4A==}
+    type: secret
+  dos_password_uat3:
+    value: {? '' : Z2ycuQNXuKVZEXXMVqimzTzINa68Uo+cTfcFJEcd2k+HDbA+UV8PQt681aHT1uLJHW519i3sQtCpEMmkbfTIGTREnNaIwAU5KLAF7VkDXHSV3Sz3UNGYzUHjVg==}
+    type: secret
+  dos_username_uat3:
+    value: {? '' : L/SfYSSV/hGEiSuznbZPuAN7HKzwkeqdVe7oIKUbZHN8kFSirPT1Y+Lhe93gJaMK7WPJcN1/mFCflrMe3r723csQMRvlB0elPWhICEM/sChdsLpRMJtKFpukAaFoUQ==}
     type: secret
 name: DoS Tools
 startup_form: Dashboard

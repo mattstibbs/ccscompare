@@ -19,8 +19,8 @@ def extract_result(result):
 @anvil.server.callable
 def search_by_service_type(postcode):
   result = anvil.http.request(url='https://uat.pathwaysdos.nhs.uk/app/controllers/api/v1.0/services/byServiceType/TEST/{}/100/0/0/0/0/131/10'.format(postcode), 
-                              username=anvil.secrets.get_secret('dos_username'),
-                              password=anvil.secrets.get_secret('dos_password'), 
+                              username=anvil.secrets.get_secret('dos_username_uat1'),
+                              password=anvil.secrets.get_secret('dos_password_uat1'), 
                               json=True)
   results = result['success']['services']
   
@@ -30,20 +30,25 @@ def search_by_service_type(postcode):
 
 
 @anvil.server.callable
-def check_capacity_summary(postcode, surgery, age_group, sex, sg_code, sd_code, dispo_code, search_distance):
-  return ccs.get_services(postcode, surgery, age_group, sg_code, sd_code, dispo_code, search_distance, sex)
+def check_capacity_summary(postcode, surgery, age_group, sex, sg_code, sd_code, dispo_code, search_distance, instance1, instance2):
+  return ccs.get_services(postcode, surgery, age_group, sg_code, sd_code, dispo_code, search_distance, sex, instance1, instance2)
   
   
 
 
 @anvil.server.callable
 def search_surgeries(postcode):
-  result = anvil.http.request(url='https://uat.pathwaysdos.nhs.uk/app/controllers/api/v1.0/services/byServiceType/TEST/{}/100/0/0/0/0/100/100'.format(postcode), 
-                              username=anvil.secrets.get_secret('dos_username'),
-                              password=anvil.secrets.get_secret('dos_password'), 
-                              json=True)
-  results = result['success']['services']
-  
+  try:
+    result = anvil.http.request(url='https://uat.pathwaysdos.nhs.uk/app/controllers/api/v1.0/services/byServiceType/TEST/{}/100/0/0/0/0/100/100'.format(postcode), 
+                                username=anvil.secrets.get_secret('dos_username_uat1'),
+                                password=anvil.secrets.get_secret('dos_password_uat1'), 
+                                json=True)
+    results = result['success']['services']
+    
+  except anvil.http.HttpError as e:
+    if e.status == 400:
+      print("Bad postcode")
+      results = []
+
   new_result_list = [extract_result(r) for r in results]
-#   print(new_result_list)
   return new_result_list

@@ -33,7 +33,14 @@ components:
         name: txt_postcode
         layout_properties: {grid_position: 'IDZUVM,BLJHDW', row: UQIBCU, width_xs: 4,
           col_xs: 4}
-        event_bindings: {pressed_enter: txt_postcode_pressed_enter, lost_focus: txt_postcode_lost_focus}
+        event_bindings: {pressed_enter: txt_postcode_has_changed, lost_focus: txt_postcode_has_changed}
+      - type: Label
+        properties: {role: null, width: default, align: left, border: '', foreground: '#ed3624',
+          visible: false, text: Postcode not found, font_size: null, font: '', spacing_above: small,
+          icon_align: left, spacing_below: small, italic: true, background: '', bold: false,
+          underline: false, icon: ''}
+        name: lbl_bad_postcode
+        layout_properties: {row: UQIBCU, width_xs: 4, col_xs: 8, width: 150.783}
       - type: Label
         properties: {role: null, width: default, align: right, border: '', foreground: '',
           visible: true, text: Symptom Group, font_size: null, font: '', spacing_above: small,
@@ -247,25 +254,38 @@ components:
       components:
       - type: RadioButton
         properties: {role: null, selected: true, width: default, align: left, border: '',
-          enabled: true, foreground: '', value: '', visible: true, text: UAT 1, font_size: null,
-          font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
-          bold: false, group_name: instance_1, underline: false}
-        name: radio_button_1
+          enabled: true, foreground: '', value: uat1, visible: true, text: UAT 1,
+          font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+          background: '', bold: false, group_name: instance_1, underline: false}
+        name: rb_res1_uat1
         layout_properties: {grid_position: 'NOEJUC,ICVLZD'}
+        event_bindings: {clicked: rb_res1_clicked}
       - type: RadioButton
         properties: {role: null, selected: false, width: default, align: left, border: '',
-          enabled: false, foreground: '', value: '', visible: true, text: UAT 2, font_size: null,
-          font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
-          bold: false, group_name: instance_1, underline: false}
-        name: radio_button_2
+          enabled: false, foreground: '', value: uat2, visible: true, text: UAT 2,
+          font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+          background: '', bold: false, group_name: instance_1, underline: false}
+        name: rb_res1_uat2
         layout_properties: {grid_position: 'NOEJUC,OZINVB'}
+        event_bindings: {clicked: rb_res1_clicked}
       - type: RadioButton
         properties: {role: null, selected: false, width: default, align: left, border: '',
-          enabled: false, foreground: '', value: '', visible: true, text: UAT 3, font_size: null,
-          font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
-          bold: false, group_name: instance_1, underline: false}
-        name: radio_button_3
+          enabled: true, foreground: '', value: uat3, visible: true, text: UAT 3,
+          font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+          background: '', bold: false, group_name: instance_1, underline: false}
+        name: rb_res1_uat3
         layout_properties: {grid_position: 'NOEJUC,HAZLPJ'}
+        event_bindings: {clicked: rb_res1_clicked}
+      - type: Label
+        properties: {role: null, width: default, align: center, border: '', foreground: '',
+          visible: true, text: '', font_size: 16, font: '', spacing_above: small,
+          icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+          underline: false, icon: ''}
+        name: label_8
+        layout_properties: {grid_position: 'EGMNLS,NTQHLW'}
+        data_bindings:
+        - {property: text, code: self.rb_res1_uat1.get_group_value()}
+        event_bindings: {show: label_8_show}
     - type: form:ResultsList
       properties: {}
       name: results_list_1
@@ -280,25 +300,38 @@ components:
       components:
       - type: RadioButton
         properties: {role: null, selected: true, width: default, align: left, border: '',
-          enabled: true, foreground: '', value: '', visible: true, text: UAT 1, font_size: null,
-          font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
-          bold: false, group_name: instance_2, underline: false}
-        name: radio_button_1_copy
+          enabled: true, foreground: '', value: uat1, visible: true, text: UAT 1,
+          font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+          background: '', bold: false, group_name: instance_2, underline: false}
+        name: rb_res2_uat1
         layout_properties: {grid_position: 'NOEJUC,ICVLZD'}
+        event_bindings: {clicked: rb_res2_clicked}
       - type: RadioButton
         properties: {role: null, selected: false, width: default, align: left, border: '',
-          enabled: false, foreground: '', value: '', visible: true, text: UAT 2, font_size: null,
-          font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
-          bold: false, group_name: instance_2, underline: false}
-        name: radio_button_2_copy
+          enabled: false, foreground: '', value: uat2, visible: true, text: UAT 2,
+          font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+          background: '', bold: false, group_name: instance_2, underline: false}
+        name: rb_res2_uat2
         layout_properties: {grid_position: 'NOEJUC,OZINVB'}
+        event_bindings: {clicked: rb_res2_clicked}
       - type: RadioButton
         properties: {role: null, selected: false, width: default, align: left, border: '',
-          enabled: false, foreground: '', value: '', visible: true, text: UAT 3, font_size: null,
-          font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
-          bold: false, group_name: instance_2, underline: false}
-        name: radio_button_3_copy
+          enabled: true, foreground: '', value: uat3, visible: true, text: UAT 3,
+          font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+          background: '', bold: false, group_name: instance_2, underline: false}
+        name: rb_res2_uat3
         layout_properties: {grid_position: 'NOEJUC,HAZLPJ'}
+        event_bindings: {clicked: rb_res2_clicked}
+      - type: Label
+        properties: {role: null, width: default, align: center, border: '', foreground: '',
+          visible: true, text: '', font_size: 16, font: '', spacing_above: small,
+          icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+          underline: false, icon: ''}
+        name: label_9
+        layout_properties: {grid_position: 'LPWIAM,OOFCDP'}
+        data_bindings:
+        - {property: text, code: self.rb_res1_uat1.get_group_value()}
+        event_bindings: {show: label_9_show}
     - type: form:ResultsList
       properties: {}
       name: results_list_2

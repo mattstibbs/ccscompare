@@ -9,10 +9,10 @@ import collections
 import xmltodict
 import json
 
-def get_user():
+def get_user(instance):
   user = collections.namedtuple('User', ['username', 'password'])
-  user.username = anvil.secrets.get_secret('dos_username')
-  user.password = anvil.secrets.get_secret('dos_password')
+  user.username = anvil.secrets.get_secret('dos_username_{}'.format(instance))
+  user.password = anvil.secrets.get_secret('dos_password_{}'.format(instance))
   return user
 
 def get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex):
@@ -63,20 +63,60 @@ def convert_xml_to_list(xml_string):
   return service_list
 
 
-def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex):
-  user = get_user()
+def do_ccs_request(instance, payload):
+  uat_urls = {
+    'uat1': 'https://uat.pathwaysdos.nhs.uk/app/api/webservices',
+    'uat2': 'https://uat2.pathwaysdos.nhs.uk/app/api/webservices',
+    'uat3': 'https://uat3.pathwaysdos.nhs.uk/app/api/webservices'
+  }
+  
+  result = anvil.http.request(url=uat_urls[instance], 
+                              data=payload,
+                              headers={"content-type": "application/xml"},
+                              method="POST")  
+  
+  print("Performing CCS for {}".format(instance))
+  
+  return result
+
+def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex, instance1, instance2):
+  
+  user = get_user(instance1)
   case = get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex)
   
   payload = payloads.generate_ccs_payload(user, case)
 
-  result = anvil.http.request(url='https://uat.pathwaysdos.nhs.uk/app/api/webservices', 
-                              data=payload,
-                              headers={"content-type": "application/xml"},
-                              method="POST")
-  print(result.content_type)
-  print(result.get_bytes())
+  result = do_ccs_request(instance1, payload)
   
-  result_list = convert_xml_to_list(result.get_bytes())
- 
-  return result_list
+  result_list_1 = convert_xml_to_list(result.get_bytes())
+  
+  if instance2 != instance1:
 
+    user = get_user(instance2)
+    case = get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex)
+    
+    payload = payloads.generate_ccs_payload(user, case)
+
+    result = do_ccs_request(instance2, payload)
+    
+    result_list_2 = convert_xml_to_list(result.get_bytes())
+    
+  else:
+    result_list_2 = result_list_1
+    
+  for idx, r in enumerate(result_list_1):
+    print(idx)
+    try:
+      res2 = result_list_2[idx]
+      if r['id'] == res2['id']:
+        r['different'] = False
+        res2['different'] = False
+      else:
+        r['different'] = True
+        res2['different'] = True
+    except IndexError:
+      r['different'] = False
+  
+  print(result_list_1)
+  print(result_list_2)
+  return result_list_1, result_list_2
