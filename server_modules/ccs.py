@@ -47,22 +47,18 @@ def get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search
 
 def convert_xml_to_list(xml_string):
   result_dict = xmltodict.parse(xml_string)
-#   print(result_dict)
   result_list = result_dict['env:Envelope']['env:Body']['ns1:CheckCapacitySummaryResponse']['ns1:CheckCapacitySummaryResult']['ns1:ServiceCareSummaryDestination']
-#   result_list = result_dict['env:Envelope']['env:Body']
-#   ['ns1:CheckCapacitySummaryResponse']['ns1:CheckCapacitySummaryResult']
-#   ['ns1:ServiceCareSummaryDestination']
   
-  print(result_list)
-  
-  service = collections.namedtuple('Service', ['id', 'name', 'address', 'capacity_rag', 'service_type'])
+  service = collections.namedtuple('Service', ['id', 'name', 'address', 'capacity_rag', 'service_type', 'order_number', 'distance'])
   
   service_list = []
   
   for r in result_list:
-    s = service(r['ns1:id'], r['ns1:name'], "", "", "")
-    print(s)
-    service_list.append(s)
+    distance = "{}km".format(r['ns1:distance'])
+    s = service(r['ns1:id'], r['ns1:name'], r['ns1:address'], "", r['ns1:serviceType']['ns1:name'], (result_list.index(r) + 1), distance)
+    service_list.append(s._asdict())
+  
+  print(service_list)
     
   return service_list
 
@@ -72,7 +68,6 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
   case = get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex)
   
   payload = payloads.generate_ccs_payload(user, case)
-#   print(payload)
 
   result = anvil.http.request(url='https://uat.pathwaysdos.nhs.uk/app/api/webservices', 
                               data=payload,
@@ -85,8 +80,3 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
  
   return result_list
 
-# # Parse the returned XML into an object representing the XML structure
-# document = untangle.parse(result.text)
-
-# # Define the contents of the <feed> element as its own object
-# feed = document.feed
