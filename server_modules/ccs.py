@@ -47,12 +47,27 @@ def get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search
 
 def convert_xml_to_dict(xml_string):
   result_dict = xmltodict.parse(xml_string)
-  print(result_dict)
+#   print(result_dict)
+  result_list = result_dict['env:Envelope']['env:Body']['ns1:CheckCapacitySummaryResponse']['ns1:CheckCapacitySummaryResult']['ns1:ServiceCareSummaryDestination']
 #   result_list = result_dict['env:Envelope']['env:Body']
 #   ['ns1:CheckCapacitySummaryResponse']['ns1:CheckCapacitySummaryResult']
 #   ['ns1:ServiceCareSummaryDestination']
   
-#   print(result_list)
+  print(result_list)
+  
+  service = collections.namedtuple('Service', ['id', 'name', 'address', 'capacity_rag', 'service_type'])
+  
+  service_list = []
+  
+  for r in result_list:
+    s = service()
+    s.id = r['ns1:id']
+    s.name = r['ns1:name']
+    s.address = ""
+    s.capacity_rag = ""
+    s.service_type = ""
+    print(s)
+    service_list.append(s)
 
 
 def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex):
