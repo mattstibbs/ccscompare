@@ -56,6 +56,8 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
                               method="POST")
   print(result.content_type)
   print(result.get_bytes())
+  
+  return result
 
 # # Parse the returned XML into an object representing the XML structure
 # document = untangle.parse(result.text)

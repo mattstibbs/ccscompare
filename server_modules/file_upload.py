@@ -14,6 +14,7 @@ def import_sgsd_csv(csv_object):
   # Create a list of lines split on \n
   line_list=csv_string.split('\n')
   reader = csv.DictReader(line_list)
+  
   for row in reader:
     app_tables.sg_sd.add_row(sg_code=row['SG'], sg_description=row['SGDescription'], sd_code=row['SD'], sd_description=row['SDDescription'])
 
@@ -27,6 +28,7 @@ def import_dispositions(csv_object):
   # Create a list of lines split on \n
   line_list=csv_string.split('\n')
   reader = csv.DictReader(line_list)
+  
   for row in reader:
     app_tables.dispositions.add_row(DispoCode=row['DispoCode'], DispoDescription=row['DispoDescription'], CMSGroup=row['CMSGroup'])
 

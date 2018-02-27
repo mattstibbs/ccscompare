@@ -25,14 +25,13 @@ def search_by_service_type(postcode):
   results = result['success']['services']
   
   new_result_list = [extract_result(r) for r in results]
-  print(new_result_list)
+#   print(new_result_list)
   return new_result_list
 
 
 @anvil.server.callable
 def check_capacity_summary(postcode, surgery, age_group, sex, sg_code, sd_code, dispo_code, search_distance):
   r = ccs.get_services(postcode, surgery, age_group, sg_code, sd_code, dispo_code, search_distance, sex)
-  print(r)
   
 
 

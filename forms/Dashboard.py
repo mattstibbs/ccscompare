@@ -28,7 +28,6 @@ class Dashboard (DashboardTemplate):
 
   def dd_sg_change (self, **event_args):
     self.dd_sd.items = anvil.server.call('get_sd_list', self.dd_sg.selected_value)
-    print(self.dd_sg.selected_value.replace('SG', ''))
 
   def txt_postcode_pressed_enter (self, **event_args):
      self.dd_surgery.items = anvil.server.call('get_surgeries', self.txt_postcode.text)
@@ -36,12 +35,6 @@ class Dashboard (DashboardTemplate):
   def txt_postcode_lost_focus (self, **event_args):
      self.dd_surgery.items = anvil.server.call('get_surgeries', self.txt_postcode.text)
 
-  def dd_sd_change (self, **event_args):
-    print(self.dd_sd.selected_value.replace('SD', ''))
-
-  def dd_age_group_change (self, **event_args):
-    # This method is called when an item is selected
-    pass
 
 
 
