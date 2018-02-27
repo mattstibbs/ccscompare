@@ -21,7 +21,7 @@ class Dashboard (DashboardTemplate):
                       sg_code=self.dd_sg.selected_value,
                       sd_code=self.dd_sd.selected_value,
                       dispo_code=self.drop_down_1.selected_value,
-                      search_distance=self.)
+                      search_distance=60)
 
   def dd_sg_change (self, **event_args):
     self.dd_sd.items = anvil.server.call('get_sd_list', self.dd_sg.selected_value)
