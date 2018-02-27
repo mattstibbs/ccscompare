@@ -6,6 +6,7 @@ import anvil.server
 import anvil.http
 import payloads
 import collections
+import xmltodict
 
 def get_user():
   user = collections.namedtuple('User', ['username', 'password'])
@@ -43,6 +44,9 @@ def get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search
   return case
 
 
+def convert_xml_to_dict(xml_string):
+  print(json.dumps(xmltodict.parse(xml_string), indent=4))
+
 def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex):
   user = get_user()
   case = get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex)
@@ -57,6 +61,8 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
   print(result.content_type)
   print(result.get_bytes())
   
+  json_result = convert_xml_to_dict(result.get_bytes())
+ 
   return result
 
 # # Parse the returned XML into an object representing the XML structure
