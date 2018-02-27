@@ -4,6 +4,7 @@ from tables import app_tables
 import anvil.secrets
 import anvil.server
 import anvil.http
+import ccs
 
 
 def extract_result(result):
@@ -32,6 +33,9 @@ def search_by_service_type(postcode):
 def check_capacity_summary(postcode, age_group, sex, sg_code, sd_code, dispo_code, search_distance):
   for arg in locals():
     print(arg.value)
+  r = ccs.get_services(postcode, surgery, age_group, sg_code, sd_code, dispo_code, search_distance, sex)
+  print(r)
+  
 
 
 @anvil.server.callable

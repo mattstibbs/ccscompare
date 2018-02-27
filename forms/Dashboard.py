@@ -11,6 +11,7 @@ class Dashboard (DashboardTemplate):
 
     self.dd_sg.items = anvil.server.call('get_sg_list')
     self.dd_age_group.items = [('Adult', 1), ('Child', 2), ('Infant', 3), ('Neonate', 4)]
+    self.dd_disposition.items = anvil.server.call('get_dispositions')
     
 
   def btn_search_click (self, **event_args):

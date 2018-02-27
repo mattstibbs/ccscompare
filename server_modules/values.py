@@ -6,6 +6,16 @@ import anvil.server
 import dos
 
 @anvil.server.callable
+def get_dispositions():
+  all_results = app_tables.dispositions.search()
+  results = [("{} ({})".format(result['DispoDescription'],result['DispoCode']), result['CMSGroup']) for result in all_results]
+  results.append(("",0))
+  results = set(results)
+  results = sorted(list(results))
+  print(results)
+  return results
+
+@anvil.server.callable
 def get_sg_list():
   all_results = app_tables.sg_sd.search()
   results = [("{} ({})".format(result['sg_description'],result['sg_code']), result['sg_code']) for result in all_results]
