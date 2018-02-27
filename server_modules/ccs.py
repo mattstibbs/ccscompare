@@ -7,6 +7,7 @@ import anvil.http
 import payloads
 import collections
 import xmltodict
+import json
 
 def get_user():
   user = collections.namedtuple('User', ['username', 'password'])
@@ -45,14 +46,21 @@ def get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search
 
 
 def convert_xml_to_dict(xml_string):
-  print(json.dumps(xmltodict.parse(xml_string), indent=4))
+  result_dict = xmltodict.parse(xml_string)
+  print(result_dict)
+#   result_list = result_dict['env:Envelope']['env:Body']
+#   ['ns1:CheckCapacitySummaryResponse']['ns1:CheckCapacitySummaryResult']
+#   ['ns1:ServiceCareSummaryDestination']
+  
+#   print(result_list)
+
 
 def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex):
   user = get_user()
   case = get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex)
   
   payload = payloads.generate_ccs_payload(user, case)
-  print(payload)
+#   print(payload)
 
   result = anvil.http.request(url='https://uat.pathwaysdos.nhs.uk/app/api/webservices', 
                               data=payload,
