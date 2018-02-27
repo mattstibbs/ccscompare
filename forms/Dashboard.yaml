@@ -209,8 +209,9 @@ components:
     components:
     - type: form:ResultsList
       properties: {}
-      name: custom_1
-      layout_properties: {grid_position: 'OYGLSP,HDDJBL', full_width_row: true}
+      name: results_list_1
+      layout_properties: {grid_position: 'EWRPHM,QJAOMR'}
+      data_bindings: []
 - type: Label
   properties: {role: null, width: default, align: left, border: '', foreground: '',
     visible: true, text: 'DoS v4.6 UAT Testing Tool

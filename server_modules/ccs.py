@@ -45,7 +45,7 @@ def get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search
   return case
 
 
-def convert_xml_to_dict(xml_string):
+def convert_xml_to_list(xml_string):
   result_dict = xmltodict.parse(xml_string)
 #   print(result_dict)
   result_list = result_dict['env:Envelope']['env:Body']['ns1:CheckCapacitySummaryResponse']['ns1:CheckCapacitySummaryResult']['ns1:ServiceCareSummaryDestination']
@@ -60,14 +60,11 @@ def convert_xml_to_dict(xml_string):
   service_list = []
   
   for r in result_list:
-    s = service()
-    s.id = r['ns1:id']
-    s.name = r['ns1:name']
-    s.address = ""
-    s.capacity_rag = ""
-    s.service_type = ""
+    s = service(r['ns1:id'], r['ns1:name'], "", "", "")
     print(s)
     service_list.append(s)
+    
+  return service_list
 
 
 def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex):
@@ -84,9 +81,9 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
   print(result.content_type)
   print(result.get_bytes())
   
-  json_result = convert_xml_to_dict(result.get_bytes())
+  result_list = convert_xml_to_list(result.get_bytes())
  
-  return result
+  return result_list
 
 # # Parse the returned XML into an object representing the XML structure
 # document = untangle.parse(result.text)

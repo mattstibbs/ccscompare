@@ -3,6 +3,7 @@ import anvil.users
 import tables
 from tables import app_tables
 import anvil.server
+import ResultsList
 
 class Dashboard (DashboardTemplate):
   def __init__(self, **properties):
@@ -16,7 +17,7 @@ class Dashboard (DashboardTemplate):
     
 
   def btn_search_click (self, **event_args):
-    anvil.server.call('check_capacity_summary', 
+    results = anvil.server.call('check_capacity_summary', 
                       postcode=self.txt_postcode.text,
                       age_group=self.dd_age_group.selected_value,
                       sex=self.dd_sex.selected_value,
@@ -25,6 +26,11 @@ class Dashboard (DashboardTemplate):
                       dispo_code=self.dd_disposition.selected_value,
                       search_distance=60,
                       surgery=self.dd_surgery.selected_value)
+    
+    print(results)
+    
+    self.results_list_1.list_items = results
+    self.results_list_1.refresh_data_bindings()
 
   def dd_sg_change (self, **event_args):
     self.dd_sd.items = anvil.server.call('get_sd_list', self.dd_sg.selected_value)

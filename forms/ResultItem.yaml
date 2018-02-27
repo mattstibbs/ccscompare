@@ -9,6 +9,8 @@ components:
     icon: ''}
   name: label_1
   layout_properties: {grid_position: 'LSVFGT,RLKNDU MDRSAU,GSXPIY'}
+  data_bindings:
+  - {property: text, code: 'self.item[''name'']'}
 - type: Label
   properties: {}
   name: label_2
