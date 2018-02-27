@@ -10,10 +10,18 @@ class Dashboard (DashboardTemplate):
     self.init_components(**properties)
 
     self.dd_sg.items = anvil.server.call('get_sg_list')
+    self.dd_age_group.items = [('Adult', 1), ('Child', 2), ('Infant', 3), ('Neonate', 4)]
     
 
   def btn_search_click (self, **event_args):
-    print(self.dd_sex.selected_value)
+    anvil.server.call('check_capacity_summary', 
+                      postcode=self.txt_postcode.text,
+                      age_group=self.dd_age_group.selected_value,
+                      sex=self.dd_sex.selected_value,
+                      sg_code=self.dd_sg.selected_value,
+                      sd_code=self.dd_sd.selected_value,
+                      dispo_code=self.drop_down_1.selected_value,
+                      search_distance=self.)
 
   def dd_sg_change (self, **event_args):
     self.dd_sd.items = anvil.server.call('get_sd_list', self.dd_sg.selected_value)
@@ -27,6 +35,11 @@ class Dashboard (DashboardTemplate):
 
   def dd_sd_change (self, **event_args):
     print(self.dd_sd.selected_value.replace('SD', ''))
+
+  def dd_age_group_change (self, **event_args):
+    # This method is called when an item is selected
+    pass
+
 
 
 

@@ -11,38 +11,6 @@ components:
     properties: {role: null, width: default, border: '', foreground: '', visible: true,
       row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{}', spacing_below: small,
       background: ''}
-    name: column_panel_3
-    layout_properties: {grid_position: 'DZYTTG,ATTWYR', full_width_row: false}
-    components:
-    - type: Label
-      properties: {role: null, width: default, align: right, border: '', foreground: '',
-        visible: true, text: Username, font_size: null, font: '', spacing_above: small,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-        underline: false, icon: ''}
-      name: label_8
-      layout_properties: {grid_position: 'OUCEHF,NSMVLV'}
-    - type: TextBox
-      properties: {}
-      name: txt_username
-      layout_properties: {grid_position: 'OUCEHF,ODPSEM'}
-    - type: Label
-      properties: {role: null, width: default, align: right, border: '', foreground: '',
-        visible: true, text: Password, font_size: null, font: '', spacing_above: small,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-        underline: false, icon: ''}
-      name: label_9
-      layout_properties: {grid_position: 'MYYKDE,SCKTQE'}
-    - type: TextBox
-      properties: {role: null, width: default, align: left, hide_text: true, placeholder: '',
-        border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-        font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-        background: '', bold: false, underline: false}
-      name: txt_password
-      layout_properties: {grid_position: 'MYYKDE,KEWSCP'}
-  - type: ColumnPanel
-    properties: {role: null, width: default, border: '', foreground: '', visible: true,
-      row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{}', spacing_below: small,
-      background: ''}
     name: column_panel_1
     layout_properties: {grid_position: 'KVUIAG,IEUPOJ', full_width_row: true}
     components:
@@ -110,6 +78,7 @@ components:
         name: drop_down_1
         layout_properties: {grid_position: 'HMFPPJ,YLWPAI', row: YXQPWD, width_xs: 8,
           col_xs: 4}
+        data_bindings: []
       - type: Label
         properties: {role: null, width: default, align: right, border: '', foreground: '',
           visible: true, text: Surgery, font_size: null, font: '', spacing_above: small,
@@ -169,7 +138,7 @@ components:
           border: ''
           enabled: true
           foreground: ''
-          items: [Adult, Child, Infant, Neonate]
+          items: ['']
           visible: true
           font_size: null
           font: ''
@@ -181,7 +150,8 @@ components:
           underline: false
         name: dd_age_group
         layout_properties: {grid_position: 'PIZPMN,YEOCPG', row: GQLDNA, width_xs: 3,
-          col_xs: 9}
+          col_xs: 9, width: 116.617}
+        event_bindings: {change: dd_age_group_change}
       - type: Label
         properties: {role: null, width: default, align: right, border: '', foreground: '',
           visible: true, text: Search Distance (km), font_size: null, font: '', spacing_above: small,
@@ -243,7 +213,7 @@ components:
       layout_properties: {grid_position: 'OYGLSP,HDDJBL', full_width_row: true}
 - type: Label
   properties: {role: null, width: default, align: left, border: '', foreground: '',
-    visible: true, text: 'Simulate NHS 111 DoS Search
+    visible: true, text: 'DoS v4.6 UAT Testing Tool
 
       ', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
     italic: false, background: '', bold: false, underline: false, icon: ''}
