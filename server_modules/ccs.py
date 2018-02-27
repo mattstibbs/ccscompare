@@ -57,8 +57,6 @@ def convert_xml_to_list(xml_string):
     distance = "{}km".format(r['ns1:distance'])
     s = service(r['ns1:id'], r['ns1:name'], r['ns1:address'], "", r['ns1:serviceType']['ns1:name'], (result_list.index(r) + 1), distance)
     service_list.append(s._asdict())
-  
-  print(service_list)
     
   return service_list
 
@@ -105,7 +103,6 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
     result_list_2 = result_list_1
     
   for idx, r in enumerate(result_list_1):
-    print(idx)
     try:
       res2 = result_list_2[idx]
       if r['id'] == res2['id']:
@@ -115,8 +112,6 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
         r['different'] = True
         res2['different'] = True
     except IndexError:
-      r['different'] = False
-  
-  print(result_list_1)
-  print(result_list_2)
+      r['different'] = True
+
   return result_list_1, result_list_2

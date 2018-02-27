@@ -12,7 +12,6 @@ def get_dispositions():
   results.append(("",0))
   results = set(results)
   results = sorted(list(results))
-#   print(results)
   return results
 
 @anvil.server.callable
@@ -22,7 +21,6 @@ def get_sg_list():
   results.append(("",0))
   results = set(results)
   results = sorted(list(results))
-#   print(results)
   return results
 
 @anvil.server.callable
@@ -31,7 +29,6 @@ def get_sd_list(sg_code):
   results = [("{} ({})".format(result['sd_description'],result['sd_code']), result['sd_code']) for result in all_results]
   results = set(results)
   results = sorted(list(results))
-#   print(results)
   return results
 
 @anvil.server.callable
@@ -41,5 +38,4 @@ def get_surgeries(postcode):
   results.append(("", "UNK"))
   results = set(results)
   results = sorted(list(results))
-#   print(results)
   return results

@@ -25,7 +25,7 @@ def search_by_service_type(postcode):
   results = result['success']['services']
   
   new_result_list = [extract_result(r) for r in results]
-#   print(new_result_list)
+
   return new_result_list
 
 
