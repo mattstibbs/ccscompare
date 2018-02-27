@@ -30,6 +30,8 @@ class Dashboard (DashboardTemplate):
     
     self.results_list_1.list_items = results
     self.results_list_1.refresh_data_bindings()
+    self.results_list_2.list_items = results
+    self.results_list_2.refresh_data_bindings()
 
   def dd_sg_change (self, **event_args):
     self.dd_sd.items = anvil.server.call('get_sd_list', self.dd_sg.selected_value)
