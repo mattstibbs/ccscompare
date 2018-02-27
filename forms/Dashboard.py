@@ -11,6 +11,7 @@ class Dashboard (DashboardTemplate):
 
     self.dd_sg.items = anvil.server.call('get_sg_list')
     self.dd_age_group.items = [('Adult', 1), ('Child', 2), ('Infant', 3), ('Neonate', 4)]
+    self.dd_sex.items = [('Female', 'F'), ('Male', 'M'), ('Unknown', 'I')]
     self.dd_disposition.items = anvil.server.call('get_dispositions')
     
 
@@ -19,10 +20,11 @@ class Dashboard (DashboardTemplate):
                       postcode=self.txt_postcode.text,
                       age_group=self.dd_age_group.selected_value,
                       sex=self.dd_sex.selected_value,
-                      sg_code=self.dd_sg.selected_value,
-                      sd_code=self.dd_sd.selected_value,
-                      dispo_code=self.drop_down_1.selected_value,
-                      search_distance=60)
+                      sg_code=self.dd_sg.selected_value.replace('SG', ''),
+                      sd_code=self.dd_sd.selected_value.replace('SD', ''),
+                      dispo_code=self.dd_disposition.selected_value,
+                      search_distance=60,
+                      surgery=self.dd_surgery.selected_value)
 
   def dd_sg_change (self, **event_args):
     self.dd_sd.items = anvil.server.call('get_sd_list', self.dd_sg.selected_value)

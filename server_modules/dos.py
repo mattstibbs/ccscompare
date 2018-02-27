@@ -30,9 +30,7 @@ def search_by_service_type(postcode):
 
 
 @anvil.server.callable
-def check_capacity_summary(postcode, age_group, sex, sg_code, sd_code, dispo_code, search_distance):
-  for arg in locals():
-    print(arg.value)
+def check_capacity_summary(postcode, surgery, age_group, sex, sg_code, sd_code, dispo_code, search_distance):
   r = ccs.get_services(postcode, surgery, age_group, sg_code, sd_code, dispo_code, search_distance, sex)
   print(r)
   

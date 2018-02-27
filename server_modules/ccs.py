@@ -4,7 +4,6 @@ from tables import app_tables
 import anvil.secrets
 import anvil.server
 import anvil.http
-import untangle
 import payloads
 import collections
 
@@ -27,7 +26,7 @@ def get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search
     'symptom_group',
     'symptom_discriminator',
     'search_distance',
-    'case.sex'])
+    'sex'])
   
   case.case_ref = 'UAT'
   case.case_id = 'UAT'
@@ -49,12 +48,14 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
   case = get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex)
   
   payload = payloads.generate_ccs_payload(user, case)
+  print(payload)
 
-  result = anvil.http.post(url='https://uat.pathwaysdos.nhs.uk/app/api/webservices', 
-                           data=payload,
-                           headers={'content-type': 'application/xml'}
-                          )
-  print(result.text)
+  result = anvil.http.request(url='https://uat.pathwaysdos.nhs.uk/app/api/webservices', 
+                              data=payload,
+                              headers={"content-type": "application/xml"},
+                              method="POST")
+  print(result.content_type)
+  print(result.get_bytes())
 
 # # Parse the returned XML into an object representing the XML structure
 # document = untangle.parse(result.text)
