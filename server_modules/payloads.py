@@ -39,7 +39,6 @@ ccs_template = '''
 </soap:Envelope>
 '''
 
-
 def generate_ccs_payload(user, case):
 
     ccs_body = ccs_template.format(
