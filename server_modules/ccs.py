@@ -101,17 +101,29 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
     
   else:
     result_list_2 = result_list_1
-    
+
+  result_map_1 = collections.OrderedDict()
+  result_map_2 = collections.OrderedDict()
+  
   for idx, r in enumerate(result_list_1):
+    result_map_1[r['id']] = r
+  
+  for idx, r in enumerate(result_list_2):
+    result_map_2[r['id']] = r 
+    
+  print(result_map_1)
+  print(result_map_2)
+    
+  for r in enumerate(result_map_2):
     try:
       res2 = result_list_2[idx]
       if r['id'] == res2['id']:
-        r['different'] = False
-        res2['different'] = False
+        r['change'] = False
+        res2['change'] = False
       else:
-        r['different'] = True
-        res2['different'] = True
+        r['change'] = True
+        res2['change'] = True
     except IndexError:
-      r['different'] = True
+      r['change'] = True
 
   return result_list_1, result_list_2
