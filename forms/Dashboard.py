@@ -21,6 +21,18 @@ class Dashboard (DashboardTemplate):
     results1_instance = self.rb_res1_uat1.get_group_value()
     results2_instance = self.rb_res2_uat1.get_group_value()
     
+    def get_instance1_creds():
+      if self.txt_instance1_user.text != '' and self.txt_instance1_pass.text != '' and self.chk_instance1_owncreds.checked == True:
+        return (self.txt_instance1_user.text, self.txt_instance1_pass.text)
+      else:
+        return None
+      
+    def get_instance2_creds():
+      if self.txt_instance2_user.text != '' and self.txt_instance2_pass.text != '' and self.chk_instance2_owncreds.checked == True:
+        return (self.txt_instance2_user.text, self.txt_instance2_pass.text)
+      else:
+        return None
+    
     results_list1, results_list2 = anvil.server.call('check_capacity_summary', 
                                   postcode=self.txt_postcode.text.replace(' ', ''),
                                   age_group=self.dd_age_group.selected_value,
@@ -31,7 +43,9 @@ class Dashboard (DashboardTemplate):
                                   search_distance=self.rb_15.get_group_value(),
                                   surgery=self.dd_surgery.selected_value,
                                   instance1=results1_instance,
-                                  instance2=results2_instance
+                                  instance2=results2_instance,
+                                  instance1_creds=get_instance1_creds(),
+                                  instance2_creds=get_instance2_creds()
                                 )
     
     self.results_list_1.list_items = results_list1
@@ -80,10 +94,44 @@ class Dashboard (DashboardTemplate):
   def rb_res2_clicked (self, **event_args):
     # This method is called when this radio button is selected
     self.label_9.text = self.rb_res2_uat1.get_group_value()
+    self.clear_results_lists()
 
   def rb_res1_clicked (self, **event_args):
     # This method is called when this radio button is selected
     self.label_8.text = self.rb_res1_uat1.get_group_value()
+    self.clear_results_lists()
+
+  def clear_results_lists(self):
+    self.results_list_1.list_items = []
+    self.results_list_1.refresh_data_bindings()
+    self.results_list_2.list_items = []
+    self.results_list_2.refresh_data_bindings()
+
+  def check_box_1_change (self, **event_args):
+    if self.chk_instance1_owncreds.checked == True:
+      self.txt_instance1_user.visible = True
+      self.txt_instance1_pass.visible = True
+      self.lbl_instance1_user.visible = True
+      self.lbl_instance1_pass.visible = True
+    else:
+      self.txt_instance1_user.visible = False
+      self.txt_instance1_pass.visible = False   
+      self.lbl_instance1_user.visible = False
+      self.lbl_instance1_pass.visible = False
+
+  def check_box_2_change (self, **event_args):
+    if self.chk_instance2_owncreds.checked == True:
+      self.txt_instance2_user.visible = True
+      self.txt_instance2_pass.visible = True
+      self.lbl_instance2_user.visible = True
+      self.lbl_instance2_pass.visible = True
+    else:
+      self.txt_instance2_user.visible = False
+      self.txt_instance2_pass.visible = False
+      self.lbl_instance2_user.visible = False
+      self.lbl_instance2_pass.visible = False
+
+
 
 
 

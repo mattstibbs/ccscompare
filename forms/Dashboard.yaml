@@ -11,6 +11,99 @@ components:
     properties: {role: null, width: default, border: '', foreground: '', visible: true,
       row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{}', spacing_below: small,
       background: ''}
+    name: column_panel_4
+    layout_properties: {grid_position: 'HQRDHV,RRRNJA', full_width_row: true}
+    components:
+    - type: ColumnPanel
+      properties: {role: null, width: default, border: 1pt solid black, foreground: '',
+        visible: true, row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"BADRLY":15,"RLWUFW":45,"LTRMTG":15,"PGXTDB":45}',
+        spacing_below: small, background: ''}
+      name: column_panel_5
+      layout_properties: {grid_position: 'ICKOKT,WACSYU', full_width_row: true}
+      components:
+      - type: CheckBox
+        properties: {role: null, width: default, align: left, border: '', enabled: true,
+          foreground: '', visible: true, text: Use own account for left-hand results,
+          font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+          background: '', bold: false, checked: false, underline: false}
+        name: chk_instance1_owncreds
+        layout_properties: {grid_position: 'HVWHEP,PRYFMW'}
+        event_bindings: {change: check_box_1_change}
+      - type: Label
+        properties: {role: null, width: default, align: left, border: '', foreground: '',
+          visible: false, text: User, font_size: null, font: '', spacing_above: small,
+          icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+          underline: false, icon: ''}
+        name: lbl_instance1_user
+        layout_properties: {grid_position: 'AGIVER,LTRMTG'}
+      - type: TextBox
+        properties: {role: null, width: default, align: left, hide_text: false, placeholder: '',
+          border: '', enabled: true, foreground: '', visible: false, text: '', font_size: null,
+          font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+          background: '', bold: false, underline: false}
+        name: txt_instance1_user
+        layout_properties: {grid_position: 'AGIVER,PGXTDB'}
+      - type: Label
+        properties: {role: null, width: default, align: left, border: '', foreground: '',
+          visible: false, text: Pass, font_size: null, font: '', spacing_above: small,
+          icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+          underline: false, icon: ''}
+        name: lbl_instance1_pass
+        layout_properties: {grid_position: 'ZASPAX,BADRLY'}
+      - type: TextBox
+        properties: {role: null, width: default, align: left, hide_text: true, placeholder: '',
+          border: '', enabled: true, foreground: '', visible: false, text: '', font_size: null,
+          font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+          background: '', bold: false, underline: false}
+        name: txt_instance1_pass
+        layout_properties: {grid_position: 'ZASPAX,RLWUFW'}
+    - type: ColumnPanel
+      properties: {role: null, width: default, border: 1pt solid black, foreground: '',
+        visible: true, row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"FZANEV":15,"MEVOXL":45,"AOORJI":15,"LHFYGY":45}',
+        spacing_below: small, background: ''}
+      name: column_panel_6
+      layout_properties: {grid_position: 'ICKOKT,VCKKLG', full_width_row: true}
+      components:
+      - type: CheckBox
+        properties: {role: null, width: default, align: left, border: '', enabled: true,
+          foreground: '', visible: true, text: Use own account for right-hand results,
+          font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+          background: '', bold: false, checked: false, underline: false}
+        name: chk_instance2_owncreds
+        layout_properties: {grid_position: 'PETIBD,MRVOIW'}
+        event_bindings: {change: check_box_2_change}
+      - type: Label
+        properties: {role: null, width: default, align: left, border: '', foreground: '',
+          visible: false, text: User, font_size: null, font: '', spacing_above: small,
+          icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+          underline: false, icon: ''}
+        name: lbl_instance2_user
+        layout_properties: {grid_position: 'JGTAXF,AOORJI'}
+      - type: TextBox
+        properties: {role: null, width: default, align: left, hide_text: false, placeholder: '',
+          border: '', enabled: true, foreground: '', visible: false, text: '', font_size: null,
+          font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+          background: '', bold: false, underline: false}
+        name: txt_instance2_user
+        layout_properties: {grid_position: 'JGTAXF,LHFYGY'}
+      - type: Label
+        properties: {role: null, width: default, align: left, border: '', foreground: '',
+          visible: false, text: Pass, font_size: null, font: '', spacing_above: small,
+          icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+          underline: false, icon: ''}
+        name: lbl_instance2_pass
+        layout_properties: {grid_position: 'IKLGVJ,FZANEV'}
+      - type: TextBox
+        properties: {role: null, width: default, align: left, hide_text: true, placeholder: '',
+          border: '', enabled: true, foreground: '', visible: false, text: '', font_size: null,
+          font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+          background: '', bold: false, underline: false}
+        name: txt_instance2_pass
+        layout_properties: {grid_position: 'IKLGVJ,MEVOXL'}
+  - type: ColumnPanel
+    properties: {role: null, width: default, border: '', foreground: '', visible: true,
+      row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{}', spacing_below: small,
+      background: ''}
     name: column_panel_1
     layout_properties: {grid_position: 'KVUIAG,IEUPOJ', full_width_row: true}
     components:
@@ -243,14 +336,14 @@ components:
       row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"QJAOMR":30,"GJYNPG":30}',
       spacing_below: small, background: ''}
     name: column_panel_2
-    layout_properties: {grid_position: 'WKMESP,HMLBDI', full_width_row: true}
+    layout_properties: {grid_position: 'SLCBNP,ISSHAE', full_width_row: true}
     components:
     - type: ColumnPanel
       properties: {role: null, width: default, border: 1pt solid black, foreground: '',
         visible: true, row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"ICVLZD":20,"OZINVB":20,"HAZLPJ":20}',
         spacing_below: small, background: ''}
       name: column_panel_3
-      layout_properties: {grid_position: 'EWRPHM,QJAOMR XZQWZY,EUFYCQ'}
+      layout_properties: {grid_position: 'EWRPHM,QJAOMR NAYERK,XJGMFG'}
       components:
       - type: RadioButton
         properties: {role: null, selected: true, width: default, align: left, border: '',

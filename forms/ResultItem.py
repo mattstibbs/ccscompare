@@ -13,11 +13,11 @@ class ResultItem (ResultItemTemplate):
     if self.item['difference'] == 'Same':
       return ''
     elif self.item['difference'] == 'Higher':
-      return '#ece3b1'
+      return '#c9efee'
     elif self.item['difference'] == 'Lower':
       return '#ece3b1'
     elif self.item['difference'] == 'NoMatch':
-      return ''
+      return '#d5d5d5'
     
   def get_position(self):
     if self.item['difference'] == 'Same':

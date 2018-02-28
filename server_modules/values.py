@@ -8,7 +8,7 @@ import dos
 @anvil.server.callable
 def get_dispositions():
   all_results = app_tables.dispositions.search()
-  results = [("{} ({})".format(result['DispoDescription'],result['DispoCode']), result['CMSGroup']) for result in all_results]
+  results = [("{} ({})".format(result['DispoDescription'].replace('The disposition is:', ''),result['DispoCode']), result['CMSGroup']) for result in all_results]
   results.append(("",0))
   results = set(results)
   results = sorted(list(results))

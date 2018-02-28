@@ -9,10 +9,16 @@ import collections
 import xmltodict
 import json
 
-def get_user(instance):
-  user = collections.namedtuple('User', ['username', 'password'])
-  user.username = anvil.secrets.get_secret('dos_username_{}'.format(instance))
-  user.password = anvil.secrets.get_secret('dos_password_{}'.format(instance))
+def get_user(instance=None, username=None, password=None):
+  if instance:
+    user = collections.namedtuple('User', ['username', 'password'])
+    user.username = anvil.secrets.get_secret('dos_username_{}'.format(instance))
+    user.password = anvil.secrets.get_secret('dos_password_{}'.format(instance))
+  elif username and password:
+    user = collections.namedtuple('User', ['username', 'password'])
+    user.username = username
+    user.password = password
+  
   return user
 
 def get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex):
@@ -77,9 +83,13 @@ def do_ccs_request(instance, payload):
   
   return result
 
-def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex, instance1, instance2):
+def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex, instance1, instance2, instance1_creds, instance2_creds):
   
-  user = get_user(instance1)
+  if instance1_creds:
+    user = get_user(username=instance1_creds[0], password=instance1_creds[1])
+  else:
+    user = get_user(instance1)
+    
   case = get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex)
   
   payload = payloads.generate_ccs_payload(user, case)
@@ -90,7 +100,11 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
   
   if instance2 != instance1:
 
-    user = get_user(instance2)
+    if instance2_creds:
+      user = get_user(username=instance2_creds[0], password=instance2_creds[1])
+    else:
+      user = get_user(instance2)
+    
     case = get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex)
     
     payload = payloads.generate_ccs_payload(user, case)
@@ -110,8 +124,6 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
   
   for idx, r in enumerate(result_list_2):
     result_map_2[r['id']] = r 
-    
-#   print(result_map_1)
     
   for key, res2 in result_map_2.items():
     try:
