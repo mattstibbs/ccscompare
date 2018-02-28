@@ -18,3 +18,13 @@ class ResultItem (ResultItemTemplate):
       return '#ece3b1'
     elif self.item['difference'] == 'NoMatch':
       return ''
+    
+  def get_position(self):
+    if self.item['difference'] == 'Same':
+      return 'Same'
+    elif self.item['difference'] == 'Higher':
+      return 'Higher'
+    elif self.item['difference'] == 'Lower':
+      return 'Lower'
+    elif self.item['difference'] == 'NoMatch':
+      return 'Missing'    

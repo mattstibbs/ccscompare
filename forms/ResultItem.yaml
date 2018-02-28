@@ -4,10 +4,10 @@ container:
 components:
 - type: ColumnPanel
   properties: {role: null, width: default, border: '', foreground: '', visible: true,
-    row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"UJXNFT":10,"SBIJAS":50,"DEVDSQ":50}',
+    row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"UJXNFT":10,"SBIJAS":50,"DEVDSQ":50,"VRPYRN":10}',
     spacing_below: small, background: '#ece3b1'}
   name: column_panel_1
-  layout_properties: {grid_position: 'CHWIFP,JPGIHU', full_width_row: true}
+  layout_properties: {grid_position: 'TORGPL,SXQFFU', full_width_row: true}
   components:
   - type: Label
     properties: {role: null, width: default, align: left, border: '', foreground: '',
@@ -54,6 +54,15 @@ components:
     layout_properties: {grid_position: 'ZPQMYJ,DEVDSQ'}
     data_bindings:
     - {property: text, code: 'self.item[''address'']'}
+  - type: Label
+    properties: {role: null, width: default, align: right, border: '', foreground: '',
+      visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: lbl_difference
+    layout_properties: {grid_position: 'ZPQMYJ,VRPYRN'}
+    data_bindings:
+    - {property: text, code: self.get_position()}
   data_bindings:
   - {property: background, code: self.get_bg_colour()}
 - type: Spacer

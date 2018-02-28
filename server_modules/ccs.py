@@ -113,21 +113,21 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
     
 #   print(result_map_1)
     
-  for res2 in result_map_2.iteritems():
+  for key, res2 in result_map_2.items():
     print(res2)
     try:
       res1 = result_map_1[res2['id']]
       print(res1)
       if res1['order_number'] > res2['order_number']:
-        res1['difference'] = 'Higher'
-        res2['difference'] = 'Lower'
-      elif res1['order_number'] < res2['order_number']:
         res1['difference'] = 'Lower'
-        res2['difference'] = 'Higher'  
+        res2['difference'] = 'Higher'
+      elif res1['order_number'] < res2['order_number']:
+        res1['difference'] = 'Higher'
+        res2['difference'] = 'Lower'  
       elif res1['order_number'] == res2['order_number']:
         res1['difference'] = 'Same'
         res2['difference'] = 'Same'
-    except IndexError:
+    except KeyError:
       res2['difference'] = 'NoMatch'
 
   return result_list_1, result_list_2
