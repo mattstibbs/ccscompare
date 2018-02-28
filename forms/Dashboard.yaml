@@ -121,6 +121,12 @@ components:
         name: label_2
         layout_properties: {grid_position: 'IDZUVM,QFDARC', row: UQIBCU, width_xs: 4,
           col_xs: 0, width: 116.617}
+      - type: TextBox
+        properties: {}
+        name: txt_postcode
+        layout_properties: {grid_position: 'IDZUVM,BLJHDW', row: UQIBCU, width_xs: 4,
+          col_xs: 4}
+        event_bindings: {pressed_enter: txt_postcode_has_changed, lost_focus: txt_postcode_has_changed}
       - type: Label
         properties: {role: null, width: default, align: left, border: '', foreground: '#ed3624',
           visible: false, text: Postcode not found, font_size: null, font: '', spacing_above: small,
@@ -136,12 +142,6 @@ components:
         name: label_4
         layout_properties: {grid_position: 'VBCLSL,FWALWQ', row: PUXYYN, width_xs: 4,
           col_xs: 0, width: 116.617}
-      - type: TextBox
-        properties: {}
-        name: txt_postcode
-        layout_properties: {grid_position: 'IDZUVM,BLJHDW', row: PUXYYN, width_xs: 4,
-          col_xs: 7}
-        event_bindings: {pressed_enter: txt_postcode_has_changed, lost_focus: txt_postcode_has_changed}
       - type: DropDown
         properties: {}
         name: dd_sg
