@@ -13,7 +13,6 @@ class ResultItem (ResultItemTemplate):
     
   def get_bg_colour(self):
     if self.item['different']:
-      return ''
-    else:
       return '#ece3b1'
-    
+    else:
+      return ''
