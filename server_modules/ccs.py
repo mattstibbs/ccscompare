@@ -111,24 +111,23 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
   for idx, r in enumerate(result_list_2):
     result_map_2[r['id']] = r 
     
-  for res2 in enumerate(result_map_2):
+#   print(result_map_1)
+    
+  for res2 in result_map_2.iteritems():
+    print(res2)
     try:
       res1 = result_map_1[res2['id']]
-      if res2['id'] == res1['id']:
-        res1['change'] = 'None'
-        res2['change'] = 'None'
-      else:
-        if res1['order_number'] > res2['order_number']:
-          res1['change'] = 'Higher'
-          res2['change'] = 'Lower'
-        elif res1['order_number'] < res2['order_number']:
-          res1['change'] = 'Lower'
-          res2['change'] = 'Higher'          
+      print(res1)
+      if res1['order_number'] > res2['order_number']:
+        res1['difference'] = 'Higher'
+        res2['difference'] = 'Lower'
+      elif res1['order_number'] < res2['order_number']:
+        res1['difference'] = 'Lower'
+        res2['difference'] = 'Higher'  
+      elif res1['order_number'] == res2['order_number']:
+        res1['difference'] = 'Same'
+        res2['difference'] = 'Same'
     except IndexError:
-      r['change'] = True
-      
-# 1. Is the result in both sets
-# 1a. If yes - is it same, higher, or lower
-# 1b. If not - mark it as missing
+      res2['difference'] = 'NoMatch'
 
   return result_list_1, result_list_2

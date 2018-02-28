@@ -10,7 +10,11 @@ class ResultItem (ResultItemTemplate):
     self.init_components(**properties)
     
   def get_bg_colour(self):
-    if self.item['different']:
+    if self.item['difference'] == 'Same':
+      return ''
+    elif self.item['difference'] == 'Higher':
       return '#ece3b1'
-    else:
+    elif self.item['difference'] == 'Lower':
+      return '#ece3b1'
+    elif self.item['difference'] == 'NoMatch':
       return ''
