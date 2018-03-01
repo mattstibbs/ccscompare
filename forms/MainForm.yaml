@@ -32,7 +32,7 @@ components:
   layout_properties: {slot: title}
 - type: Label
   properties: {role: null, width: default, align: center, border: '', foreground: '',
-    visible: true, text: 'v1.3.6
+    visible: true, text: 'v1.3.7
 
       ', font_size: 12, font: '', spacing_above: small, icon_align: left, spacing_below: small,
     italic: true, background: '', bold: false, underline: false, icon: ''}

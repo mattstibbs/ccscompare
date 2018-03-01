@@ -35,10 +35,6 @@ components:
     name: lnk_request_account
     layout_properties: {grid_position: 'BHKDJR,OYITVL'}
 - type: LinearPanel
-  properties: {}
-  name: linear_panel_2
-  layout_properties: {grid_position: 'NIDVYE,SBBJFO'}
-- type: LinearPanel
   properties: {role: null, width: default, border: '', foreground: '', visible: false,
     row_spacing: 10, spacing_above: small, spacing_below: small, background: ''}
   name: pnl_logged_in
