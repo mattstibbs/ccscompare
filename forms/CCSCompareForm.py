@@ -14,13 +14,11 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.dd_sex.items = [('Female', 'F'), ('Male', 'M'), ('Unknown', 'I')]
     self.dd_disposition.items = anvil.server.call('get_dispositions')
     self.rb_60.selected = True
+    self.clear_results_lists()
     
 
   def btn_search_click (self, **event_args):
-    self.results_list_1.list_items = []
-    self.results_list_1.refresh_data_bindings()
-    self.results_list_2.list_items = []
-    self.results_list_2.refresh_data_bindings()
+    self.clear_results_lists()
     
     results1_instance = self.rb_res1_uat1.get_group_value()
     results2_instance = self.rb_res2_uat1.get_group_value()
@@ -140,3 +138,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
       self.txt_instance2_pass.visible = False
       self.lbl_instance2_user.visible = False
       self.lbl_instance2_pass.visible = False
+
+  def coming_soon (self, **event_args):
+    alert("Coming soon!")
+
