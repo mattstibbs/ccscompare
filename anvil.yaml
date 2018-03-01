@@ -18,6 +18,12 @@ secrets:
   dos_password_uat2:
     value: {? '' : 3QdnF0Qk1oOSDmhljK9dszWhXbJEv2LD8XSj6zhWcnKkbrtvwvOKP24Tf/USMwVTDVsAOiT5QLYz17CSAednjQrB78BRfEYpRv6qab1bzlB2pFSN6wNB3SoG6g==}
     type: secret
+  dos_username_www:
+    value: {? '' : ''}
+    type: secret
+  dos_password_www:
+    value: {? '' : ''}
+    type: secret
 name: DoS Tools
 startup_form: MainForm
 renamed: true

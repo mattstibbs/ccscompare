@@ -9,22 +9,79 @@ components:
     underline: false, icon: ''}
   name: label_1
   layout_properties: {grid_position: 'GSPCUP,QEBOGU'}
-- type: Label
-  properties: {role: null, width: default, align: left, border: '', foreground: '',
-    visible: true, text: 'A login is required to use these tools.
+- type: LinearPanel
+  properties: {role: null, width: default, border: '', foreground: '', visible: false,
+    row_spacing: 10, spacing_above: small, spacing_below: small, background: ''}
+  name: pnl_not_logged_in
+  layout_properties: {grid_position: 'KMSSIX,KVQGMY'}
+  components:
+  - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: 'A login is required to use these tools.
 
 
-      To request an account, please send an email to Matt Stibbs m.stibbs@nhs.net
-      or by clicking the link below.', font_size: 18, font: '', spacing_above: small,
-    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-    underline: false, icon: ''}
-  name: label_2
-  layout_properties: {grid_position: 'NKLUUN,VEDWKP'}
-- type: Link
-  properties: {role: null, width: default, url: 'mailto:m.stibbs@nhs.net', align: left,
-    border: '', foreground: '', visible: true, text: Request an account, font_size: 18,
-    row_spacing: 10, wrap_on: mobile, font: '', spacing_above: small, icon_align: left,
-    col_widths: '', spacing_below: small, italic: false, background: '', bold: false,
-    underline: false, icon: ''}
-  name: lnk_request_account
-  layout_properties: {grid_position: 'BHKDJR,OYITVL'}
+        To request an account, please send an email to Matt Stibbs m.stibbs@nhs.net
+        or by clicking the link below.', font_size: 18, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2
+    layout_properties: {grid_position: 'NKLUUN,VEDWKP'}
+  - type: Link
+    properties: {role: null, width: default, url: 'mailto:m.stibbs@nhs.net', align: left,
+      border: '', foreground: '', visible: true, text: Request an account, font_size: 18,
+      row_spacing: 10, wrap_on: mobile, font: '', spacing_above: small, icon_align: left,
+      col_widths: '', spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: lnk_request_account
+    layout_properties: {grid_position: 'BHKDJR,OYITVL'}
+- type: LinearPanel
+  properties: {}
+  name: linear_panel_2
+  layout_properties: {grid_position: 'NIDVYE,SBBJFO'}
+- type: LinearPanel
+  properties: {role: null, width: default, border: '', foreground: '', visible: false,
+    row_spacing: 10, spacing_above: small, spacing_below: small, background: ''}
+  name: pnl_logged_in
+  layout_properties: {grid_position: 'EQJPKH,NOJMNG'}
+  components:
+  - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: You're logged in!, font_size: 18, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_3
+    layout_properties: {grid_position: 'MSSZQO,WVFWNU', full_width_row: true}
+  - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: 'DoS Testing Tools currently has these modules:', font_size: 18,
+      font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: label_3_copy
+    layout_properties: {grid_position: 'MSSZQO,WVFWNU', full_width_row: true}
+  - type: ColumnPanel
+    properties: {role: null, width: default, border: 1pt dotted grey, foreground: '',
+      visible: true, row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{}',
+      spacing_below: small, background: ''}
+    name: column_panel_1
+    layout_properties: {grid_position: 'VYKJZK,KXGFFY'}
+    components:
+    - type: Label
+      properties: {role: null, width: default, align: left, border: '', foreground: '',
+        visible: true, text: CheckCapacitySummary Compare Tool, font_size: 16, font: '',
+        spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: true, underline: false, icon: ''}
+      name: label_4
+      layout_properties: {grid_position: 'MXKYBW,ZDWHKE'}
+    - type: Label
+      properties: {role: null, width: default, align: left, border: '', foreground: '',
+        visible: true, text: 'This tool allows you to compare service results between
+          two different DoS environments (e.g. UAT2 and UAT3).
+
+
+          It uses the same API that is used by NHS 111 systems, and so should be a
+          reflection of the DoS results displayed to call-handlers when using systems
+          like Adastra.', font_size: null, font: '', spacing_above: small, icon_align: left,
+        spacing_below: small, italic: false, background: '', bold: false, underline: false,
+        icon: ''}
+      name: label_5
+      layout_properties: {grid_position: 'KQWTQW,RDEEWX'}

@@ -6,7 +6,12 @@ from tables import app_tables
 
 class HomeForm (HomeFormTemplate):
   def __init__(self, **properties):
-    # You must call self.init_components() before doing anything else in this function
     self.init_components(**properties)
 
-    # Any code you write here will run when the form opens.
+    if anvil.users.get_user():
+      self.pnl_logged_in.visible = True
+      self.pnl_not_logged_in.visible = False
+    else:
+      self.pnl_not_logged_in.visible = True
+      self.pnl_logged_in.visible = False
+      
