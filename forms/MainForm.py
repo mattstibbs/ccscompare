@@ -2,6 +2,7 @@ from anvil import *
 import anvil.server
 import anvil.users
 import tables
+import datetime
 from tables import app_tables
 
 from CCSCompareForm import CCSCompareForm
@@ -16,15 +17,17 @@ class MainForm (MainFormTemplate):
     
 
   def link_1_click (self, **event_args):
-    if not anvil.users.get_user():
+    if anvil.users.get_user():
+      self.content_panel.clear()
+      self.content_panel.add_component(CCSCompareForm(), full_width_row = True)
+    else:  
       if anvil.users.login_with_form():
+        app_tables.log_logins.add_row(timestamp=datetime.datetime.now(), user=anvil.users.get_user())
         self.content_panel.clear()
         self.content_panel.add_component(CCSCompareForm(), full_width_row = True)
       else:
         pass
-    else:
-      self.content_panel.clear()
-      self.content_panel.add_component(CCSCompareForm(), full_width_row = True)
+
   
   def lnk_logout_click (self, **event_args):
     if confirm("Are you sure you want to log out?"):
