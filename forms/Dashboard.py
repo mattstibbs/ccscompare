@@ -20,6 +20,11 @@ class Dashboard (DashboardTemplate):
     
 
   def btn_search_click (self, **event_args):
+    self.results_list_1.list_items = []
+    self.results_list_1.refresh_data_bindings()
+    self.results_list_2.list_items = []
+    self.results_list_2.refresh_data_bindings()
+    
     results1_instance = self.rb_res1_uat1.get_group_value()
     results2_instance = self.rb_res2_uat1.get_group_value()
     
