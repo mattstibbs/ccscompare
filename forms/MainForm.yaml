@@ -30,3 +30,7 @@ components:
     italic: true, background: '', bold: false, underline: false, icon: ''}
   name: lbl_version
   layout_properties: {slot: nav-right}
+- type: Image
+  properties: {}
+  name: image_1
+  layout_properties: {slot: nav-right}
