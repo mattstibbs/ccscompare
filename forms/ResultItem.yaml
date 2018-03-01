@@ -4,10 +4,10 @@ container:
 components:
 - type: ColumnPanel
   properties: {role: null, width: default, border: 1pt solid grey, foreground: '',
-    visible: true, row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"UJXNFT":10,"SBIJAS":50}',
-    spacing_below: small, background: '#c9efee'}
+    visible: true, row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"UJXNFT":10,"SBIJAS":50,"RGDYVB":50}',
+    spacing_below: small, background: ''}
   name: column_panel_1
-  layout_properties: {grid_position: 'TORGPL,IOSZGH', full_width_row: true}
+  layout_properties: {grid_position: 'BSPINX,UMSSLD', full_width_row: true}
   components:
   - type: Label
     properties: {role: null, width: default, align: left, border: '', foreground: '',
@@ -28,13 +28,14 @@ components:
     data_bindings:
     - {property: text, code: 'self.item[''distance'']'}
   - type: Label
-    properties: {role: null, width: default, align: left, border: '', foreground: '',
-      visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
-      spacing_below: small, italic: false, background: '', bold: false, underline: false,
-      icon: ''}
+    properties: {role: null, width: default, align: center, border: 1pt solid grey,
+      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
     name: lbl_difference
-    layout_properties: {grid_position: 'UWOFIU,UJXNFT ZUXPJS,AQIAAM'}
+    layout_properties: {grid_position: 'UWOFIU,UJXNFT VXBIZM,TQTUEH'}
     data_bindings:
+    - {property: background, code: self.get_bg_colour()}
     - {property: text, code: self.get_position()}
   - type: Label
     properties: {role: null, width: default, align: left, border: '', foreground: '',
@@ -63,5 +64,4 @@ components:
     layout_properties: {grid_position: 'UWOFIU,SBIJAS NLDOBL,OFAEVJ'}
     data_bindings:
     - {property: text, code: 'self.item[''address'']'}
-  data_bindings:
-  - {property: background, code: self.get_bg_colour()}
+  data_bindings: []

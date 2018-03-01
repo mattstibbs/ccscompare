@@ -21,10 +21,10 @@ class ResultItem (ResultItemTemplate):
     
   def get_position(self):
     if self.item['difference'] == 'Same':
-      return 'Same'
+      return 'Same position'
     elif self.item['difference'] == 'Higher':
       return 'Higher'
     elif self.item['difference'] == 'Lower':
       return 'Lower'
     elif self.item['difference'] == 'NoMatch':
-      return 'Missing'    
+      return 'Not in other results'    
