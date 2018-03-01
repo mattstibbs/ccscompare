@@ -107,34 +107,27 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
     user = get_user(username=instance1_creds[0], password=instance1_creds[1])
   else:
     user = get_user(instance1)
+
+  if instance2_creds:
+    user = get_user(username=instance2_creds[0], password=instance2_creds[1])
+  else:
+    user = get_user(instance2)
     
   case = get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex)
   
   payload = payloads.generate_ccs_payload(user, case)
 
+
   try:
-  
+    # do left-hand search  
     result = do_ccs_request(instance1, payload)
       
     result_list_1 = convert_xml_to_list(result.get_bytes())
     
-    if instance2 != instance1:
-  
-      if instance2_creds:
-        user = get_user(username=instance2_creds[0], password=instance2_creds[1])
-      else:
-        user = get_user(instance2)
-      
-      case = get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex)
-      
-      payload = payloads.generate_ccs_payload(user, case)
-  
-      result = do_ccs_request(instance2, payload)
-      
-      result_list_2 = convert_xml_to_list(result.get_bytes())
-      
-    else:
-      result_list_2 = result_list_1
+    # do right-hand searc
+    result = do_ccs_request(instance2, payload)
+    
+    result_list_2 = convert_xml_to_list(result.get_bytes())
   
     result_map_1 = collections.OrderedDict()
     result_map_2 = collections.OrderedDict()
