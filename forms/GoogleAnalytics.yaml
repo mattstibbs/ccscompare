@@ -1,8 +1,6 @@
 container:
   type: HtmlTemplate
-  properties: {html: '<center style="font-style:italic; color:#888; margin: 3em;">
-
-      <!-- Google Analytics -->
+  properties: {html: '<!-- Google Analytics -->
 
       <script>
 
@@ -21,8 +19,6 @@ container:
 
       </script>
 
-      <!-- End Google Analytics -->
-
-      </center>'}
+      <!-- End Google Analytics -->'}
 components: []
 custom_component: true

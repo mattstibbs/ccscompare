@@ -11,11 +11,11 @@ class MainForm (MainFormTemplate):
     # You must call self.init_components() before doing anything else in this function
     self.init_components(**properties)
 
-    # Any code you write here will run when the form opens.
+    self.content_panel.clear()
+    self.content_panel.add_component(CCSCompareForm(), full_width_row = True)
     
 
   def link_1_click (self, **event_args):
     # This method is called when the link is clicked
     self.content_panel.clear()
-    self.content_panel.add_component(CCSCompareForm())
-
+    self.content_panel.add_component(CCSCompareForm(), full_width_row = True)
