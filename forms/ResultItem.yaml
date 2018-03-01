@@ -3,11 +3,11 @@ container:
   properties: {col_widths: '{}'}
 components:
 - type: ColumnPanel
-  properties: {role: null, width: default, border: '', foreground: '', visible: true,
-    row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"UJXNFT":10,"SBIJAS":50}',
+  properties: {role: null, width: default, border: 1pt solid grey, foreground: '',
+    visible: true, row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"UJXNFT":10,"SBIJAS":50}',
     spacing_below: small, background: '#c9efee'}
   name: column_panel_1
-  layout_properties: {grid_position: 'TORGPL,SXQFFU', full_width_row: true}
+  layout_properties: {grid_position: 'TORGPL,IOSZGH', full_width_row: true}
   components:
   - type: Label
     properties: {role: null, width: default, align: left, border: '', foreground: '',
@@ -65,8 +65,3 @@ components:
     - {property: text, code: 'self.item[''address'']'}
   data_bindings:
   - {property: background, code: self.get_bg_colour()}
-- type: Spacer
-  properties: {visible: true, width: default, spacing_above: small, spacing_below: small,
-    height: 32}
-  name: spacer_1
-  layout_properties: {grid_position: 'IQAZYS,UEXHZK', full_width_row: true}

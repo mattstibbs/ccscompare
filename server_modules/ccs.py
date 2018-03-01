@@ -9,6 +9,9 @@ import collections
 import xmltodict
 import json
 
+class CCSError(Exception):
+  pass
+
 def get_user(instance=None, username=None, password=None):
   if instance:
     user = collections.namedtuple('User', ['username', 'password'])
@@ -67,6 +70,13 @@ def convert_xml_to_list(xml_string):
   return service_list
 
 
+def extract_http_error(content):
+  error = content.get_bytes()
+  result_dict = xmltodict.parse(error)
+  error_code = result_dict['env:Envelope']['env:Body']['env:Fault']['env:Code']['env:Value']
+  error_text = result_dict['env:Envelope']['env:Body']['env:Fault']['env:Reason']['env:Text']
+  return error_code, error_text 
+
 def do_ccs_request(instance, payload):
   uat_urls = {
     'uat1': 'https://uat.pathwaysdos.nhs.uk/app/api/webservices',
@@ -74,14 +84,22 @@ def do_ccs_request(instance, payload):
     'uat3': 'https://uat3.pathwaysdos.nhs.uk/app/api/webservices'
   }
   
-  result = anvil.http.request(url=uat_urls[instance], 
-                              data=payload,
-                              headers={"content-type": "application/xml"},
-                              method="POST")  
+  try:
+    result = anvil.http.request(url=uat_urls[instance], 
+                                data=payload,
+                                headers={"content-type": "application/xml"},
+                                method="POST")  
+    
+    print("Performing CCS for {}".format(instance))
+    
+    return result
   
-  print("Performing CCS for {}".format(instance))
-  
-  return result
+  except anvil.http.HttpError as e:
+    if e.status == 500:
+      error_code, error_message = extract_http_error(e.content)
+      raise CCSError("{} ({})".format(error_message, error_code))
+
+  return None
 
 def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex, instance1, instance2, instance1_creds, instance2_creds):
   
@@ -94,57 +112,62 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
   
   payload = payloads.generate_ccs_payload(user, case)
 
-  result = do_ccs_request(instance1, payload)
+  try:
   
-  result_list_1 = convert_xml_to_list(result.get_bytes())
-  
-  if instance2 != instance1:
-
-    if instance2_creds:
-      user = get_user(username=instance2_creds[0], password=instance2_creds[1])
-    else:
-      user = get_user(instance2)
-    
-    case = get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex)
-    
-    payload = payloads.generate_ccs_payload(user, case)
-
-    result = do_ccs_request(instance2, payload)
-    
-    result_list_2 = convert_xml_to_list(result.get_bytes())
-    
-  else:
-    result_list_2 = result_list_1
-
-  result_map_1 = collections.OrderedDict()
-  result_map_2 = collections.OrderedDict()
-  
-  for idx, r in enumerate(result_list_1):
-    result_map_1[r['id']] = r
-  
-  for idx, r in enumerate(result_list_2):
-    result_map_2[r['id']] = r 
-    
-  for key, res2 in result_map_2.items():
-    try:
-      res1 = result_map_1[res2['id']]
-      if res1['order_number'] > res2['order_number']:
-        res1['difference'] = 'Lower'
-        res2['difference'] = 'Higher'
-      elif res1['order_number'] < res2['order_number']:
-        res1['difference'] = 'Higher'
-        res2['difference'] = 'Lower'  
-      elif res1['order_number'] == res2['order_number']:
-        res1['difference'] = 'Same'
-        res2['difference'] = 'Same'
-    except KeyError:
-      res2['difference'] = 'NoMatch'
+    result = do_ccs_request(instance1, payload)
       
-    for key, res2 in result_map_1.items():
+    result_list_1 = convert_xml_to_list(result.get_bytes())
+    
+    if instance2 != instance1:
+  
+      if instance2_creds:
+        user = get_user(username=instance2_creds[0], password=instance2_creds[1])
+      else:
+        user = get_user(instance2)
+      
+      case = get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex)
+      
+      payload = payloads.generate_ccs_payload(user, case)
+  
+      result = do_ccs_request(instance2, payload)
+      
+      result_list_2 = convert_xml_to_list(result.get_bytes())
+      
+    else:
+      result_list_2 = result_list_1
+  
+    result_map_1 = collections.OrderedDict()
+    result_map_2 = collections.OrderedDict()
+    
+    for idx, r in enumerate(result_list_1):
+      result_map_1[r['id']] = r
+    
+    for idx, r in enumerate(result_list_2):
+      result_map_2[r['id']] = r 
+      
+    for key, res2 in result_map_2.items():
       try:
-        if res2['difference']:
-          pass
+        res1 = result_map_1[res2['id']]
+        if res1['order_number'] > res2['order_number']:
+          res1['difference'] = 'Lower'
+          res2['difference'] = 'Higher'
+        elif res1['order_number'] < res2['order_number']:
+          res1['difference'] = 'Higher'
+          res2['difference'] = 'Lower'  
+        elif res1['order_number'] == res2['order_number']:
+          res1['difference'] = 'Same'
+          res2['difference'] = 'Same'
       except KeyError:
         res2['difference'] = 'NoMatch'
-
-  return result_list_1, result_list_2
+        
+      for key, res2 in result_map_1.items():
+        try:
+          if res2['difference']:
+            pass
+        except KeyError:
+          res2['difference'] = 'NoMatch'
+  
+    return {'results1': result_list_1, 'results2': result_list_2}
+    
+  except CCSError as e:
+      return {'error': str(e)}

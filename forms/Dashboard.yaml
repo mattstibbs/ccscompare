@@ -429,6 +429,10 @@ components:
       properties: {}
       name: results_list_2
       layout_properties: {grid_position: 'EWRPHM,GJYNPG RTPJIU,DDSCZC', full_width_row: true}
+  - type: form:GoogleAnalytics
+    properties: {}
+    name: google_analytics_1
+    layout_properties: {grid_position: 'PCMHEG,IQRJYB'}
 - type: Label
   properties: {role: null, width: default, align: left, border: '', foreground: '',
     visible: true, text: 'DoS CCS Comparison Tool

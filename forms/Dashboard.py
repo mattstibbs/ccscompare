@@ -33,26 +33,32 @@ class Dashboard (DashboardTemplate):
       else:
         return None
     
-    results_list1, results_list2 = anvil.server.call('check_capacity_summary', 
-                                  postcode=self.txt_postcode.text.replace(' ', ''),
-                                  age_group=self.dd_age_group.selected_value,
-                                  sex=self.dd_sex.selected_value,
-                                  sg_code=self.dd_sg.selected_value.replace('SG', ''),
-                                  sd_code=self.dd_sd.selected_value.replace('SD', ''),
-                                  dispo_code=self.dd_disposition.selected_value,
-                                  search_distance=self.rb_15.get_group_value(),
-                                  surgery=self.dd_surgery.selected_value,
-                                  instance1=results1_instance,
-                                  instance2=results2_instance,
-                                  instance1_creds=get_instance1_creds(),
-                                  instance2_creds=get_instance2_creds()
-                                )
-    
-    self.results_list_1.list_items = results_list1
-    self.results_list_1.refresh_data_bindings()
-    self.results_list_2.list_items = results_list2
-    self.results_list_2.refresh_data_bindings()
-
+    result_dict = anvil.server.call('check_capacity_summary', 
+                                    postcode=self.txt_postcode.text.replace(' ', ''),
+                                    age_group=self.dd_age_group.selected_value,
+                                    sex=self.dd_sex.selected_value,
+                                    sg_code=self.dd_sg.selected_value.replace('SG', ''),
+                                    sd_code=self.dd_sd.selected_value.replace('SD', ''),
+                                    dispo_code=self.dd_disposition.selected_value,
+                                    search_distance=self.rb_15.get_group_value(),
+                                    surgery=self.dd_surgery.selected_value,
+                                    instance1=results1_instance,
+                                    instance2=results2_instance,
+                                    instance1_creds=get_instance1_creds(),
+                                    instance2_creds=get_instance2_creds()
+                                  )
+    try:
+      if result_dict['results1']:
+        self.results_list_1.list_items = result_dict['results1']
+        self.results_list_1.refresh_data_bindings()
+        self.results_list_2.list_items = result_dict['results2']
+        self.results_list_2.refresh_data_bindings()
+    except KeyError:
+      if result_dict['error']:
+        alert(result_dict['error'])
+      else:
+        alert("Error encountered - please report")
+  
   def dd_sg_change (self, **event_args):
     self.dd_sd.items = anvil.server.call('get_sd_list', self.dd_sg.selected_value)
 
