@@ -28,7 +28,7 @@ def get_sd_list(sg_code):
   all_results = app_tables.sg_sd.search(sg_code=sg_code)
   results = [("{} ({})".format(result['sd_description'],result['sd_code']), result['sd_code']) for result in all_results]
   results = set(results)
-  results = sorted(list(results))
+  results = sorted(list(results), reverse=True)
   return results
 
 @anvil.server.callable

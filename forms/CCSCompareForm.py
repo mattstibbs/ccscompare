@@ -92,10 +92,6 @@ class CCSCompareForm (CCSCompareFormTemplate):
     else:
       self.dd_surgery.selected_value = 'UNK'
 
-  def link_1_click (self, **event_args):
-    # This method is called when the link is clicked
-    alert("Type a GP surgery code into the text box, or select a nearby GP surgery from the drop-down. \n Leave both blank for 'Unknown Surgery'")
-
   def label_8_show (self, **event_args):
     # This method is called when the Label is shown on the screen
     self.refresh_data_bindings()
@@ -144,6 +140,8 @@ class CCSCompareForm (CCSCompareFormTemplate):
       self.lbl_instance2_user.visible = False
       self.lbl_instance2_pass.visible = False
 
-  def coming_soon (self, **event_args):
-    alert("Coming soon!")
+
+  def button_1_click (self, **event_args):
+    alert("Type a GP surgery code into the text box, or select a nearby GP surgery from the drop-down. Leave both blank for 'Unknown Surgery'")
+
 
