@@ -16,6 +16,8 @@ class Dashboard (DashboardTemplate):
     self.dd_disposition.items = anvil.server.call('get_dispositions')
     self.rb_60.selected = True
     
+    self.lbl_version.text = 'v1.0'
+    
 
   def btn_search_click (self, **event_args):
     results1_instance = self.rb_res1_uat1.get_group_value()
