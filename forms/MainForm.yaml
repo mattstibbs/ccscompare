@@ -8,10 +8,18 @@ components:
   layout_properties: {slot: default}
 - type: Link
   properties: {role: null, width: default, align: left, border: '', foreground: '',
+    visible: true, text: Home, font_size: null, row_spacing: 10, wrap_on: mobile,
+    font: '', spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
+    italic: false, background: '', bold: false, underline: false, icon: ''}
+  name: lnk_home
+  layout_properties: {slot: sidebar}
+  event_bindings: {click: lnk_home_click}
+- type: Link
+  properties: {role: null, width: default, align: left, border: '', foreground: '',
     visible: true, text: CCS Compare, font_size: null, row_spacing: 10, wrap_on: mobile,
     font: '', spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
     italic: false, background: '', bold: false, underline: false, icon: ''}
-  name: link_1
+  name: lnk_ccs_compare
   layout_properties: {slot: sidebar}
   event_bindings: {click: link_1_click}
 - type: Label
@@ -34,3 +42,15 @@ components:
   properties: {}
   name: image_1
   layout_properties: {slot: nav-right}
+- type: Spacer
+  properties: {height: 48}
+  name: spacer_1
+  layout_properties: {slot: sidebar}
+- type: Link
+  properties: {role: null, width: default, align: left, border: '', foreground: '',
+    visible: true, text: Logout, font_size: null, row_spacing: 10, wrap_on: mobile,
+    font: '', spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
+    italic: false, background: '', bold: false, underline: false, icon: ''}
+  name: lnk_logout
+  layout_properties: {slot: sidebar}
+  event_bindings: {click: lnk_logout_click}

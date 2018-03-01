@@ -8,6 +8,11 @@ class CCSCompareForm (CCSCompareFormTemplate):
   def __init__(self, **properties):
     # You must call self.init_components() before doing anything else in this function
     self.init_components(**properties)
+    
+    # Ensure user is logged in to use this form
+    while not anvil.users.get_user():
+      anvil.users.login_with_form(show_signup_option=True)
+    
     self.full_width_row = True
     self.dd_sg.items = anvil.server.call('get_sg_list')
     self.dd_age_group.items = [('Adult', 1), ('Child', 2), ('Infant', 3), ('Neonate', 4)]
