@@ -102,29 +102,30 @@ def do_ccs_request(instance, payload):
   return None
 
 def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex, instance1, instance2, instance1_creds, instance2_creds):
-  
+
   if instance1_creds:
-    user = get_user(username=instance1_creds[0], password=instance1_creds[1])
+    user1 = get_user(username=instance1_creds[0], password=instance1_creds[1])
   else:
-    user = get_user(instance1)
+    user1 = get_user(instance1)
 
   if instance2_creds:
-    user = get_user(username=instance2_creds[0], password=instance2_creds[1])
+    user2 = get_user(username=instance2_creds[0], password=instance2_creds[1])
   else:
-    user = get_user(instance2)
-    
-  case = get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex)
-  
-  payload = payloads.generate_ccs_payload(user, case)
+    user2 = get_user(instance2)
 
+  case = get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex)
 
   try:
     # do left-hand search  
+    payload = payloads.generate_ccs_payload(user1, case)
+      
     result = do_ccs_request(instance1, payload)
       
     result_list_1 = convert_xml_to_list(result.get_bytes())
     
-    # do right-hand searc
+    # do right-hand search
+    payload = payloads.generate_ccs_payload(user2, case)
+    
     result = do_ccs_request(instance2, payload)
     
     result_list_2 = convert_xml_to_list(result.get_bytes())
