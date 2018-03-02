@@ -28,7 +28,7 @@ class MainForm (MainFormTemplate):
       
 
   def lnk_ccs_compare_click(self, **event_args):
-    if do_login():
+    if self.do_login():
       self.content_panel.clear()
       self.content_panel.add_component(CCSCompareForm(), full_width_row = True)
     else:  
@@ -45,15 +45,21 @@ class MainForm (MainFormTemplate):
         return False
     elif anvil.users.get_user():
       return True
-        
+  
+  def logout(self):
+    if anvil.users.get_user():
+      anvil.users.logout()
+      self.logout_button.remove_from_parent()
+      self.add_component(self.login_button, slot="sidebar")
       
   def lnk_login_click (self, **event_args):
     self.do_login()
-    self.lnk
-  
+    
   def lnk_logout_click (self, **event_args):
     if confirm("Are you sure you want to log out?"):
       anvil.users.logout()
+      self.logout_button.remove_from_parent()
+      self.add_component(self.login_button, slot="sidebar")
       self.content_panel.clear()
       self.content_panel.add_component(HomeForm())
 
