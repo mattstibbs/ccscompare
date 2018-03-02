@@ -1,0 +1,29 @@
+components:
+- type: LinearPanel
+  properties: {role: null, width: default, border: '', foreground: '', visible: true,
+    row_spacing: 10, spacing_above: small, spacing_below: small, background: ''}
+  name: pnl_not_logged_in
+  layout_properties: {grid_position: 'KMSSIX,KVQGMY'}
+  components:
+  - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: 'A login is required to use these tools.
+
+
+        To request an account, please send an email to Matt Stibbs m.stibbs@nhs.net
+        or by clicking the link below.', font_size: 18, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2
+    layout_properties: {grid_position: 'NKLUUN,VEDWKP'}
+  - type: Link
+    properties: {role: null, width: default, url: 'mailto:m.stibbs@nhs.net', align: left,
+      border: '', foreground: '', visible: true, text: Request an account, font_size: 18,
+      row_spacing: 10, wrap_on: mobile, font: '', spacing_above: small, icon_align: left,
+      col_widths: '', spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: lnk_request_account
+    layout_properties: {grid_position: 'BHKDJR,OYITVL'}
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}

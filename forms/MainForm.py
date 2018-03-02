@@ -22,8 +22,10 @@ class MainForm (MainFormTemplate):
     self.login_button.set_event_handler("click", self.lnk_login_click)
     
     if anvil.users.get_user():
+      print("Adding logout button on form load")
       self.add_component(self.logout_button, slot="sidebar")
     else:
+      print("Adding login button on form load")
       self.add_component(self.login_button, slot="sidebar")
       
 
@@ -40,7 +42,6 @@ class MainForm (MainFormTemplate):
         app_tables.log_logins.add_row(timestamp=datetime.datetime.now(), user=anvil.users.get_user())
         self.login_button.remove_from_parent()
         self.add_component(self.logout_button, slot="sidebar")
-        self.__init__()
         return True
       else:
         return False
