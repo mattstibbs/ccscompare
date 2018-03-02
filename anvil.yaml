@@ -1,10 +1,10 @@
 package_name: DoSTools
 secrets:
   dos_username_uat1:
-    value: {? '' : 9mMp2IhlzAqMQpqXp8nXzzWZBmlKI9ugroPVYVuetjK0k7vkTh0EUqSuM3pwVAjwv9IoEsRnyuo0gA4uVDeW/6BjtEJLiiyVozl5TXtrkCXOmUqxtGM=}
+    value: {? '' : FK9R8mp6yaOT2bP7d1X9SmTD7/CttE41ptfy4oA08druX3vwjYf8pKH8e/oNzTSazSSwzwZUN49YVkC03xp+dN/cmaVtAb//w5YYF+MkNYi5lKXWrsMwfVQ5ieSNKA==}
     type: secret
   dos_password_uat1:
-    value: {? '' : Iqa5H0C8FqW9NzkAsanzlF6hk0aijj0HGEPsBLLM9UYxkmEqo++OoPzqehp9AIj0dusu+e81oMNz6iRyowM3IJ+uzj+Zvgp8+lo9yjoR+2bKhs8iOXiFgaXYt8kmew==}
+    value: {? '' : GvR9c+hX2QoloLK2cpGXakws9c4rmLvbKQr7OjPZ1NnTj6l4uXq+8KAxuiWBtbifv7EhlGQ8YpwC6eVCyyc2ZFYZppkhS1ASexxWy+nqGZayU90ZuSEn+TvtuQ==}
     type: secret
   dos_password_uat3:
     value: {? '' : Z2ycuQNXuKVZEXXMVqimzTzINa68Uo+cTfcFJEcd2k+HDbA+UV8PQt681aHT1uLJHW519i3sQtCpEMmkbfTIGTREnNaIwAU5KLAF7VkDXHSV3Sz3UNGYzUHjVg==}
