@@ -1,0 +1,121 @@
+components:
+- type: Label
+  properties: {role: null, width: default, align: left, border: '', foreground: '',
+    visible: true, text: '', font_size: 24, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: true, underline: false,
+    icon: ''}
+  name: label_1
+  layout_properties: {grid_position: 'BSPINX,SCRZDN'}
+  data_bindings:
+  - {property: text, code: 'self.item[''order_number'']'}
+- type: ColumnPanel
+  properties: {role: fixed-height-dos-result, width: default, border: 1pt solid grey,
+    foreground: '', visible: true, row_spacing: 10, wrap_on: mobile, spacing_above: small,
+    col_widths: '{"UJXNFT":10,"SBIJAS":50,"RGDYVB":50}', spacing_below: small, background: ''}
+  name: column_panel_1
+  layout_properties: {grid_position: 'BSPINX,UMSSLD', full_width_row: true}
+  components:
+  - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: lbl_distance
+    layout_properties: {grid_position: 'UWOFIU,UJXNFT FSGYJC,GLVROR'}
+    data_bindings:
+    - {property: text, code: 'self.item[''distance'']'}
+  - type: Label
+    properties: {role: null, width: default, align: center, border: 1pt solid grey,
+      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: lbl_difference
+    layout_properties: {grid_position: 'UWOFIU,UJXNFT VXBIZM,TQTUEH'}
+    data_bindings:
+    - {property: background, code: self.get_bg_colour()}
+    - {property: text, code: self.get_position()}
+  - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: Name, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+      underline: false, icon: ''}
+    name: lbl_name
+    layout_properties: {grid_position: 'UWOFIU,SBIJAS WCOWGK,RGDYVB'}
+    data_bindings:
+    - {property: text, code: 'self.item[''name'']'}
+  - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: lbl_service_type
+    layout_properties: {grid_position: 'UWOFIU,SBIJAS HXKXDV,KGBYXK'}
+    data_bindings:
+    - {property: text, code: 'self.item[''service_type'']'}
+  - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: true, background: '', bold: false, underline: false,
+      icon: ''}
+    name: lbl_address
+    layout_properties: {grid_position: 'UWOFIU,SBIJAS NLDOBL,OFAEVJ'}
+    data_bindings:
+    - {property: text, code: 'self.item[''address'']'}
+  data_bindings: []
+- type: ColumnPanel
+  properties: {role: fixed-height-dos-result, width: default, border: 1pt solid grey,
+    foreground: '', visible: true, row_spacing: 10, wrap_on: mobile, spacing_above: small,
+    col_widths: '{"UJXNFT":10,"SBIJAS":50,"RGDYVB":50}', spacing_below: small, background: ''}
+  name: column_panel_1_copy
+  layout_properties: {grid_position: 'BSPINX,AIZXTL', full_width_row: true}
+  components:
+  - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: lbl_distance2
+    layout_properties: {grid_position: 'UWOFIU,UJXNFT FSGYJC,GLVROR'}
+    data_bindings:
+    - {property: text, code: 'self.item[''distance'']'}
+  - type: Label
+    properties: {role: null, width: default, align: center, border: 1pt solid grey,
+      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: lbl_difference2
+    layout_properties: {grid_position: 'UWOFIU,UJXNFT VXBIZM,TQTUEH'}
+    data_bindings:
+    - {property: background, code: self.get_bg_colour()}
+    - {property: text, code: self.get_position()}
+  - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: Name, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+      underline: false, icon: ''}
+    name: lbl_name2
+    layout_properties: {grid_position: 'UWOFIU,SBIJAS WCOWGK,RGDYVB'}
+    data_bindings:
+    - {property: text, code: 'self.item[''name'']'}
+  - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: lbl_service_type2
+    layout_properties: {grid_position: 'UWOFIU,SBIJAS HXKXDV,KGBYXK'}
+    data_bindings:
+    - {property: text, code: 'self.item[''service_type'']'}
+  - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: true, background: '', bold: false, underline: false,
+      icon: ''}
+    name: lbl_address2
+    layout_properties: {grid_position: 'UWOFIU,SBIJAS NLDOBL,OFAEVJ'}
+    data_bindings:
+    - {property: text, code: 'self.item[''address'']'}
+  data_bindings: []
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{"SCRZDN":10,"UMSSLD":25,"AIZXTL":25}'}

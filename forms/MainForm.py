@@ -7,6 +7,7 @@ from tables import app_tables
 
 from CCSCompareForm import CCSCompareForm
 from HomeForm import HomeForm
+from InfoForm import InfoForm
 
 class MainForm (MainFormTemplate):
   def __init__(self, **properties):
@@ -36,6 +37,10 @@ class MainForm (MainFormTemplate):
       self.content_panel.add_component(CCSCompareForm(), full_width_row = True)
     else:  
       pass
+    
+  def lnk_env_info_click(self, **event_args):
+    self.content_panel.clear()
+    self.content_panel.add_component(InfoForm(), full_width_row = True)
  
   def do_login(self):
     if not anvil.users.get_user():
