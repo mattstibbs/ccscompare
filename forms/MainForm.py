@@ -15,16 +15,19 @@ class MainForm (MainFormTemplate):
     self.content_panel.clear()
     self.content_panel.add_component(HomeForm())
     
+    self.logout_button = Link(text="Logout")
+    self.logout_button.set_event_handler("click", self.lnk_logout_click)
+    
+    self.login_button = Link(text="Login")
+    self.login_button.set_event_handler("click", self.lnk_login_click)
+    
     if anvil.users.get_user():
-      logout_button = Link(text="Logout")
-      self.add_component(logout_button, slot="sidebar")
-      logout_button.set_event_handler("click", self.lnk_logout_click())
+      self.add_component(self.logout_button, slot="sidebar")
     else:
-      login_button = Link(text="Login")
-      self.add_component(login_button, slot="sidebar")
-      login_button.set_event_handler("click", self.lnk_login_click())
+      self.add_component(self.login_button, slot="sidebar")
+      
 
-  def link_1_click (self, **event_args):
+  def lnk_ccs_compare_click(self, **event_args):
     if do_login():
       self.content_panel.clear()
       self.content_panel.add_component(CCSCompareForm(), full_width_row = True)
@@ -35,6 +38,8 @@ class MainForm (MainFormTemplate):
     if not anvil.users.get_user():
       if anvil.users.login_with_form():
         app_tables.log_logins.add_row(timestamp=datetime.datetime.now(), user=anvil.users.get_user())
+        self.login_button.remove_from_parent()
+        self.add_component(self.logout_button, slot="sidebar")
         return True
       else:
         return False
@@ -43,10 +48,8 @@ class MainForm (MainFormTemplate):
         
       
   def lnk_login_click (self, **event_args):
-    if confirm("Are you sure you want to log out?"):
-      anvil.users.logout()
-      self.content_panel.clear()
-      self.content_panel.add_component(HomeForm())
+    self.do_login()
+    self.lnk
   
   def lnk_logout_click (self, **event_args):
     if confirm("Are you sure you want to log out?"):
