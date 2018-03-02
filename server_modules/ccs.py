@@ -77,7 +77,7 @@ def extract_http_error(content):
   error_text = result_dict['env:Envelope']['env:Body']['env:Fault']['env:Reason']['env:Text']
   return error_code, error_text 
 
-def do_ccs_request(instance, payload):
+def do_ccs_request(instance, payload, username):
   uat_urls = {
     'uat1': 'https://uat.pathwaysdos.nhs.uk/app/api/webservices',
     'uat2': 'https://uat2.pathwaysdos.nhs.uk/app/api/webservices',
@@ -90,7 +90,7 @@ def do_ccs_request(instance, payload):
                                 headers={"content-type": "application/xml"},
                                 method="POST")  
     
-    print("Performing CCS for {}".format(instance))
+    print("Performing CCS for {} using {}".format(instance, username))
     
     return result
   
@@ -119,14 +119,14 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
     # do left-hand search  
     payload = payloads.generate_ccs_payload(user1, case)
       
-    result = do_ccs_request(instance1, payload)
+    result = do_ccs_request(instance1, payload, user1.username)
       
     result_list_1 = convert_xml_to_list(result.get_bytes())
     
     # do right-hand search
     payload = payloads.generate_ccs_payload(user2, case)
     
-    result = do_ccs_request(instance2, payload)
+    result = do_ccs_request(instance2, payload, user2.username)
     
     result_list_2 = convert_xml_to_list(result.get_bytes())
   

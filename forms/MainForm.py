@@ -11,9 +11,14 @@ from HomeForm import HomeForm
 class MainForm (MainFormTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
-
+      
     self.content_panel.clear()
     self.content_panel.add_component(HomeForm())
+    
+    if anvil.users.get_user():
+      logout_button = Link(text="Logout")
+      self.add_component(logout_button, slot="sidebar")
+
     
 
   def link_1_click (self, **event_args):
@@ -38,5 +43,7 @@ class MainForm (MainFormTemplate):
   def lnk_home_click (self, **event_args):
     self.content_panel.clear()
     self.content_panel.add_component(HomeForm())
+
+
 
 
