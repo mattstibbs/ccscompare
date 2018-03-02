@@ -40,6 +40,7 @@ class MainForm (MainFormTemplate):
         app_tables.log_logins.add_row(timestamp=datetime.datetime.now(), user=anvil.users.get_user())
         self.login_button.remove_from_parent()
         self.add_component(self.logout_button, slot="sidebar")
+        self.__init__()
         return True
       else:
         return False
