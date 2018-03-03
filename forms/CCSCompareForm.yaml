@@ -17,11 +17,11 @@ components:
     components:
     - type: Button
       properties: {role: null, width: default, align: left, border: '', enabled: true,
-        foreground: '', visible: true, text: Repeat my most recent comparison, font_size: null,
-        font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-        background: '', bold: false, underline: false, icon: ''}
+        foreground: '', visible: true, text: Use settings from most recent search,
+        font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+        italic: false, background: '', bold: false, underline: false, icon: ''}
       name: btn_repeat_search
-      layout_properties: {row: UTYMSP, width_xs: 12, col_xs: 0, width: 616.5, grid_position: 'YODACT,EYNNAO'}
+      layout_properties: {row: UTYMSP, width_xs: 6, col_xs: 0, width: 616.5, grid_position: 'YODACT,EYNNAO'}
       event_bindings: {click: btn_repeat_search_click}
     - type: Label
       properties: {role: null, width: default, align: right, border: '', foreground: '',
@@ -49,9 +49,9 @@ components:
         foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
         icon_align: top, spacing_below: small, italic: false, background: '', bold: false,
         underline: false, icon: 'fa:question-circle'}
-      name: button_1
+      name: btn_surgery_help
       layout_properties: {row: SFMOGL, width_xs: 2, col_xs: 0, width: 77.75}
-      event_bindings: {click: button_1_click}
+      event_bindings: {click: btn_surgery_help_click}
     - type: Label
       properties: {role: null, width: default, align: right, border: '', foreground: '',
         visible: true, text: Surgery, font_size: null, font: '', spacing_above: small,
@@ -240,24 +240,12 @@ components:
       name: rb_60
       layout_properties: {grid_position: 'EBJFUC,UWZVRE', row: KTDJAV, width_xs: 2,
         col_xs: 10}
-  - type: Button
-    properties: {role: null, width: default, align: full, border: '', enabled: true,
-      foreground: '', visible: true, text: Get Results, font_size: 20, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
-      underline: false, icon: 'fa:search'}
-    name: btn_search
-    layout_properties: {grid_position: 'OEPXJB,XMPZAC', full_width_row: true}
-    event_bindings: {click: btn_search_click}
-- type: Spacer
-  properties: {height: 32}
-  name: spacer_2
-  layout_properties: {grid_position: 'DMURXJ,VXQCVI'}
 - type: ColumnPanel
   properties: {role: null, width: default, border: '', foreground: '', visible: true,
     row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{}', spacing_below: small,
     background: ''}
   name: column_panel_4
-  layout_properties: {grid_position: 'TQWKRN,TPSZPB', full_width_row: true}
+  layout_properties: {grid_position: 'TQWKRN,KJBCGP', full_width_row: true}
   components:
   - type: ColumnPanel
     properties: {role: null, width: default, border: 1pt solid black, foreground: '',
@@ -268,61 +256,70 @@ components:
     components:
     - type: ColumnPanel
       properties: {role: null, width: default, border: '', foreground: '', visible: true,
-        row_spacing: 10, wrap_on: mobile, spacing_above: none, col_widths: '{"BADRLY":15,"RLWUFW":45,"LTRMTG":15,"PGXTDB":45}',
-        spacing_below: small, background: ''}
+        row_spacing: 10, wrap_on: mobile, spacing_above: none, col_widths: '{}', spacing_below: small,
+        background: ''}
       name: column_panel_5
       layout_properties: {grid_position: 'DWIAFY,QUPFJE', full_width_row: true}
       components:
       - type: RadioButton
         properties: {role: null, selected: true, width: default, align: left, border: '',
-          enabled: false, foreground: grey, value: pathways, visible: true, text: Pathways Referral,
+          enabled: true, foreground: '', value: pathways, visible: true, text: Pathways referral,
           font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
           background: '', bold: false, group_name: res1_role, underline: false}
         name: rb_res1_pathways
         layout_properties: {grid_position: 'HVWHEP,COTQHB', full_width_row: true}
+        event_bindings: {clicked: rb_res1_role_clicked}
       - type: RadioButton
         properties: {role: null, selected: false, width: default, align: left, border: '',
-          enabled: false, foreground: grey, value: digital, visible: true, text: Digital Referral,
+          enabled: true, foreground: '', value: digital, visible: true, text: Digital referral,
           font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
           background: '', bold: false, group_name: res1_role, underline: false}
         name: rb_res1_digital
         layout_properties: {grid_position: 'HVWHEP,RNYUYL', full_width_row: true}
-      - type: CheckBox
-        properties: {role: null, width: default, align: center, border: '', enabled: true,
-          foreground: '', visible: true, text: Use own account, font_size: null, font: '',
-          spacing_above: small, spacing_below: small, italic: false, background: '',
-          bold: false, checked: false, underline: false}
-        name: chk_instance1_owncreds
-        layout_properties: {grid_position: 'HVWHEP,UOPYOW', full_width_row: true}
-        event_bindings: {change: check_box_1_change}
-      - type: Label
-        properties: {role: null, width: default, align: left, border: '', foreground: '',
-          visible: false, text: User, font_size: null, font: '', spacing_above: small,
-          icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-          underline: false, icon: ''}
-        name: lbl_instance1_user
-        layout_properties: {grid_position: 'AGIVER,LTRMTG'}
-      - type: TextBox
-        properties: {role: null, width: default, align: left, hide_text: false, placeholder: '',
-          border: '', enabled: true, foreground: '', visible: false, text: '', font_size: null,
-          font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-          background: '', bold: false, underline: false}
-        name: txt_instance1_user
-        layout_properties: {grid_position: 'AGIVER,PGXTDB'}
-      - type: Label
-        properties: {role: null, width: default, align: left, border: '', foreground: '',
-          visible: false, text: Pass, font_size: null, font: '', spacing_above: small,
-          icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-          underline: false, icon: ''}
-        name: lbl_instance1_pass
-        layout_properties: {grid_position: 'ZASPAX,BADRLY'}
-      - type: TextBox
-        properties: {role: null, width: default, align: left, hide_text: true, placeholder: '',
-          border: '', enabled: true, foreground: '', visible: false, text: '', font_size: null,
-          font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-          background: '', bold: false, underline: false}
-        name: txt_instance1_pass
-        layout_properties: {grid_position: 'ZASPAX,RLWUFW'}
+        event_bindings: {clicked: rb_res1_role_clicked}
+      - type: RadioButton
+        properties: {role: null, selected: false, width: default, align: left, border: '',
+          enabled: true, foreground: '', value: own, visible: true, text: Own account,
+          font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+          background: '', bold: false, group_name: res1_role, underline: false}
+        name: rb_res1_own
+        layout_properties: {grid_position: 'HVWHEP,VUXTJR', full_width_row: true}
+        event_bindings: {clicked: rb_res1_role_clicked}
+      - type: ColumnPanel
+        properties: {role: null, width: default, border: '', foreground: '', visible: false,
+          row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"SBQNIB":15,"EROYMC":45,"PZUQJI":15,"QCQMXK":45}',
+          spacing_below: small, background: ''}
+        name: pnl_creds1
+        layout_properties: {grid_position: 'XOGEKG,SWTHWK', full_width_row: true}
+        components:
+        - type: Label
+          properties: {role: null, width: default, align: left, border: '', foreground: '',
+            visible: true, text: User, font_size: null, font: '', spacing_above: small,
+            icon_align: left, spacing_below: small, italic: false, background: '',
+            bold: false, underline: false, icon: ''}
+          name: lbl_instance1_user
+          layout_properties: {grid_position: 'JGNUQD,SBQNIB'}
+        - type: TextBox
+          properties: {role: null, width: default, align: left, hide_text: false,
+            placeholder: '', border: '', enabled: true, foreground: '', visible: true,
+            text: '', font_size: null, font: '', spacing_above: small, type: text,
+            spacing_below: small, italic: false, background: '', bold: false, underline: false}
+          name: txt_instance1_user
+          layout_properties: {grid_position: 'JGNUQD,EROYMC'}
+        - type: Label
+          properties: {role: null, width: default, align: left, border: '', foreground: '',
+            visible: true, text: Pass, font_size: null, font: '', spacing_above: small,
+            icon_align: left, spacing_below: small, italic: false, background: '',
+            bold: false, underline: false, icon: ''}
+          name: lbl_instance1_pass
+          layout_properties: {grid_position: 'AMSLEI,PZUQJI'}
+        - type: TextBox
+          properties: {role: null, width: default, align: left, hide_text: true, placeholder: '',
+            border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+            font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+            background: '', bold: false, underline: false}
+          name: txt_instance1_pass
+          layout_properties: {grid_position: 'AMSLEI,QCQMXK'}
     - type: RadioButton
       properties: {role: null, selected: false, width: default, align: left, border: '',
         enabled: true, foreground: red, value: live, visible: true, text: Live, font_size: null,
@@ -333,9 +330,9 @@ components:
       event_bindings: {clicked: rb_res1_clicked}
     - type: RadioButton
       properties: {role: null, selected: true, width: default, align: left, border: '',
-        enabled: true, foreground: '', value: uat1, visible: true, text: UAT 1, font_size: null,
-        font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
-        bold: false, group_name: instance_1, underline: false}
+        enabled: true, foreground: '', value: uat1, visible: true, text: UAT (Int),
+        font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+        background: '', bold: false, group_name: instance_1, underline: false}
       name: rb_res1_uat1
       layout_properties: {grid_position: 'NOEJUC,XKRLJJ'}
       event_bindings: {clicked: rb_res1_clicked}
@@ -364,62 +361,70 @@ components:
     components:
     - type: ColumnPanel
       properties: {role: null, width: default, border: '', foreground: '', visible: true,
-        row_spacing: 10, wrap_on: mobile, spacing_above: none, col_widths: '{"FZANEV":15,"MEVOXL":45,"AOORJI":15,"LHFYGY":45}',
-        spacing_below: small, background: ''}
+        row_spacing: 10, wrap_on: mobile, spacing_above: none, col_widths: '{}', spacing_below: small,
+        background: ''}
       name: column_panel_6
       layout_properties: {grid_position: 'TSUBNK,ITHCWE', full_width_row: true}
       components:
       - type: RadioButton
         properties: {role: null, selected: true, width: default, align: left, border: '',
-          enabled: false, foreground: grey, value: pathways, visible: true, text: Pathways Referral,
+          enabled: true, foreground: '', value: pathways, visible: true, text: Pathways Referral,
           font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
           background: '', bold: false, group_name: res2_role, underline: false}
-        name: rb_res1_pathways_copy
+        name: rb_res2_pathways
         layout_properties: {grid_position: 'PETIBD,GHAPHD', full_width_row: true}
-        event_bindings: {clicked: rb_res1_pathways_copy_clicked}
+        event_bindings: {clicked: rb_res2_role_clicked}
       - type: RadioButton
         properties: {role: null, selected: false, width: default, align: left, border: '',
-          enabled: false, foreground: grey, value: digital, visible: true, text: Digital Referral,
+          enabled: true, foreground: '', value: digital, visible: true, text: Digital Referral,
           font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
           background: '', bold: false, group_name: res2_role, underline: false}
-        name: rb_res1_digital_copy
+        name: rb_res2_digital
         layout_properties: {grid_position: 'PETIBD,ZAZZAX', full_width_row: true}
-      - type: CheckBox
-        properties: {role: null, width: default, align: center, border: '', enabled: true,
-          foreground: '', visible: true, text: Use own account, font_size: null, font: '',
-          spacing_above: small, spacing_below: small, italic: false, background: '',
-          bold: false, checked: false, underline: false}
-        name: chk_instance2_owncreds
-        layout_properties: {grid_position: 'PETIBD,MRVOIW', full_width_row: true}
-        event_bindings: {change: check_box_2_change}
-      - type: Label
-        properties: {role: null, width: default, align: left, border: '', foreground: '',
-          visible: false, text: User, font_size: null, font: '', spacing_above: small,
-          icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-          underline: false, icon: ''}
-        name: lbl_instance2_user
-        layout_properties: {grid_position: 'JGTAXF,AOORJI'}
-      - type: TextBox
-        properties: {role: null, width: default, align: left, hide_text: false, placeholder: '',
-          border: '', enabled: true, foreground: '', visible: false, text: '', font_size: null,
-          font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-          background: '', bold: false, underline: false}
-        name: txt_instance2_user
-        layout_properties: {grid_position: 'JGTAXF,LHFYGY'}
-      - type: Label
-        properties: {role: null, width: default, align: left, border: '', foreground: '',
-          visible: false, text: Pass, font_size: null, font: '', spacing_above: small,
-          icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-          underline: false, icon: ''}
-        name: lbl_instance2_pass
-        layout_properties: {grid_position: 'IKLGVJ,FZANEV'}
-      - type: TextBox
-        properties: {role: null, width: default, align: left, hide_text: true, placeholder: '',
-          border: '', enabled: true, foreground: '', visible: false, text: '', font_size: null,
-          font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-          background: '', bold: false, underline: false}
-        name: txt_instance2_pass
-        layout_properties: {grid_position: 'IKLGVJ,MEVOXL'}
+        event_bindings: {clicked: rb_res2_role_clicked}
+      - type: RadioButton
+        properties: {role: null, selected: false, width: default, align: left, border: '',
+          enabled: true, foreground: '', value: own, visible: true, text: Own account,
+          font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+          background: '', bold: false, group_name: res2_role, underline: false}
+        name: rb_res2_own
+        layout_properties: {grid_position: 'PETIBD,MKUNWO', full_width_row: true}
+        event_bindings: {clicked: rb_res2_role_clicked}
+      - type: ColumnPanel
+        properties: {role: null, width: default, border: '', foreground: '', visible: false,
+          row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"CCSRPK":15,"OVLPCY":45,"YBKKSV":15,"EQJAHD":45}',
+          spacing_below: small, background: ''}
+        name: pnl_creds2
+        layout_properties: {grid_position: 'WESDKP,LMRBVT', full_width_row: true}
+        components:
+        - type: Label
+          properties: {role: null, width: default, align: left, border: '', foreground: '',
+            visible: true, text: User, font_size: null, font: '', spacing_above: small,
+            icon_align: left, spacing_below: small, italic: false, background: '',
+            bold: false, underline: false, icon: ''}
+          name: lbl_instance2_user
+          layout_properties: {grid_position: 'AEMVBV,CCSRPK'}
+        - type: TextBox
+          properties: {role: null, width: default, align: left, hide_text: false,
+            placeholder: '', border: '', enabled: true, foreground: '', visible: true,
+            text: '', font_size: null, font: '', spacing_above: small, type: text,
+            spacing_below: small, italic: false, background: '', bold: false, underline: false}
+          name: txt_instance2_user
+          layout_properties: {grid_position: 'AEMVBV,OVLPCY'}
+        - type: Label
+          properties: {role: null, width: default, align: left, border: '', foreground: '',
+            visible: true, text: Pass, font_size: null, font: '', spacing_above: small,
+            icon_align: left, spacing_below: small, italic: false, background: '',
+            bold: false, underline: false, icon: ''}
+          name: lbl_instance2_pass
+          layout_properties: {grid_position: 'NZKUZX,YBKKSV'}
+        - type: TextBox
+          properties: {role: null, width: default, align: left, hide_text: true, placeholder: '',
+            border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+            font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+            background: '', bold: false, underline: false}
+          name: txt_instance2_pass
+          layout_properties: {grid_position: 'NZKUZX,EQJAHD'}
     - type: RadioButton
       properties: {role: null, selected: false, width: default, align: left, border: '',
         enabled: true, foreground: red, value: live, visible: true, text: Live, font_size: null,
@@ -430,9 +435,9 @@ components:
       event_bindings: {clicked: rb_res2_clicked}
     - type: RadioButton
       properties: {role: null, selected: true, width: default, align: left, border: '',
-        enabled: true, foreground: '', value: uat1, visible: true, text: UAT 1, font_size: null,
-        font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
-        bold: false, group_name: instance_2, underline: false}
+        enabled: true, foreground: '', value: uat1, visible: true, text: UAT (Int),
+        font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+        background: '', bold: false, group_name: instance_2, underline: false}
       name: rb_res2_uat1
       layout_properties: {grid_position: 'NOEJUC,ICVLZD'}
       event_bindings: {clicked: rb_res2_clicked}
@@ -452,6 +457,14 @@ components:
       name: rb_res2_uat3
       layout_properties: {grid_position: 'NOEJUC,HAZLPJ'}
       event_bindings: {clicked: rb_res2_clicked}
+- type: Button
+  properties: {role: null, width: default, align: full, border: '', enabled: true,
+    foreground: '', visible: true, text: Get Results, font_size: 20, font: '', spacing_above: medium,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+    underline: false, icon: 'fa:search'}
+  name: btn_search
+  layout_properties: {grid_position: 'NRLCRJ,YGBIFL', full_width_row: true}
+  event_bindings: {click: btn_search_click}
 - type: ColumnPanel
   properties: {col_widths: '{}'}
   name: column_panel_7
@@ -459,7 +472,7 @@ components:
   components:
   - type: Label
     properties: {role: null, width: default, align: center, border: '', foreground: '',
-      visible: true, text: '', font_size: 16, font: '', spacing_above: none, icon_align: left,
+      visible: true, text: '', font_size: 20, font: '', spacing_above: none, icon_align: left,
       spacing_below: none, italic: false, background: '', bold: true, underline: false,
       icon: ''}
     name: label_8
@@ -474,7 +487,7 @@ components:
   components:
   - type: Label
     properties: {role: null, width: default, align: center, border: '', foreground: '',
-      visible: true, text: '', font_size: 16, font: '', spacing_above: none, icon_align: left,
+      visible: true, text: '', font_size: 20, font: '', spacing_above: none, icon_align: left,
       spacing_below: none, italic: false, background: '', bold: true, underline: false,
       icon: ''}
     name: label_9

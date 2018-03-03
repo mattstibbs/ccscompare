@@ -33,22 +33,39 @@ def search_by_service_type(postcode):
 
 
 @anvil.server.callable
-def check_capacity_summary(postcode, surgery, age_group, sex, sg_code, sd_code, dispo_code, search_distance, instance1, instance2, instance1_creds=None, instance2_creds=None):
+def check_capacity_summary(postcode, surgery, age_group, sex, sg_code, sd_code, dispo_code, search_distance, instance1, instance2, instance1_referral_role, instance2_referral_role, instance1_creds=None, instance2_creds=None):
   
-  result = ccs.get_services(postcode, surgery, age_group, sg_code, sd_code, dispo_code, search_distance, sex, instance1, instance2, instance1_creds, instance2_creds)
+  result = ccs.get_services(
+    postcode, 
+    surgery, 
+    age_group, 
+    sg_code, 
+    sd_code, 
+    dispo_code, 
+    search_distance, 
+    sex, 
+    instance1, 
+    instance2, 
+    instance1_referral_role, 
+    instance2_referral_role, 
+    instance1_creds, 
+    instance2_creds)
   
   app_tables.log_searches.add_row(timestamp=datetime.datetime.now(),
-                                user=anvil.users.get_user(),
-                                postcode=postcode,
-                                surgery=surgery,
-                                age_group=age_group,
-                                sex=sex, 
-                                disposition=dispo_code, 
-                                sgsd="{}:{}".format(sg_code, sd_code),
-                                search_distance=int(search_distance),
-                                left_instance=instance1,
-                                right_instance=instance2,
-                                results=json.dumps(result))
+                                  user=anvil.users.get_user(),
+                                  postcode=postcode,
+                                  surgery=surgery,
+                                  age_group=age_group,
+                                  sex=sex, 
+                                  disposition=dispo_code, 
+                                  sgsd="{}:{}".format(sg_code, sd_code),
+                                  search_distance=int(search_distance),
+                                  left_instance=instance1,
+                                  right_instance=instance2,
+                                  left_referral_role=instance1_referral_role,
+                                  right_referral_role=instance2_referral_role,
+                                  results=json.dumps(result)
+                                 )
   
   return result
 

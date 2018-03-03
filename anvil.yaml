@@ -3,8 +3,8 @@ secrets:
   dos_password_uat1:
     value: {? '' : GvR9c+hX2QoloLK2cpGXakws9c4rmLvbKQr7OjPZ1NnTj6l4uXq+8KAxuiWBtbifv7EhlGQ8YpwC6eVCyyc2ZFYZppkhS1ASexxWy+nqGZayU90ZuSEn+TvtuQ==}
     type: secret
-  dos_username_digi_uat2:
-    value: {? '' : SvqpBze0kAlM988sBVkvaF0cCThI9PyUIBZgX9L5fjbdapfyLBiYlCgwBV9Rsne7b4eT+AMsMHUgp69wt39eCKddB3cFN7uVgvv1CeiHJz0XEnVd+fDaZkqn+aE=}
+  dos_username_digital_uat3:
+    value: {? '' : tvVfrNv84aWMqJwzyFlVDkKTPU8Nr0jNM2tiK5iD+lnCSOvZx9Jl5EYRWUdquI4+UTdEdp6KsMeVkzbsZUrAcQlxzxcFCXwn+UvEOt0Njwu2L+7QaG6qvm3Qb/A=}
     type: secret
   dos_username_live:
     value: {? '' : b2E86LfjFlJ1YBRrlawgeWFE+1/2xdu50LFM7/wfKHLaYZoj8kndzwW/kDOFM/SR3cjKKMlPgLtgGXyFKuCI8CvsUEjIhGsg5mFSoMM7yCFCJPR6PHCBNtlZELtE4g==}
@@ -12,59 +12,59 @@ secrets:
   dos_password_uat3:
     value: {? '' : Z2ycuQNXuKVZEXXMVqimzTzINa68Uo+cTfcFJEcd2k+HDbA+UV8PQt681aHT1uLJHW519i3sQtCpEMmkbfTIGTREnNaIwAU5KLAF7VkDXHSV3Sz3UNGYzUHjVg==}
     type: secret
-  dos_password_path_uat3:
-    value: {? '' : W2qJfeeB65WH/SH7kPIrJAY/UBX11sKDxcB9+sBiywJBaYk4rYTbCYZKs9s9oQsw9v3mf7y1GCARDo+0Y6v/m3qQZSNLxqSR9K+DWl89C4N9RpXPNIDkF11eMQ==}
+  dos_password_digital_uat3:
+    value: {? '' : cJOS3Qd9oUGbw1FK9EcNXsXK/jCIhJizvBJZK/b554SJvc6BG8HzzXKqE1tgtH/IJbZD0F0fJaggqxFWu8Z+krISF/V6T3yyP6oQtxxn4jTcnyeLHk0Tlxx3Bg==}
     type: secret
-  dos_username_digi_uat3:
-    value: {? '' : tvVfrNv84aWMqJwzyFlVDkKTPU8Nr0jNM2tiK5iD+lnCSOvZx9Jl5EYRWUdquI4+UTdEdp6KsMeVkzbsZUrAcQlxzxcFCXwn+UvEOt0Njwu2L+7QaG6qvm3Qb/A=}
-    type: secret
-  dos_username_path_uat1:
-    value: {? '' : YNLOifqG61emxyluLrZcRM0AsiElLCSG+SsfooaQ/ytlwwoMMsFcr6jShffIf4fyi9KVohI4Q+uAGsnupODY+s9qVyhuxHx6/ukQWXET2/gGQAPa/3ZPoN2Q3p8=}
-    type: secret
-  dos_password_digi_uat1:
-    value: {? '' : KlKyGXyfCa1zrylvSO7y6n0QoS/NcmbB5Ez3eGwgUASdrh40ei/IKwq5cKgPxJC+CZxmR+qUit1QUA1/Ljgqgrquh2ANwa9r7/wxuxCj+knfqkJRIEN1brPq/Q==}
+  dos_password_pathways_uat1:
+    value: {? '' : Gymm7cBFpIa3fegi6SoWp5Sd1NEAQA80FyIsEYjgmZ19323Po0NBXYFFq22XUUQZNlccA+Gh9TasMsww8jJl9t4lkKPut3OpcJuR4GKnOUg4rhoy9+HhBLyyoQ==}
     type: secret
   dos_username_uat2:
     value: {? '' : ajjVRHGD9Dn3jueI3TndSs5fcD7sYFVMseXJIWtKDqkRw3/clSSoNIdWD5K/hs4hglNgOrGzfiV5NIB0YdWCwVTcr0R9knG3VwzDpGdS/f8hMN1bMBgt8im0fvX0Mg==}
     type: secret
-  dos_username_path_uat2:
+  dos_username_digital_uat2:
+    value: {? '' : SvqpBze0kAlM988sBVkvaF0cCThI9PyUIBZgX9L5fjbdapfyLBiYlCgwBV9Rsne7b4eT+AMsMHUgp69wt39eCKddB3cFN7uVgvv1CeiHJz0XEnVd+fDaZkqn+aE=}
+    type: secret
+  dos_username_pathways_uat2:
     value: {? '' : +H1Bh/ImofTdBAJypMBXehZO7bs1ChmJ0eeuaK3DYMUqbH9P5ECbgPqKMcJjk3cVXPRXpusHqRckDrvfbP7praoNdxHpOFAQECvYDy2a9kinoDgz8w+vfwaDeR4=}
     type: secret
   dos_password_live:
     value: {? '' : jGfiInormm4oKI3MdpX+CdvQjP/uDBTgm71tVGZEOQbm90sYX9PQ37zRcgbdwe2jcyMmoA21vJLQ2OR5DY7D/sIfmrQo4ogcrUSq7h2/QG2cvWRry6zQAcpf4w==}
     type: secret
-  dos_username_digi_uat1:
-    value: {? '' : cBkWYX6WxaWKv4Vbb9TibB3BKEn1KBBUMox+tIqUOQHloKN6c4mkZbM92+lhO8a15e6j8aaLC9Rk87b/HGJQ4hPexQ87kX0EyT5epB9emd0CwXZI2VfexjCKrrY=}
-    type: secret
   dos_username_uat3:
     value: {? '' : L/SfYSSV/hGEiSuznbZPuAN7HKzwkeqdVe7oIKUbZHN8kFSirPT1Y+Lhe93gJaMK7WPJcN1/mFCflrMe3r723csQMRvlB0elPWhICEM/sChdsLpRMJtKFpukAaFoUQ==}
     type: secret
-  dos_password_digi_uat2:
-    value: {? '' : G8InyxFDAlFM4aCx6Yes0Ybw6Kzd2xHmy6cTGVNRcAjB+XQvvCyTCHw5/SQYdj+2hiS4ydsB92WzGo/QYggVlloxQ+iFtEr23dnnUdW7MskQlBB0h4qjJuKNAQ==}
+  dos_password_pathways_uat2:
+    value: {? '' : Y/YTM+IMZxSj8h3Eb1mSRDTIoWvDgk55VnpKjx9ToHca0t8WflrGNdAhncpfu9Qk1CqCHO7Bi3baaRH+AcOzVvl1iSQ5NAnAPB8xgLDxSmHkl8Kw3BbWVREH5A==}
     type: secret
   dos_username_uat1:
     value: {? '' : FK9R8mp6yaOT2bP7d1X9SmTD7/CttE41ptfy4oA08druX3vwjYf8pKH8e/oNzTSazSSwzwZUN49YVkC03xp+dN/cmaVtAb//w5YYF+MkNYi5lKXWrsMwfVQ5ieSNKA==}
     type: secret
-  dos_password_path_uat2:
-    value: {? '' : Y/YTM+IMZxSj8h3Eb1mSRDTIoWvDgk55VnpKjx9ToHca0t8WflrGNdAhncpfu9Qk1CqCHO7Bi3baaRH+AcOzVvl1iSQ5NAnAPB8xgLDxSmHkl8Kw3BbWVREH5A==}
+  dos_username_digital_uat1:
+    value: {? '' : cBkWYX6WxaWKv4Vbb9TibB3BKEn1KBBUMox+tIqUOQHloKN6c4mkZbM92+lhO8a15e6j8aaLC9Rk87b/HGJQ4hPexQ87kX0EyT5epB9emd0CwXZI2VfexjCKrrY=}
     type: secret
-  dos_password_path_uat1:
-    value: {? '' : Gymm7cBFpIa3fegi6SoWp5Sd1NEAQA80FyIsEYjgmZ19323Po0NBXYFFq22XUUQZNlccA+Gh9TasMsww8jJl9t4lkKPut3OpcJuR4GKnOUg4rhoy9+HhBLyyoQ==}
+  dos_password_pathways_uat3:
+    value: {? '' : W2qJfeeB65WH/SH7kPIrJAY/UBX11sKDxcB9+sBiywJBaYk4rYTbCYZKs9s9oQsw9v3mf7y1GCARDo+0Y6v/m3qQZSNLxqSR9K+DWl89C4N9RpXPNIDkF11eMQ==}
     type: secret
-  dos_username_digi_live:
-    value: {? '' : ''}
+  dos_username_pathways_uat1:
+    value: {? '' : YNLOifqG61emxyluLrZcRM0AsiElLCSG+SsfooaQ/ytlwwoMMsFcr6jShffIf4fyi9KVohI4Q+uAGsnupODY+s9qVyhuxHx6/ukQWXET2/gGQAPa/3ZPoN2Q3p8=}
     type: secret
-  dos_password_digi_uat3:
-    value: {? '' : cJOS3Qd9oUGbw1FK9EcNXsXK/jCIhJizvBJZK/b554SJvc6BG8HzzXKqE1tgtH/IJbZD0F0fJaggqxFWu8Z+krISF/V6T3yyP6oQtxxn4jTcnyeLHk0Tlxx3Bg==}
+  dos_password_digital_uat1:
+    value: {? '' : KlKyGXyfCa1zrylvSO7y6n0QoS/NcmbB5Ez3eGwgUASdrh40ei/IKwq5cKgPxJC+CZxmR+qUit1QUA1/Ljgqgrquh2ANwa9r7/wxuxCj+knfqkJRIEN1brPq/Q==}
+    type: secret
+  dos_password_digital_uat2:
+    value: {? '' : G8InyxFDAlFM4aCx6Yes0Ybw6Kzd2xHmy6cTGVNRcAjB+XQvvCyTCHw5/SQYdj+2hiS4ydsB92WzGo/QYggVlloxQ+iFtEr23dnnUdW7MskQlBB0h4qjJuKNAQ==}
     type: secret
   dos_password_uat2:
     value: {? '' : 3QdnF0Qk1oOSDmhljK9dszWhXbJEv2LD8XSj6zhWcnKkbrtvwvOKP24Tf/USMwVTDVsAOiT5QLYz17CSAednjQrB78BRfEYpRv6qab1bzlB2pFSN6wNB3SoG6g==}
     type: secret
-  dos_password_digi_live:
+  dos_password_digital_live:
     value: {? '' : ''}
     type: secret
-  dos_username_path_uat3:
+  dos_username_pathways_uat3:
     value: {? '' : BzMzxZIp+JNbgIXq2+ILUkSqSFBH5kkdhx8BV2keOR3ia21ZxPDOKRVB5Cb6VVBCy2Yq2NmU+OiAQCaz70JUntlEK9YooZ0UAFV3GIa3zC5U1WoEL2VpERtXRHQ=}
+    type: secret
+  dos_username_digital_live:
+    value: {? '' : ''}
     type: secret
 name: DoS Tools
 startup_form: MainForm

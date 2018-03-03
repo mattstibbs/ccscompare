@@ -24,9 +24,21 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.dd_sg.items = anvil.server.call('get_sg_list')
     self.dd_disposition.items = anvil.server.call('get_dispositions')
 
-    
-
   def btn_search_click (self, **event_args):
+    
+    if self.rb_res1_own.selected == True:
+      print("Checking credentials")
+      if self.txt_instance1_user.text == '' or self.txt_instance1_pass.text == '':
+        alert("Please provide username and password to use your own account")
+        self.txt_instance1_user.focus()
+        return
+    
+    if self.rb_res2_own.selected == True:
+      if self.txt_instance2_user.text == '' or self.txt_instance2_pass.text == '':
+        alert("Please provide username and password to use your own account")
+        self.txt_instance2_user.focus()
+        return
+    
     self.btn_search.enabled = False
     self.btn_repeat_search.enabled = False
     self.btn_find_surgeries.enabled = False
@@ -37,23 +49,23 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.btn_find_surgeries.enabled = True
     self.btn_search.text = 'Compare Search Results'
     
+  def get_instance1_creds(self):
+    if not self.rb_res1_own.selected == True:
+      return None
+    else:
+      return (self.txt_instance1_user.text, self.txt_instance1_pass.text)
+    
+  def get_instance2_creds(self):
+    if not self.rb_res2_own.selected == True:
+      return None
+    else:
+      return (self.txt_instance2_user.text, self.txt_instance2_pass.text)
+    
   def do_search(self):
     self.clear_results_lists()
     
     results1_instance = self.rb_res1_uat1.get_group_value()
     results2_instance = self.rb_res2_uat1.get_group_value()
-    
-    def get_instance1_creds():
-      if self.txt_instance1_user.text != '' and self.txt_instance1_pass.text != '' and self.chk_instance1_owncreds.checked == True:
-        return (self.txt_instance1_user.text, self.txt_instance1_pass.text)
-      else:
-        return None
-      
-    def get_instance2_creds():
-      if self.txt_instance2_user.text != '' and self.txt_instance2_pass.text != '' and self.chk_instance2_owncreds.checked == True:
-        return (self.txt_instance2_user.text, self.txt_instance2_pass.text)
-      else:
-        return None
     
     result_dict = anvil.server.call('check_capacity_summary', 
                                     postcode=self.txt_postcode.text.replace(' ', ''),
@@ -66,8 +78,10 @@ class CCSCompareForm (CCSCompareFormTemplate):
                                     surgery=self.txt_surgery_code.text,
                                     instance1=results1_instance,
                                     instance2=results2_instance,
-                                    instance1_creds=get_instance1_creds(),
-                                    instance2_creds=get_instance2_creds()
+                                    instance1_referral_role=self.rb_res1_pathways.get_group_value(),
+                                    instance2_referral_role=self.rb_res2_pathways.get_group_value(),
+                                    instance1_creds=self.get_instance1_creds(),
+                                    instance2_creds=self.get_instance2_creds()
                                   )
     try:
       if result_dict['results1']:
@@ -116,24 +130,37 @@ class CCSCompareForm (CCSCompareFormTemplate):
       self.dd_surgery.selected_value = 'UNK'
 
   def label_8_show (self, **event_args):
-    # This method is called when the Label is shown on the screen
     self.refresh_data_bindings()
 
   def label_9_show (self, **event_args):
-    # This method is called when the Label is shown on the screen
     self.refresh_data_bindings()
 
   def rb_res2_clicked (self, **event_args):
-    # This method is called when this radio button is selected
     self.label_9.text = self.rb_res2_uat1.get_group_value()
     self.clear_results_lists()
 
   def rb_res1_clicked (self, **event_args):
-    # This method is called when this radio button is selected
-    self.label_8.text = self.rb_res1_uat1.get_group_value()
+    self.label_8.text = self.rb_res1_uat1.get_group_value()    
     self.clear_results_lists()
 
+  def rb_res1_role_clicked(self, **event_args):
+    selected_option = self.rb_res1_own.get_group_value()
+    if selected_option == 'own':
+      self.pnl_creds1.visible = True
+    elif selected_option == 'pathways':
+      self.pnl_creds1.visible = False
+    elif selected_option == 'digital':
+      self.pnl_creds1.visible = False
 
+  def rb_res2_role_clicked(self, **event_args):
+    selected_option = self.rb_res2_own.get_group_value()
+    if selected_option == 'own':
+      self.pnl_creds2.visible = True
+    elif selected_option == 'pathways':
+      self.pnl_creds2.visible = False
+    elif selected_option == 'digital':
+      self.pnl_creds2.visible = False
+      
   def clear_results_lists(self):
     self.results_list_1.list_items = []
     self.results_list_1.refresh_data_bindings()
@@ -165,7 +192,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
       self.lbl_instance2_pass.visible = False
 
 
-  def button_1_click (self, **event_args):
+  def btn_surgery_help_click (self, **event_args):
     alert("Type a GP surgery code into the text box, or select a nearby GP surgery from the drop-down. Leave both blank for 'Unknown Surgery'")
 
   def btn_repeat_search_click (self, **event_args):
@@ -183,7 +210,6 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.dd_disposition.selected_value = previous_search['disposition']
     
     prev_instance_1 = previous_search['left_instance']
-    print(prev_instance_1)
     if prev_instance_1 == 'uat1':
       self.rb_res1_uat1.selected = True
     elif prev_instance_1 == 'live':
@@ -194,7 +220,6 @@ class CCSCompareForm (CCSCompareFormTemplate):
       self.rb_res1_uat3.selected = True
       
     prev_instance_2 = previous_search['right_instance']
-    print(prev_instance_2)
     if prev_instance_2 == 'live':
       self.rb_res2_live.selected = True
     elif prev_instance_2 == 'uat1':
@@ -203,9 +228,28 @@ class CCSCompareForm (CCSCompareFormTemplate):
       self.rb_res2_uat2.selected = True
     elif prev_instance_2 == 'uat3':
       self.rb_res2_uat3.selected = True
+      
+    prev_role_1 = previous_search['left_referral_role']
+    if prev_role_1 == 'digital':
+      self.rb_res1_digital.selected = True
+      self.rb_res1_digital.raise_event('clicked')
+    elif prev_role_1 == 'own':
+      self.rb_res1_own.selected = True
+      self.rb_res1_own.raise_event('clicked')
+    else:
+      self.rb_res1_pathways.selected = True
+      
+    prev_role_2 = previous_search['right_referral_role']
+    if prev_role_2 == 'digital':
+      self.rb_res2_digital.selected = True
+      self.rb_res2_digital.raise_event('clicked')
+    elif prev_role_2 == 'own':
+      self.rb_res2_own.selected = True
+      self.rb_res2_own.raise_event('clicked')
+    else:
+      self.rb_res1_pathways.selected = True
 
     prev_dist = previous_search['search_distance']
-    print(prev_dist)
     if prev_dist == 15:
       self.rb_15.selected = True
     elif prev_dist == 30:
@@ -236,11 +280,8 @@ class CCSCompareForm (CCSCompareFormTemplate):
       self.txt_postcode.focus()
       self.lbl_bad_postcode.visible = True
     self.btn_find_surgeries.enabled = True
-    
 
-  def rb_res1_pathways_copy_clicked (self, **event_args):
-    # This method is called when this radio button is selected
-    pass
+
 
 
 

@@ -12,16 +12,19 @@ import json
 class CCSError(Exception):
   pass
 
-def get_user(instance=None, username=None, password=None):
-  if instance:
+def get_user(instance=None, referral_role=None, username=None, password=None):
+  if instance and referral_role == 'pathways':
     user = collections.namedtuple('User', ['username', 'password'])
-    user.username = anvil.secrets.get_secret('dos_username_{}'.format(instance))
-    user.password = anvil.secrets.get_secret('dos_password_{}'.format(instance))
-  elif username and password:
+    user.username = anvil.secrets.get_secret('dos_username_{}_{}'.format(referral_role, instance))
+    user.password = anvil.secrets.get_secret('dos_password_{}_{}'.format(referral_role, instance))
+  elif instance and referral_role == 'digital':
+    user = collections.namedtuple('User', ['username', 'password'])
+    user.username = anvil.secrets.get_secret('dos_username_{}_{}'.format(referral_role, instance))
+    user.password = anvil.secrets.get_secret('dos_password_{}_{}'.format(referral_role, instance))
+  elif referral_role == 'own' and username and password:
     user = collections.namedtuple('User', ['username', 'password'])
     user.username = username
     user.password = password
-  
   return user
 
 def get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex):
@@ -102,17 +105,21 @@ def do_ccs_request(instance, payload, username):
 
   return None
 
-def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex, instance1, instance2, instance1_creds, instance2_creds):
+def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex, instance1, instance2, instance1_referral_role, instance2_referral_role, instance1_creds, instance2_creds):
 
-  if instance1_creds:
-    user1 = get_user(username=instance1_creds[0], password=instance1_creds[1])
+  if instance1_creds and instance1_referral_role == 'own':
+    user1 = get_user(referral_role=instance1_referral_role, 
+                     username=instance1_creds[0], 
+                     password=instance1_creds[1])
   else:
-    user1 = get_user(instance1)
+    user1 = get_user(instance1, instance1_referral_role)
 
-  if instance2_creds:
-    user2 = get_user(username=instance2_creds[0], password=instance2_creds[1])
+  if instance2_creds and instance2_referral_role == 'own':
+    user2 = get_user(referral_role=instance2_referral_role, 
+                     username=instance2_creds[0], 
+                     password=instance2_creds[1])
   else:
-    user2 = get_user(instance2)
+    user2 = get_user(instance2, instance2_referral_role)
 
   case = get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex)
 
