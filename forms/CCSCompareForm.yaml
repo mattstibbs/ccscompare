@@ -17,12 +17,12 @@ components:
     components:
     - type: Button
       properties: {role: null, width: default, align: left, border: '', enabled: true,
-        foreground: '', visible: true, text: Use Previous Search, font_size: null,
+        foreground: '', visible: true, text: Repeat my most recent comparison, font_size: null,
         font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
         background: '', bold: false, underline: false, icon: ''}
-      name: button_2
+      name: btn_repeat_search
       layout_properties: {row: UTYMSP, width_xs: 12, col_xs: 0, width: 616.5, grid_position: 'YODACT,EYNNAO'}
-      event_bindings: {click: button_2_click}
+      event_bindings: {click: btn_repeat_search_click}
     - type: Label
       properties: {role: null, width: default, align: right, border: '', foreground: '',
         visible: true, text: Postcode, font_size: null, font: '', spacing_above: small,
@@ -241,9 +241,9 @@ components:
       layout_properties: {grid_position: 'EBJFUC,UWZVRE', row: KTDJAV, width_xs: 2,
         col_xs: 10}
   - type: Button
-    properties: {role: null, width: default, align: center, border: '', enabled: true,
-      foreground: '', visible: true, text: Search, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    properties: {role: null, width: default, align: full, border: '', enabled: true,
+      foreground: '', visible: true, text: Get Results, font_size: 20, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
       underline: false, icon: 'fa:search'}
     name: btn_search
     layout_properties: {grid_position: 'OEPXJB,XMPZAC', full_width_row: true}

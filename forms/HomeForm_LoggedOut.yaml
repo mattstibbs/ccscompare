@@ -24,6 +24,14 @@ components:
       underline: false, icon: ''}
     name: lnk_request_account
     layout_properties: {grid_position: 'BHKDJR,OYITVL'}
+- type: Button
+  properties: {role: null, width: default, align: full, border: '', enabled: true,
+    foreground: '', visible: true, text: Login, font_size: 20, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+    underline: false, icon: ''}
+  name: button_1
+  layout_properties: {grid_position: 'RBGHVN,NMKCJN'}
+  event_bindings: {click: button_1_click}
 container:
   type: ColumnPanel
   properties: {col_widths: '{}'}

@@ -11,18 +11,31 @@ class CCSCompareForm (CCSCompareFormTemplate):
     
     # Ensure user is logged in to use this form
     while not anvil.users.get_user():
-      anvil.users.login_with_form(show_signup_option=True)
+      anvil.users.login_with_form()
     
     self.full_width_row = True
-    self.dd_sg.items = anvil.server.call('get_sg_list')
+    self.clear_results_lists()
+    self.previous_search_results = None
     self.dd_age_group.items = [('Adult', 1), ('Child', 2), ('Infant', 3), ('Neonate', 4)]
     self.dd_sex.items = [('Female', 'F'), ('Male', 'M'), ('Unknown', 'I')]
-    self.dd_disposition.items = anvil.server.call('get_dispositions')
     self.rb_60.selected = True
-    self.clear_results_lists()
+    self.dd_sg.items = anvil.server.call('get_sg_list')
+    self.dd_disposition.items = anvil.server.call('get_dispositions')
+
     
 
   def btn_search_click (self, **event_args):
+    self.btn_search.enabled = False
+    self.btn_repeat_search.enabled = False
+    self.btn_find_surgeries.enabled = False
+    self.btn_search.text = 'Comparing...'
+    self.do_search()
+    self.btn_search.enabled = True
+    self.btn_repeat_search.enabled = True
+    self.btn_find_surgeries.enabled = True
+    self.btn_search.text = 'Compare Search Results'
+    
+  def do_search(self):
     self.clear_results_lists()
     
     results1_instance = self.rb_res1_uat1.get_group_value()
@@ -65,6 +78,8 @@ class CCSCompareForm (CCSCompareFormTemplate):
         alert(result_dict['error'])
       else:
         alert("Error encountered - please report")
+    
+    self.previous_search_results = result_dict
   
   def dd_sg_change (self, **event_args):
     self.dd_sd.items = anvil.server.call('get_sd_list', self.dd_sg.selected_value)
@@ -73,14 +88,17 @@ class CCSCompareForm (CCSCompareFormTemplate):
     if self.txt_postcode.text != '':
       results = anvil.server.call_s('get_surgeries', self.txt_postcode.text.replace(' ',''))
       if len(results) > 1:
+        self.lbl_bad_postcode.visible = False
+        self.btn_find_surgeries.visible = False
         self.dd_surgery.items = results
         self.dd_surgery.visible = True
-        self.lbl_bad_postcode.visible = False
       else:
         self.dd_surgery.visible = False
+        self.lbl_bad_postcode.visible = True
         self.txt_postcode.text = ''
         self.txt_surgery_code.text = ''
-        self.lbl_bad_postcode.visible = True
+        self.txt_postcode.focus()
+
     else:
       self.lbl_bad_postcode.visible = True
       self.txt_postcode.focus()
@@ -147,10 +165,19 @@ class CCSCompareForm (CCSCompareFormTemplate):
   def button_1_click (self, **event_args):
     alert("Type a GP surgery code into the text box, or select a nearby GP surgery from the drop-down. Leave both blank for 'Unknown Surgery'")
 
-  def button_2_click (self, **event_args):
+  def btn_repeat_search_click (self, **event_args):
+    self.btn_search.enabled = False
+    self.btn_repeat_search.enabled = False
+    self.btn_search.text = 'Comparing...'
+    self.btn_repeat_search.text = 'Repeating previous comparison...'
     previous_search = anvil.server.call('get_previous_search')
-    print(previous_search)
     self.populate_previous_search_values(previous_search)
+    self.do_search()
+    self.btn_search.enabled = True
+    self.btn_repeat_search.enabled = True
+    self.btn_search.text = 'Compare Results'
+    self.btn_repeat_search.text = 'Repeat my most recent comparison'
+    
   
   def populate_previous_search_values(self, previous_search):
     self.txt_postcode.text = previous_search['postcode']
@@ -195,7 +222,9 @@ class CCSCompareForm (CCSCompareFormTemplate):
     else:
       self.rb_60.selected = True
 
+
   def load_local_surgeries (self, **event_args):
+    self.btn_find_surgeries.enabled = False
     if self.txt_postcode.text != '':      
       results = anvil.server.call_s('get_surgeries', self.txt_postcode.text.replace(' ',''))
       if len(results) > 1:
@@ -213,4 +242,5 @@ class CCSCompareForm (CCSCompareFormTemplate):
     else:
       self.txt_postcode.focus()
       self.lbl_bad_postcode.visible = True
+    self.btn_find_surgeries.enabled = True
     
