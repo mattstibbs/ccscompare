@@ -8,6 +8,8 @@ class CCSCompareForm (CCSCompareFormTemplate):
   def __init__(self, **properties):
     # You must call self.init_components() before doing anything else in this function
     self.init_components(**properties)
+
+    get_open_form().call_js('hideSidebar')
     
     # Ensure user is logged in to use this form
     while not anvil.users.get_user():

@@ -246,6 +246,12 @@ function toggleSidebar() {
             .animate({left: 0}, {complete: function() { s.removeClass('floating'); }});
     }
 }
+  
+function hideSidebar() {
+    var s = $('.sidebar');
+  	$('.sidebar-click-guard').hide();
+  	s.addClass('floating').animate({left: -s.width()}, {complete: function() { s.hide(); }});
+}
 
 $(function() {
     $('.sidebar').on("click", function() {

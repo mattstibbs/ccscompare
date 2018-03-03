@@ -29,6 +29,7 @@ class MainForm (MainFormTemplate):
       self.login_button.remove_from_parent()
       self.add_component(self.logout_button, slot="sidebar")
     else:
+      print("Adding login button")
       self.logout_button.remove_from_parent()
       self.add_component(self.login_button, slot="sidebar")
 
