@@ -315,10 +315,10 @@ components:
         font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
         bold: false, group_name: instance_1, underline: false}
       name: rb_res1_live
-      layout_properties: {grid_position: 'NOEJUC,THCHAI'}
-      event_bindings: {clicked: rb_res1_live_clicked}
+      layout_properties: {grid_position: 'NOEJUC,JSROXD'}
+      event_bindings: {clicked: rb_res1_clicked}
     - type: RadioButton
-      properties: {role: null, selected: false, width: default, align: left, border: '',
+      properties: {role: null, selected: true, width: default, align: left, border: '',
         enabled: true, foreground: '', value: uat1, visible: true, text: UAT 1, font_size: null,
         font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
         bold: false, group_name: instance_1, underline: false}
@@ -408,9 +408,9 @@ components:
         bold: false, group_name: instance_2, underline: false}
       name: radio_button_1
       layout_properties: {grid_position: 'NOEJUC,DDARMX'}
-      event_bindings: {}
+      event_bindings: {clicked: rb_res2_clicked}
     - type: RadioButton
-      properties: {role: null, selected: false, width: default, align: left, border: '',
+      properties: {role: null, selected: true, width: default, align: left, border: '',
         enabled: true, foreground: '', value: uat1, visible: true, text: UAT 1, font_size: null,
         font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
         bold: false, group_name: instance_2, underline: false}

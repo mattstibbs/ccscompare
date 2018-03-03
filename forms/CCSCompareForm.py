@@ -133,6 +133,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.label_8.text = self.rb_res1_uat1.get_group_value()
     self.clear_results_lists()
 
+
   def clear_results_lists(self):
     self.results_list_1.list_items = []
     self.results_list_1.refresh_data_bindings()
@@ -168,19 +169,9 @@ class CCSCompareForm (CCSCompareFormTemplate):
     alert("Type a GP surgery code into the text box, or select a nearby GP surgery from the drop-down. Leave both blank for 'Unknown Surgery'")
 
   def btn_repeat_search_click (self, **event_args):
-    self.btn_search.enabled = False
-    self.btn_repeat_search.enabled = False
-    self.btn_search.text = 'Comparing...'
-    self.btn_repeat_search.text = 'Repeating previous comparison...'
     previous_search = anvil.server.call('get_previous_search')
     self.populate_previous_search_values(previous_search)
-    self.do_search()
-    self.btn_search.enabled = True
-    self.btn_repeat_search.enabled = True
-    self.btn_search.text = 'Compare Results'
-    self.btn_repeat_search.text = 'Repeat my most recent comparison'
     
-  
   def populate_previous_search_values(self, previous_search):
     self.txt_postcode.text = previous_search['postcode']
     self.txt_surgery_code.text = previous_search['surgery']
@@ -195,7 +186,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
     print(prev_instance_1)
     if prev_instance_1 == 'uat1':
       self.rb_res1_uat1.selected = True
-    elif prev_instance_1 == 'www':
+    elif prev_instance_1 == 'live':
       self.rb_res1_live.selected = True
     elif prev_instance_1 == 'uat2':
       self.rb_res1_uat2.selected = True
@@ -204,7 +195,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
       
     prev_instance_2 = previous_search['right_instance']
     print(prev_instance_2)
-    if prev_instance_2 == 'www':
+    if prev_instance_2 == 'live':
       self.rb_res2_live.selected = True
     elif prev_instance_2 == 'uat1':
       self.rb_res2_uat1.selected = True
@@ -247,6 +238,4 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.btn_find_surgeries.enabled = True
     
 
-  def rb_res1_live_clicked (self, **event_args):
-    pass
 
