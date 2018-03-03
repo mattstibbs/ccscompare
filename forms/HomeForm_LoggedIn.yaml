@@ -33,6 +33,14 @@ components:
         background: '', bold: true, underline: false, icon: ''}
       name: label_4
       layout_properties: {grid_position: 'MXKYBW,ZDWHKE'}
+    - type: Button
+      properties: {role: null, width: default, align: right, border: '', enabled: true,
+        foreground: '', visible: true, text: Use Tool, font_size: null, font: '',
+        spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false, icon: ''}
+      name: button_1
+      layout_properties: {grid_position: 'MXKYBW,VNYHCZ'}
+      event_bindings: {click: load_ccs_compare_form}
     - type: Label
       properties: {role: null, width: default, align: left, border: '', foreground: '',
         visible: true, text: 'This tool allows you to compare service results between

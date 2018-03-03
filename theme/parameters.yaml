@@ -1,3 +1,5 @@
 roles:
 - name: title
   components: [Label]
+- name: position-tag
+  components: [Label]

@@ -21,7 +21,7 @@ components:
     italic: false, background: '', bold: false, underline: false, icon: ''}
   name: lnk_env_info
   layout_properties: {slot: sidebar}
-  event_bindings: {click: lnk_env_info_click}
+  event_bindings: {click: load_info_form}
 - type: Link
   properties: {role: null, width: default, align: left, border: '', foreground: '',
     visible: true, text: CCS Compare, font_size: null, row_spacing: 10, wrap_on: mobile,
@@ -29,7 +29,7 @@ components:
     italic: false, background: '', bold: false, underline: false, icon: ''}
   name: lnk_ccs_compare
   layout_properties: {slot: sidebar}
-  event_bindings: {click: lnk_ccs_compare_click}
+  event_bindings: {click: load_ccs_compare_form}
 - type: Label
   properties: {role: null, width: default, align: left, border: '', foreground: '',
     visible: true, text: 'DoS Testing Tools

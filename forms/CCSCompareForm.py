@@ -48,7 +48,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
                                     sd_code=self.dd_sd.selected_value.replace('SD', ''),
                                     dispo_code=self.dd_disposition.selected_value,
                                     search_distance=self.rb_15.get_group_value(),
-                                    surgery=self.dd_surgery.selected_value,
+                                    surgery=self.txt_surgery_code.text,
                                     instance1=results1_instance,
                                     instance2=results2_instance,
                                     instance1_creds=get_instance1_creds(),
@@ -70,19 +70,22 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.dd_sd.items = anvil.server.call('get_sd_list', self.dd_sg.selected_value)
 
   def txt_postcode_has_changed (self, **event_args):
-    results = anvil.server.call('get_surgeries', self.txt_postcode.text.replace(' ',''))
-    if len(results) > 1:
-      self.dd_surgery.items = results
-      self.dd_surgery.visible = True
-      self.lbl_bad_postcode.visible = False
+    if self.txt_postcode.text != '':
+      results = anvil.server.call_s('get_surgeries', self.txt_postcode.text.replace(' ',''))
+      if len(results) > 1:
+        self.dd_surgery.items = results
+        self.dd_surgery.visible = True
+        self.lbl_bad_postcode.visible = False
+      else:
+        self.dd_surgery.visible = False
+        self.txt_postcode.text = ''
+        self.txt_surgery_code.text = ''
+        self.lbl_bad_postcode.visible = True
     else:
-      self.dd_surgery.visible = False
-      self.txt_postcode.text = ''
-      self.txt_surgery_code.text = ''
       self.lbl_bad_postcode.visible = True
+      self.txt_postcode.focus()
 
   def dd_surgery_change (self, **event_args):
-    # This method is called when an item is selected
     self.txt_surgery_code.text = self.dd_surgery.selected_value
 
   def txt_surgery_code_change (self, **event_args):
@@ -144,4 +147,70 @@ class CCSCompareForm (CCSCompareFormTemplate):
   def button_1_click (self, **event_args):
     alert("Type a GP surgery code into the text box, or select a nearby GP surgery from the drop-down. Leave both blank for 'Unknown Surgery'")
 
+  def button_2_click (self, **event_args):
+    previous_search = anvil.server.call('get_previous_search')
+    print(previous_search)
+    self.populate_previous_search_values(previous_search)
+  
+  def populate_previous_search_values(self, previous_search):
+    self.txt_postcode.text = previous_search['postcode']
+    self.txt_surgery_code.text = previous_search['surgery']
+    self.dd_sg.selected_value = previous_search['sg_code']
+    self.dd_sd.items = anvil.server.call_s('get_sd_list', self.dd_sg.selected_value)
+    self.dd_sd.selected_value = previous_search['sd_code']
+    self.dd_age_group.selected_value = previous_search['age_group']
+    self.dd_sex.selected_value = previous_search['sex']
+    self.dd_disposition.selected_value = previous_search['disposition']
+    
+    prev_instance_1 = previous_search['left_instance']
+    print(prev_instance_1)
+    if prev_instance_1 == 'uat1':
+      self.rb_res1_uat1.selected = True
+    elif prev_instance_1 == 'www':
+      self.rb_res1_live.selected = True
+    elif prev_instance_1 == 'uat2':
+      self.rb_res1_uat2.selected = True
+    elif prev_instance_1 == 'uat3':
+      self.rb_res1_uat3.selected = True
+      
+    prev_instance_2 = previous_search['right_instance']
+    print(prev_instance_2)
+    if prev_instance_2 == 'www':
+      self.rb_res2_live.selected = True
+    elif prev_instance_2 == 'uat1':
+      self.rb_res2_uat1.selected = True
+    elif prev_instance_2 == 'uat2':
+      self.rb_res2_uat2.selected = True
+    elif prev_instance_2 == 'uat3':
+      self.rb_res2_uat3.selected = True
 
+    prev_dist = previous_search['search_distance']
+    print(prev_dist)
+    if prev_dist == 15:
+      self.rb_15.selected = True
+    elif prev_dist == 30:
+      self.rb_30.selected = True
+    elif prev_dist == 45:
+      self.rb_45.selected = True
+    else:
+      self.rb_60.selected = True
+
+  def load_local_surgeries (self, **event_args):
+    if self.txt_postcode.text != '':      
+      results = anvil.server.call_s('get_surgeries', self.txt_postcode.text.replace(' ',''))
+      if len(results) > 1:
+        self.lbl_bad_postcode.visible = False
+        self.btn_find_surgeries.visible = False
+        self.dd_surgery.items = results
+        self.dd_surgery.visible = True
+        
+        surgeries_in_dropdown = [s[1] for s in self.dd_surgery.items]
+        
+        if self.txt_surgery_code.text in surgeries_in_dropdown:
+          self.dd_surgery.selected_value = self.txt_surgery_code.text
+        else:
+          self.dd_surgery.selected_value = 'UNK'
+    else:
+      self.txt_postcode.focus()
+      self.lbl_bad_postcode.visible = True
+    

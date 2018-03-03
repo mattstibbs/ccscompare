@@ -42,7 +42,7 @@ def get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search
   case.case_ref = 'UAT'
   case.case_id = 'UAT'
   case.postcode = postcode
-  case.surgery = surgery
+  case.surgery = surgery if surgery != '' else 'UNK'
   case.age = age_group
   case.age_format = 'AgeGroup'
   case.disposition = disposition

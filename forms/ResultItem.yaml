@@ -10,6 +10,17 @@ components:
   layout_properties: {grid_position: 'BSPINX,UMSSLD', full_width_row: true}
   components:
   - type: Label
+    properties: {role: position-tag, width: default, align: center, border: 1pt solid grey,
+      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+      icon_align: right, spacing_below: none, italic: false, background: '', bold: false,
+      underline: false, icon: 'fa:ban'}
+    name: lbl_difference
+    layout_properties: {grid_position: 'FKNFBH,PKXESW', full_width_row: false}
+    data_bindings:
+    - {property: background, code: self.get_bg_colour()}
+    - {property: text, code: self.get_position()}
+    - {property: icon, code: self.get_icon()}
+  - type: Label
     properties: {role: null, width: default, align: left, border: '', foreground: '',
       visible: true, text: '', font_size: 24, font: '', spacing_above: small, icon_align: left,
       spacing_below: small, italic: false, background: '', bold: true, underline: false,
@@ -27,16 +38,6 @@ components:
     layout_properties: {grid_position: 'UWOFIU,UJXNFT FSGYJC,GLVROR'}
     data_bindings:
     - {property: text, code: 'self.item[''distance'']'}
-  - type: Label
-    properties: {role: null, width: default, align: center, border: 1pt solid grey,
-      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: lbl_difference
-    layout_properties: {grid_position: 'UWOFIU,UJXNFT VXBIZM,TQTUEH'}
-    data_bindings:
-    - {property: background, code: self.get_bg_colour()}
-    - {property: text, code: self.get_position()}
   - type: Label
     properties: {role: null, width: default, align: left, border: '', foreground: '',
       visible: true, text: Name, font_size: null, font: '', spacing_above: small,

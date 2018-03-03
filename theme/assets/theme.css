@@ -88,6 +88,11 @@ body.anvil-highlight .nav-elt.placeholder {
   font-weight: bold;
 }
 
+.anvil-role-position-tag span.label-text {
+  padding: 2px;
+  display: inline-block
+}
+
 
 /* Responsive bits: Make the menu overlay the screen
    (and hidden by default) rather than displacing it

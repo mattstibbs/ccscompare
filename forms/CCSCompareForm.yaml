@@ -2,10 +2,6 @@ container:
   type: ColumnPanel
   properties: {col_widths: '{}'}
 components:
-- type: Spacer
-  properties: {height: 11}
-  name: spacer_1
-  layout_properties: {grid_position: 'JMYLWR,BHKJLO'}
 - type: ColumnPanel
   properties: {role: null, width: default, border: '', foreground: '', visible: true,
     row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{}', spacing_below: small,
@@ -19,14 +15,22 @@ components:
     name: grid_panel_1
     layout_properties: {grid_position: 'KKTEET,DAHSAF', full_width_row: true}
     components:
+    - type: Button
+      properties: {role: null, width: default, align: left, border: '', enabled: true,
+        foreground: '', visible: true, text: Use Previous Search, font_size: null,
+        font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false, icon: ''}
+      name: button_2
+      layout_properties: {row: UTYMSP, width_xs: 12, col_xs: 0, width: 616.5, grid_position: 'YODACT,EYNNAO'}
+      event_bindings: {click: button_2_click}
     - type: Label
       properties: {role: null, width: default, align: right, border: '', foreground: '',
         visible: true, text: Postcode, font_size: null, font: '', spacing_above: small,
         icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
         underline: false, icon: ''}
       name: label_2
-      layout_properties: {grid_position: 'IDZUVM,QFDARC', row: UQIBCU, width_xs: 4,
-        col_xs: 0, width: 116.617}
+      layout_properties: {grid_position: 'IDZUVM,QFDARC', row: UQIBCU, width_xs: 2,
+        col_xs: 2, width: 116.617}
     - type: TextBox
       properties: {}
       name: txt_postcode
@@ -35,11 +39,11 @@ components:
       event_bindings: {pressed_enter: txt_postcode_has_changed, lost_focus: txt_postcode_has_changed}
     - type: Label
       properties: {role: null, width: default, align: left, border: '', foreground: '#ed3624',
-        visible: false, text: Postcode not found, font_size: null, font: '', spacing_above: small,
+        visible: false, text: Enter a valid postcode, font_size: null, font: '', spacing_above: small,
         icon_align: left, spacing_below: small, italic: true, background: '', bold: false,
         underline: false, icon: ''}
       name: lbl_bad_postcode
-      layout_properties: {row: UQIBCU, width_xs: 4, col_xs: 8, width: 150.783}
+      layout_properties: {row: UQIBCU, width_xs: 4, col_xs: 8, width: 185.5}
     - type: Button
       properties: {role: null, width: default, align: center, border: '', enabled: true,
         foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
@@ -61,6 +65,14 @@ components:
       layout_properties: {row: SFMOGL, width_xs: 3, col_xs: 4}
       data_bindings: []
       event_bindings: {pressed_enter: txt_surgery_code_pressed_enter, change: txt_surgery_code_change}
+    - type: Button
+      properties: {role: null, width: default, align: center, border: '', enabled: true,
+        foreground: '', visible: true, text: Find local surgeries, font_size: null,
+        font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false, icon: ''}
+      name: btn_find_surgeries
+      layout_properties: {row: SFMOGL, width_xs: 4, col_xs: 7, width: 77.75}
+      event_bindings: {click: load_local_surgeries}
     - type: DropDown
       properties:
         role: null
@@ -203,6 +215,7 @@ components:
       name: rb_15
       layout_properties: {grid_position: 'EBJFUC,QDIABU', row: KTDJAV, width_xs: 2,
         col_xs: 2}
+      data_bindings: []
     - type: RadioButton
       properties: {role: null, selected: false, width: default, align: left, border: '',
         enabled: true, foreground: '', value: '30', visible: true, text: '30', font_size: null,
@@ -305,7 +318,7 @@ components:
       layout_properties: {grid_position: 'NOEJUC,THCHAI'}
       event_bindings: {}
     - type: RadioButton
-      properties: {role: null, selected: true, width: default, align: left, border: '',
+      properties: {role: null, selected: false, width: default, align: left, border: '',
         enabled: true, foreground: '', value: uat1, visible: true, text: UAT 1, font_size: null,
         font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
         bold: false, group_name: instance_1, underline: false}
@@ -397,7 +410,7 @@ components:
       layout_properties: {grid_position: 'NOEJUC,DDARMX'}
       event_bindings: {}
     - type: RadioButton
-      properties: {role: null, selected: true, width: default, align: left, border: '',
+      properties: {role: null, selected: false, width: default, align: left, border: '',
         enabled: true, foreground: '', value: uat1, visible: true, text: UAT 1, font_size: null,
         font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
         bold: false, group_name: instance_2, underline: false}

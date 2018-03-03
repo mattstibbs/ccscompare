@@ -21,10 +21,20 @@ class ResultItem (ResultItemTemplate):
     
   def get_position(self):
     if self.item['difference'] == 'Same':
-      return 'Same position'
+      return 'Same ranking as other results'
     elif self.item['difference'] == 'Higher':
-      return 'Higher'
+      return 'Ranked higher in these results'
     elif self.item['difference'] == 'Lower':
-      return 'Lower'
+      return 'Ranked lower in these results'
     elif self.item['difference'] == 'NoMatch':
-      return 'Not in other results'    
+      return 'Not returned in the other results'    
+    
+  def get_icon(self):
+    if self.item['difference'] == 'Same':
+      return 'fa:arrows-h'
+    elif self.item['difference'] == 'Higher':
+      return 'fa:arrow-up'
+    elif self.item['difference'] == 'Lower':
+      return 'fa:arrow-down'
+    elif self.item['difference'] == 'NoMatch':
+      return 'fa:ban'  

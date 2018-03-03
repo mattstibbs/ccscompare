@@ -39,3 +39,17 @@ def get_surgeries(postcode):
   results = set(results)
   results = sorted(list(results))
   return results
+
+@anvil.server.callable
+def get_previous_search():
+  me = anvil.users.get_user()
+  if me:
+    row = app_tables.log_searches.client_readable(user=me).search(tables.order_by("timestamp", ascending=False))[0]
+  
+  new = dict(row)
+  new.pop('results')
+  new.pop('timestamp')
+  new['sg_code'] = "{}{}".format("SG", new['sgsd'].split(':')[0])
+  new['sd_code'] = "{}{}".format("SD", new['sgsd'].split(':')[1])
+  
+  return new
