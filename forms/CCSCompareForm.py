@@ -238,4 +238,9 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.btn_find_surgeries.enabled = True
     
 
+  def rb_res1_pathways_copy_clicked (self, **event_args):
+    # This method is called when this radio button is selected
+    pass
+
+
 
