@@ -37,4 +37,9 @@ class ResultItem (ResultItemTemplate):
     elif self.item['difference'] == 'Lower':
       return 'fa:arrow-down'
     elif self.item['difference'] == 'NoMatch':
-      return 'fa:ban'  
+      return 'fa:ban'
+    
+  def get_distance(self):
+    in_miles = float(self.item['distance']) * 0.621371
+    print(in_miles)
+    return '{} km / {0:.1f} mi'.format(self.item['distance'], in_miles)

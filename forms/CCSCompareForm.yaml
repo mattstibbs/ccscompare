@@ -201,45 +201,45 @@ components:
       event_bindings: {change: dd_age_group_change}
     - type: Label
       properties: {role: null, width: default, align: right, border: '', foreground: '',
-        visible: true, text: Search Distance (km), font_size: null, font: '', spacing_above: small,
+        visible: true, text: Search Distance, font_size: null, font: '', spacing_above: small,
         icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
         underline: false, icon: ''}
       name: lbl_distance
       layout_properties: {grid_position: 'EBJFUC,QZWEOJ', row: KTDJAV, width_xs: 4,
-        col_xs: 0, width: 165.5}
+        col_xs: 0, width: 185.5}
     - type: RadioButton
       properties: {role: null, selected: false, width: default, align: left, border: '',
-        enabled: true, foreground: '', value: '15', visible: true, text: '15', font_size: null,
-        font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
-        bold: false, group_name: search_distance, underline: false}
+        enabled: true, foreground: '', value: '15', visible: true, text: 15 km / 9.3 mi,
+        font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+        background: '', bold: false, group_name: search_distance, underline: false}
       name: rb_15
       layout_properties: {grid_position: 'EBJFUC,QDIABU', row: KTDJAV, width_xs: 2,
-        col_xs: 2}
+        col_xs: 2, width: 77.75}
       data_bindings: []
     - type: RadioButton
       properties: {role: null, selected: false, width: default, align: left, border: '',
-        enabled: true, foreground: '', value: '30', visible: true, text: '30', font_size: null,
-        font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
-        bold: false, group_name: search_distance, underline: false}
+        enabled: true, foreground: '', value: '30', visible: true, text: 30 km / 18.5 mi,
+        font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+        background: '', bold: false, group_name: search_distance, underline: false}
       name: rb_30
       layout_properties: {grid_position: 'EBJFUC,RRQLMD', row: KTDJAV, width_xs: 2,
-        col_xs: 6}
+        col_xs: 6, width: 77.75}
     - type: RadioButton
       properties: {role: null, selected: false, width: default, align: left, border: '',
-        enabled: true, foreground: '', value: '45', visible: true, text: '45', font_size: null,
-        font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
-        bold: false, group_name: search_distance, underline: false}
+        enabled: true, foreground: '', value: '45', visible: true, text: 45 km / 28 mi,
+        font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+        background: '', bold: false, group_name: search_distance, underline: false}
       name: rb_45
       layout_properties: {grid_position: 'EBJFUC,URAROH', row: KTDJAV, width_xs: 2,
-        col_xs: 8}
+        col_xs: 8, width: 77.75}
     - type: RadioButton
       properties: {role: null, selected: false, width: default, align: left, border: '',
-        enabled: true, foreground: '', value: '60', visible: true, text: '60', font_size: null,
-        font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
-        bold: false, group_name: search_distance, underline: false}
+        enabled: true, foreground: '', value: '60', visible: true, text: 60 km / 37.5 mi,
+        font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+        background: '', bold: false, group_name: search_distance, underline: false}
       name: rb_60
       layout_properties: {grid_position: 'EBJFUC,UWZVRE', row: KTDJAV, width_xs: 2,
-        col_xs: 10}
+        col_xs: 10, width: 77.75}
 - type: ColumnPanel
   properties: {role: null, width: default, border: '', foreground: '', visible: true,
     row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{}', spacing_below: small,

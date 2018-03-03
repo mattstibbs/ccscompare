@@ -66,7 +66,7 @@ def convert_xml_to_list(xml_string):
   service_list = []
   
   for r in result_list:
-    distance = "{}km".format(r['ns1:distance'])
+    distance = float(r['ns1:distance'])
     s = service(r['ns1:id'], r['ns1:name'], r['ns1:address'], "", r['ns1:serviceType']['ns1:name'], (result_list.index(r) + 1), distance)
     service_list.append(s._asdict())
     
