@@ -246,3 +246,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
       self.lbl_bad_postcode.visible = True
     self.btn_find_surgeries.enabled = True
     
+
+  def rb_res1_live_clicked (self, **event_args):
+    pass
+

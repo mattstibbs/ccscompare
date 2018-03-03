@@ -18,11 +18,11 @@ secrets:
   dos_password_uat2:
     value: {? '' : 3QdnF0Qk1oOSDmhljK9dszWhXbJEv2LD8XSj6zhWcnKkbrtvwvOKP24Tf/USMwVTDVsAOiT5QLYz17CSAednjQrB78BRfEYpRv6qab1bzlB2pFSN6wNB3SoG6g==}
     type: secret
-  dos_username_www:
-    value: {? '' : ''}
+  dos_username_live:
+    value: {? '' : b2E86LfjFlJ1YBRrlawgeWFE+1/2xdu50LFM7/wfKHLaYZoj8kndzwW/kDOFM/SR3cjKKMlPgLtgGXyFKuCI8CvsUEjIhGsg5mFSoMM7yCFCJPR6PHCBNtlZELtE4g==}
     type: secret
-  dos_password_www:
-    value: {? '' : ''}
+  dos_password_live:
+    value: {? '' : jGfiInormm4oKI3MdpX+CdvQjP/uDBTgm71tVGZEOQbm90sYX9PQ37zRcgbdwe2jcyMmoA21vJLQ2OR5DY7D/sIfmrQo4ogcrUSq7h2/QG2cvWRry6zQAcpf4w==}
     type: secret
 name: DoS Tools
 startup_form: MainForm

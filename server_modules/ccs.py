@@ -78,14 +78,15 @@ def extract_http_error(content):
   return error_code, error_text 
 
 def do_ccs_request(instance, payload, username):
-  uat_urls = {
+  urls = {
+    'live': 'https://www.pathwaysdos.nhs.uk/app/api/webservices',
     'uat1': 'https://uat.pathwaysdos.nhs.uk/app/api/webservices',
     'uat2': 'https://uat2.pathwaysdos.nhs.uk/app/api/webservices',
     'uat3': 'https://uat3.pathwaysdos.nhs.uk/app/api/webservices'
   }
   
   try:
-    result = anvil.http.request(url=uat_urls[instance], 
+    result = anvil.http.request(url=urls[instance], 
                                 data=payload,
                                 headers={"content-type": "application/xml"},
                                 method="POST")  

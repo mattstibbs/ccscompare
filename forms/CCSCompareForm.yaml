@@ -311,12 +311,12 @@ components:
         layout_properties: {grid_position: 'ZASPAX,RLWUFW'}
     - type: RadioButton
       properties: {role: null, selected: false, width: default, align: left, border: '',
-        enabled: false, foreground: grey, value: www, visible: true, text: Live, font_size: null,
+        enabled: true, foreground: grey, value: live, visible: true, text: Live, font_size: null,
         font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
         bold: false, group_name: instance_1, underline: false}
       name: rb_res1_live
       layout_properties: {grid_position: 'NOEJUC,THCHAI'}
-      event_bindings: {}
+      event_bindings: {clicked: rb_res1_live_clicked}
     - type: RadioButton
       properties: {role: null, selected: false, width: default, align: left, border: '',
         enabled: true, foreground: '', value: uat1, visible: true, text: UAT 1, font_size: null,
@@ -403,7 +403,7 @@ components:
         layout_properties: {grid_position: 'IKLGVJ,MEVOXL'}
     - type: RadioButton
       properties: {role: null, selected: false, width: default, align: left, border: '',
-        enabled: false, foreground: grey, value: www, visible: true, text: Live, font_size: null,
+        enabled: true, foreground: grey, value: live, visible: true, text: Live, font_size: null,
         font: '', spacing_above: small, spacing_below: small, italic: false, background: '',
         bold: false, group_name: instance_2, underline: false}
       name: radio_button_1
