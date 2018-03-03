@@ -26,11 +26,9 @@ class MainForm (MainFormTemplate):
 
   def add_login_logout_links(self):
     if anvil.users.get_user():
-      print("Adding logout button")
       self.login_button.remove_from_parent()
       self.add_component(self.logout_button, slot="sidebar")
     else:
-      print("Adding login button")
       self.logout_button.remove_from_parent()
       self.add_component(self.login_button, slot="sidebar")
 
