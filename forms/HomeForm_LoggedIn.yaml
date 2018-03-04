@@ -7,13 +7,6 @@ components:
   components:
   - type: Label
     properties: {role: null, width: default, align: left, border: '', foreground: '',
-      visible: true, text: You're logged in!, font_size: 18, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_3
-    layout_properties: {grid_position: 'MSSZQO,WVFWNU', full_width_row: true}
-  - type: Label
-    properties: {role: null, width: default, align: left, border: '', foreground: '',
       visible: true, text: 'DoS Testing Tools currently has these modules:', font_size: 18,
       font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: ''}
@@ -28,7 +21,7 @@ components:
     components:
     - type: Label
       properties: {role: null, width: default, align: left, border: '', foreground: '',
-        visible: true, text: CheckCapacitySummary Compare Tool, font_size: 16, font: '',
+        visible: true, text: CheckCapacitySummary Compare Tool, font_size: 20, font: '',
         spacing_above: small, icon_align: left, spacing_below: small, italic: false,
         background: '', bold: true, underline: false, icon: ''}
       name: label_4
@@ -43,13 +36,13 @@ components:
       event_bindings: {click: load_ccs_compare_form}
     - type: Label
       properties: {role: null, width: default, align: left, border: '', foreground: '',
-        visible: true, text: 'This tool allows you to compare service results between
-          two different DoS environments (e.g. UAT2 and UAT3).
-
-
-          It uses the same API that is used by NHS 111 systems, and so should be a
-          reflection of the DoS results displayed to call-handlers when using systems
-          like Adastra.', font_size: null, font: '', spacing_above: small, icon_align: left,
+        visible: true, text: "This tool allows you to compare service results between\
+          \ two different DoS environments (e.g. UAT2 and UAT3). \n\nYou can also\
+          \ choose whether to use the Pathways Referral role (as used by NHS 111 call-centres)\
+          \ or the Digital Referral role (as used by NHS 111 Online).\n\nIt uses the\
+          \ same API that is used by NHS 111 systems, and so should be a reflection\
+          \ of the DoS results displayed to call-handlers when using systems like\
+          \ Adastra.", font_size: null, font: '', spacing_above: small, icon_align: left,
         spacing_below: small, italic: false, background: '', bold: false, underline: false,
         icon: ''}
       name: label_5

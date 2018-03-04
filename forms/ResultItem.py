@@ -40,6 +40,6 @@ class ResultItem (ResultItemTemplate):
       return 'fa:ban'
     
   def get_distance(self):
-    in_miles = float(self.item['distance']) * 0.621371
-    print(in_miles)
-    return '{} km / {0:.1f} mi'.format(self.item['distance'], in_miles)
+#     in_miles = float(self.item['distance']) * 0.621371
+#     print(in_miles)
+    return '{} km'.format(self.item['distance'])
