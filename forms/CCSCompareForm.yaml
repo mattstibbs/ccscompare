@@ -54,11 +54,11 @@ components:
       event_bindings: {click: btn_surgery_help_click}
     - type: Label
       properties: {role: null, width: default, align: right, border: '', foreground: '',
-        visible: true, text: Surgery, font_size: null, font: '', spacing_above: small,
+        visible: true, text: Surgery Code, font_size: null, font: '', spacing_above: small,
         icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
         underline: false, icon: ''}
       name: label_7
-      layout_properties: {row: SFMOGL, width_xs: 2, col_xs: 2, width: 165.5}
+      layout_properties: {row: SFMOGL, width_xs: 2, col_xs: 2, width: 77.75}
     - type: TextBox
       properties: {}
       name: txt_surgery_code
@@ -466,48 +466,38 @@ components:
   layout_properties: {grid_position: 'NRLCRJ,YGBIFL', full_width_row: true}
   event_bindings: {click: btn_search_click}
 - type: ColumnPanel
-  properties: {col_widths: '{}'}
-  name: column_panel_7
-  layout_properties: {grid_position: 'WGCURK,GASTLD'}
-  components:
-  - type: Label
-    properties: {role: null, width: default, align: center, border: '', foreground: '',
-      visible: true, text: '', font_size: 20, font: '', spacing_above: none, icon_align: left,
-      spacing_below: none, italic: false, background: '', bold: true, underline: false,
-      icon: ''}
-    name: label_8
-    layout_properties: {grid_position: 'SMQKSY,MMKBWG'}
-    data_bindings:
-    - {property: text, code: self.rb_res1_uat1.get_group_value()}
-    event_bindings: {show: label_8_show}
-- type: ColumnPanel
-  properties: {col_widths: '{}'}
-  name: column_panel_8
-  layout_properties: {grid_position: 'WGCURK,RVWQAZ'}
-  components:
-  - type: Label
-    properties: {role: null, width: default, align: center, border: '', foreground: '',
-      visible: true, text: '', font_size: 20, font: '', spacing_above: none, icon_align: left,
-      spacing_below: none, italic: false, background: '', bold: true, underline: false,
-      icon: ''}
-    name: label_9
-    layout_properties: {grid_position: 'GDQYHB,UBXGIW'}
-    data_bindings:
-    - {property: text, code: self.rb_res1_uat1.get_group_value()}
-    event_bindings: {show: label_9_show}
-- type: ColumnPanel
   properties: {role: null, width: default, border: '', foreground: '', visible: true,
     row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"QJAOMR":30,"GJYNPG":30}',
     spacing_below: small, background: ''}
   name: column_panel_2
   layout_properties: {grid_position: 'SLCBNP,CBEFON', full_width_row: true}
   components:
+  - type: Label
+    properties: {role: null, width: default, align: center, border: '', foreground: '',
+      visible: true, text: '', font_size: 16, font: '', spacing_above: none, icon_align: left,
+      spacing_below: none, italic: false, background: '', bold: true, underline: false,
+      icon: ''}
+    name: label_8
+    layout_properties: {grid_position: 'EWRPHM,QJAOMR FFBTOW,RAFSPS'}
+    data_bindings:
+    - {property: text, code: self.rb_res1_uat1.get_group_value()}
+    event_bindings: {show: label_8_show}
   - type: form:ResultsList
     properties: {}
     name: results_list_1
-    layout_properties: {grid_position: 'EWRPHM,QJAOMR', full_width_row: true}
+    layout_properties: {grid_position: 'EWRPHM,QJAOMR QMXIRB,IOEXJF', full_width_row: true}
     data_bindings: []
+  - type: Label
+    properties: {role: null, width: default, align: center, border: '', foreground: '',
+      visible: true, text: '', font_size: 16, font: '', spacing_above: none, icon_align: left,
+      spacing_below: none, italic: false, background: '', bold: true, underline: false,
+      icon: ''}
+    name: label_9
+    layout_properties: {grid_position: 'EWRPHM,GJYNPG FQBCRB,AQYFCY'}
+    data_bindings:
+    - {property: text, code: self.rb_res1_uat1.get_group_value()}
+    event_bindings: {show: label_9_show}
   - type: form:ResultsList
     properties: {}
     name: results_list_2
-    layout_properties: {grid_position: 'EWRPHM,GJYNPG', full_width_row: true}
+    layout_properties: {grid_position: 'EWRPHM,GJYNPG GRGDCX,CIMNUY', full_width_row: true}
