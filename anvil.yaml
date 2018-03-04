@@ -52,6 +52,9 @@ name: DoS Tools
 startup_form: MainForm
 renamed: true
 runtime_options: {server_version: python3-full}
+dependencies:
+- app_id: BSWGKL2MP4WPV6BC
+  version: {dev: false}
 services:
 - source: /runtime/services/anvil/secrets.yml
   client_config: {}
