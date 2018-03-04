@@ -8,7 +8,6 @@ from tables import app_tables
 from CCSCompareForm import CCSCompareForm
 from HomeForm import HomeForm
 from InfoForm import InfoForm
-import UserManagement.UserListForm
 
 class MainForm (MainFormTemplate):
   def __init__(self, **properties):
@@ -24,7 +23,6 @@ class MainForm (MainFormTemplate):
        
     self.content_panel.clear()
     self.content_panel.add_component(HomeForm())
-    self.content_panel.add_component(UserListForm.UserListForm())
 
   def add_login_logout_links(self):
     if anvil.users.get_user():
