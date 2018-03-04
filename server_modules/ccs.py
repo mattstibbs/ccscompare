@@ -42,8 +42,8 @@ def get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search
     'search_distance',
     'sex'])
   
-  case.case_ref = 'UAT'
-  case.case_id = 'UAT'
+  case.case_ref = 'TEST'
+  case.case_id = 'TEST'
   case.postcode = postcode
   case.surgery = surgery if surgery != '' else 'UNK'
   case.age = age_group
