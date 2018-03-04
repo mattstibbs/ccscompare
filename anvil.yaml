@@ -54,7 +54,7 @@ renamed: true
 runtime_options: {server_version: python3-full}
 dependencies:
 - app_id: BSWGKL2MP4WPV6BC
-  version: {dev: false}
+  version: {dev: true}
 services:
 - source: /runtime/services/anvil/secrets.yml
   client_config: {}
