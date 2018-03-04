@@ -21,9 +21,9 @@ def extract_result(result):
 
 @anvil.server.callable
 def search_by_service_type(postcode):
-  result = anvil.http.request(url='https://uat.pathwaysdos.nhs.uk/app/controllers/api/v1.0/services/byServiceType/TEST/{}/100/0/0/0/0/131/10'.format(postcode), 
-                              username=anvil.secrets.get_secret('dos_username_uat1'),
-                              password=anvil.secrets.get_secret('dos_password_uat1'), 
+  result = anvil.http.request(url='https://www.pathwaysdos.nhs.uk/app/controllers/api/v1.0/services/byServiceType/TEST/{}/100/0/0/0/0/131/10'.format(postcode), 
+                              username=anvil.secrets.get_secret('dos_username_pathways_live'),
+                              password=anvil.secrets.get_secret('dos_password_pathways_live'), 
                               json=True)
   results = result['success']['services']
   
@@ -73,9 +73,9 @@ def check_capacity_summary(postcode, surgery, age_group, sex, sg_code, sd_code, 
 @anvil.server.callable
 def search_surgeries(postcode):
   try:
-    result = anvil.http.request(url='https://uat.pathwaysdos.nhs.uk/app/controllers/api/v1.0/services/byServiceType/TEST/{}/20/0/0/0/0/100/100'.format(postcode), 
-                                username=anvil.secrets.get_secret('dos_username_uat1'),
-                                password=anvil.secrets.get_secret('dos_password_uat1'), 
+    result = anvil.http.request(url='https://www.pathwaysdos.nhs.uk/app/controllers/api/v1.0/services/byServiceType/TEST/{}/20/0/0/0/0/100/100'.format(postcode), 
+                                username=anvil.secrets.get_secret('dos_username_pathways_live'),
+                                password=anvil.secrets.get_secret('dos_password_pathways_live'), 
                                 json=True)
     results = result['success']['services']
     
