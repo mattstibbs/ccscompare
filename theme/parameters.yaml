@@ -3,3 +3,4 @@ roles:
   components: [Label]
 - name: position-tag
   components: [Label]
+- {name: glowing-red-border, components: null}

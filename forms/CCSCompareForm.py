@@ -26,6 +26,9 @@ class CCSCompareForm (CCSCompareFormTemplate):
 
   def btn_search_click (self, **event_args):
     
+    if not self.ensure_fields_populated():
+      return
+    
     if self.rb_res1_own.selected == True:
       print("Checking credentials")
       if self.txt_instance1_user.text == '' or self.txt_instance1_pass.text == '':
@@ -43,7 +46,11 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.btn_repeat_search.enabled = False
     self.btn_find_surgeries.enabled = False
     self.btn_search.text = 'Comparing...'
-    self.do_search()
+    try:
+      self.do_search()
+    except:
+      raise
+      
     self.btn_search.enabled = True
     self.btn_repeat_search.enabled = True
     self.btn_find_surgeries.enabled = True
@@ -66,7 +73,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
     
     results1_instance = self.rb_res1_uat1.get_group_value()
     results2_instance = self.rb_res2_uat1.get_group_value()
-    
+    print(self.txt_postcode.text)
     result_dict = anvil.server.call('check_capacity_summary', 
                                     postcode=self.txt_postcode.text.replace(' ', ''),
                                     age_group=self.dd_age_group.selected_value,
@@ -98,26 +105,46 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.previous_search_results = result_dict
   
   def dd_sg_change (self, **event_args):
-    self.dd_sd.items = anvil.server.call('get_sd_list', self.dd_sg.selected_value)
+    if self.dd_sg.selected_value in [None, 0]:
+        self.set_red_border(self.dd_sg)
+    else:
+      self.clear_red_border(self.dd_sg)
+      self.dd_sd.items = anvil.server.call('get_sd_list', self.dd_sg.selected_value)
+      self.dd_sd.selected_value = 0
+      
+  def dd_sd_change (self, **event_args):
+    if self.dd_sd.selected_value in [None, 0]:
+      self.set_red_border(self.dd_sd)
+    else:
+      self.clear_red_border(self.dd_sd)
 
-  def txt_postcode_has_changed (self, **event_args):
+  def dd_disposition_change (self, **event_args):
+    if self.dd_disposition.selected_value in [None, 0]:
+      self.set_red_border(self.dd_disposition)
+    else:
+      self.clear_red_border(self.dd_disposition)     
+
+  def txt_postcode_change (self, **event_args):
     if self.txt_postcode.text != '':
-      results = anvil.server.call_s('get_surgeries', self.txt_postcode.text.replace(' ',''))
-      if len(results) > 1:
-        self.lbl_bad_postcode.visible = False
-        self.btn_find_surgeries.visible = False
-        self.dd_surgery.items = results
-        self.dd_surgery.visible = True
-      else:
-        self.dd_surgery.visible = False
-        self.lbl_bad_postcode.visible = True
-        self.txt_postcode.text = ''
-        self.txt_surgery_code.text = ''
-        self.txt_postcode.focus()
+      self.clear_red_border(self.txt_postcode)
+      self.lbl_bad_postcode.visible = False
+      self.load_local_surgeries()
+      
+#       if len(results) > 1:
+#         self.btn_find_surgeries.visible = False
+#         self.clear_red_border(self.txt_postcode)
+#         self.dd_surgery.items = results
+#         self.dd_surgery.visible = True
+#       else:
+#         self.dd_surgery.visible = False
+#         self.lbl_bad_postcode.visible = True
+#         self.set_red_border(self.txt_postcode)
+#         self.txt_postcode.text = ''
+#         self.txt_surgery_code.text = ''
 
     else:
       self.lbl_bad_postcode.visible = True
-      self.txt_postcode.focus()
+      self.set_red_border(self.txt_postcode)
 
   def dd_surgery_change (self, **event_args):
     self.txt_surgery_code.text = self.dd_surgery.selected_value
@@ -167,48 +194,35 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.results_list_2.list_items = []
     self.results_list_2.refresh_data_bindings()
 
-  def check_box_1_change (self, **event_args):
-    if self.chk_instance1_owncreds.checked == True:
-      self.txt_instance1_user.visible = True
-      self.txt_instance1_pass.visible = True
-      self.lbl_instance1_user.visible = True
-      self.lbl_instance1_pass.visible = True
-    else:
-      self.txt_instance1_user.visible = False
-      self.txt_instance1_pass.visible = False   
-      self.lbl_instance1_user.visible = False
-      self.lbl_instance1_pass.visible = False
-
-  def check_box_2_change (self, **event_args):
-    if self.chk_instance2_owncreds.checked == True:
-      self.txt_instance2_user.visible = True
-      self.txt_instance2_pass.visible = True
-      self.lbl_instance2_user.visible = True
-      self.lbl_instance2_pass.visible = True
-    else:
-      self.txt_instance2_user.visible = False
-      self.txt_instance2_pass.visible = False
-      self.lbl_instance2_user.visible = False
-      self.lbl_instance2_pass.visible = False
-
 
   def btn_surgery_help_click (self, **event_args):
     alert("Type a GP surgery code into the text box, or select a nearby GP surgery from the drop-down. Leave both blank for 'Unknown Surgery'")
 
   def btn_repeat_search_click (self, **event_args):
+    self.btn_repeat_search.enabled = False
     previous_search = anvil.server.call('get_previous_search')
-    self.populate_previous_search_values(previous_search)
+    if previous_search:
+      self.populate_previous_search_values(previous_search)
+    else:
+      alert("No previous search found")
+    self.btn_repeat_search.enabled = True
     
   def populate_previous_search_values(self, previous_search):
+    
+    # Populate all the fields
     self.txt_postcode.text = previous_search['postcode']
     self.txt_surgery_code.text = previous_search['surgery']
     self.dd_sg.selected_value = previous_search['sg_code']
     self.dd_sd.items = anvil.server.call_s('get_sd_list', self.dd_sg.selected_value)
     self.dd_sd.selected_value = previous_search['sd_code']
-    self.dd_age_group.selected_value = previous_search['age_group']
-    self.dd_sex.selected_value = previous_search['sex']
     self.dd_disposition.selected_value = previous_search['disposition']
     
+    self.dd_age_group.selected_value = previous_search['age_group']
+    self.dd_sex.selected_value = previous_search['sex']
+    
+    self.ensure_fields_populated()
+    self.txt_postcode.raise_event('pressed_enter')
+        
     prev_instance_1 = previous_search['left_instance']
     if prev_instance_1 == 'uat1':
       self.rb_res1_uat1.selected = True
@@ -259,11 +273,13 @@ class CCSCompareForm (CCSCompareFormTemplate):
     else:
       self.rb_60.selected = True
 
-
   def load_local_surgeries (self, **event_args):
     self.btn_find_surgeries.enabled = False
+    self.btn_find_surgeries.text = 'Finding local surgeries...'
+    
     if self.txt_postcode.text != '':      
-      results = anvil.server.call_s('get_surgeries', self.txt_postcode.text.replace(' ',''))
+      results = anvil.server.call('get_surgeries', self.txt_postcode.text.replace(' ',''))
+      
       if len(results) > 1:
         self.lbl_bad_postcode.visible = False
         self.btn_find_surgeries.visible = False
@@ -276,11 +292,55 @@ class CCSCompareForm (CCSCompareFormTemplate):
           self.dd_surgery.selected_value = self.txt_surgery_code.text
         else:
           self.dd_surgery.selected_value = 'UNK'
+       
+      else:
+        self.dd_surgery.visible = False
+        self.btn_find_surgeries.visible = True
+        self.lbl_bad_postcode.visible = True
+        self.set_red_border(self.txt_postcode)
+        self.txt_surgery_code.text = ''
+        
     else:
-      self.txt_postcode.focus()
       self.lbl_bad_postcode.visible = True
+      
     self.btn_find_surgeries.enabled = True
+    self.btn_find_surgeries.text = 'Find local surgeries'
 
+  def ensure_fields_populated(self):
+    empty_fields = False
+    
+    # For each of the inputs, check that they contain valid values, and add a red border if not
+    if self.txt_postcode.text == '':
+      self.txt_postcode.role = 'glowing-red-border'
+      empty_fields = True
+    if self.dd_sg.selected_value in [None, 0]:
+      self.dd_sg.role = 'glowing-red-border'
+      empty_fields = True
+    if self.dd_sd.selected_value in [None, 0]:
+      self.dd_sd.role = 'glowing-red-border'
+      empty_fields = True
+    if self.dd_disposition.selected_value in [None, 0]:
+      self.dd_disposition.role = 'glowing-red-border'
+      empty_fields = True
+    
+    # If any of the fields were marked as empty return False, otherwise remove red borders and return True
+    if empty_fields:
+      return False
+    else:
+      self.txt_postcode.role = None
+      self.dd_sd.role = None
+      self.dd_sg.role = None
+      self.dd_disposition.role = None
+      return True
+
+  def set_red_border(self, thing):
+    thing.role = 'glowing-red-border'
+
+  def clear_red_border(self, thing):
+    thing.role = None
+
+  def form_refreshing_data_bindings (self, **event_args):
+    self.ensure_fields_populated()
 
 
 

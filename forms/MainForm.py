@@ -57,8 +57,10 @@ class MainForm (MainFormTemplate):
         return False
   
   def lnk_login_click (self, **event_args):
-    self.do_login()
-    self.content_panel.add_component(HomeForm())
+    if self.do_login():
+      self.content_panel.clear()
+      self.content_panel.add_component(HomeForm())
+      
     
   def logout(self):
     if anvil.users.get_user():
@@ -75,9 +77,3 @@ class MainForm (MainFormTemplate):
   def lnk_home_click (self, **event_args):
     self.content_panel.clear()
     self.content_panel.add_component(HomeForm())
-
-
-
-
-
-

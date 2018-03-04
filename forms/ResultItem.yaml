@@ -76,3 +76,4 @@ components:
     data_bindings:
     - {property: text, code: 'self.item[''address'']'}
   data_bindings: []
+item_type: {table_id: null}

@@ -27,6 +27,7 @@ def get_sg_list():
 def get_sd_list(sg_code):
   all_results = app_tables.sg_sd.search(sg_code=sg_code)
   results = [("{} ({})".format(result['sd_description'],result['sd_code']), result['sd_code']) for result in all_results]
+  results.append(("",0))
   results = set(results)
   results = sorted(list(results), reverse=True)
   return results
@@ -44,12 +45,15 @@ def get_surgeries(postcode):
 def get_previous_search():
   me = anvil.users.get_user()
   if me:
-    row = app_tables.log_searches.client_readable(user=me).search(tables.order_by("timestamp", ascending=False))[0]
+    rows = app_tables.log_searches.client_readable(user=me).search(tables.order_by("timestamp", ascending=False))
+    if len(rows) > 0:
+      row = rows[0]
+      new = dict(row)
+      new.pop('results')
+      new.pop('timestamp')
+      new['sg_code'] = "{}{}".format("SG", new['sgsd'].split(':')[0])
+      new['sd_code'] = "{}{}".format("SD", new['sgsd'].split(':')[1])
+      return new
+    else:
+      return None
   
-  new = dict(row)
-  new.pop('results')
-  new.pop('timestamp')
-  new['sg_code'] = "{}{}".format("SG", new['sgsd'].split(':')[0])
-  new['sd_code'] = "{}{}".format("SD", new['sgsd'].split(':')[1])
-  
-  return new
