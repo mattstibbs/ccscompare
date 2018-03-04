@@ -64,5 +64,5 @@ services:
   server_config: {auto_create_missing_columns: true}
 - source: /runtime/services/anvil/users.yml
   client_config: {allow_signup: true, enable_automatically: false, use_email: true,
-    confirm_email: true, allow_remember_me: true, remember_me_days: 7}
+    confirm_email: true, allow_remember_me: true, remember_me_days: 1}
   server_config: {user_table: 9063}
