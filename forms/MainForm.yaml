@@ -3,9 +3,14 @@ container:
   properties: {html: '@theme:dashboard.html'}
 components:
 - type: ColumnPanel
-  properties: {}
+  properties: {col_widths: '{}'}
   name: content_panel
   layout_properties: {slot: default}
+  components:
+  - type: form:BSWGKL2MP4WPV6BC:UserList
+    properties: {}
+    name: user_list_1
+    layout_properties: {grid_position: 'QBVGMY,EPGTSH'}
 - type: Link
   properties: {role: null, width: default, align: left, border: '', foreground: '',
     visible: true, text: Home, font_size: null, row_spacing: 10, wrap_on: mobile,
