@@ -76,7 +76,6 @@ class CCSCompareForm (CCSCompareFormTemplate):
     
     results1_instance = self.rb_res1_uat1.get_group_value()
     results2_instance = self.rb_res2_uat1.get_group_value()
-    print(self.txt_postcode.text)
     result_dict = anvil.server.call('check_capacity_summary', 
                                     postcode=self.txt_postcode.text.replace(' ', ''),
                                     age_group=self.dd_age_group.selected_value,
