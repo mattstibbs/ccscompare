@@ -13,9 +13,9 @@ def check_pending():
     waiting_users = app_tables.users.search(confirmed_email=True, enabled=False)
     for user in waiting_users:
       print(user['email'])
-      google.mail.send(to = 'dos-tools-admin@stibbsy.co.uk',
+      print(google.mail.send(to = 'dos-tools-admin@stibbsy.co.uk',
                     subject = "User waiting for authorisation",
-                    text = "{} is waiting for you to enable their account".format(user['email']))
+                    text = "{} is waiting for you to enable their account".format(user['email'])))
     response = anvil.server.HttpResponse(200, "Request successful")
     return response
   
