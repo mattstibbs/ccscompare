@@ -10,10 +10,10 @@ components:
       visible: true, text: 'You will need an account to use these tools.
 
 
-        You can easily request an account by clicking the "Request an account" link
-        on the login screen.', font_size: 18, font: '', spacing_above: small, icon_align: left,
-      spacing_below: small, italic: false, background: '', bold: false, underline: false,
-      icon: ''}
+        You can easily request an account by clicking the "Sign up for a new account"
+        link on the login screen.', font_size: 18, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
     name: label_2
     layout_properties: {grid_position: 'NKLUUN,VEDWKP'}
 - type: Button
