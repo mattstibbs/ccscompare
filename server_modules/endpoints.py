@@ -17,7 +17,7 @@ def check_pending():
                        subject = "User waiting for authorisation",
                        text = "{} is waiting for you to enable their account".format(user['email'])
                       )
-      app_tables.users.get(user)['admin_notified'] = True
+      user['admin_notified'] = True
       
     response = anvil.server.HttpResponse(200, "Request successful")
     return response
