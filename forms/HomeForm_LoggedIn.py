@@ -16,3 +16,7 @@ class HomeForm_LoggedIn (HomeForm_LoggedInTemplate):
   def button_2_click (self, **event_args):
     get_open_form().lnk_logout_click()
 
+  def load_info_form (self, **event_args):
+    get_open_form().load_info_form()
+
+

@@ -82,6 +82,13 @@ components:
     layout_properties: {grid_position: 'CTINQT,RBUNRJ TFSRXH,IZHGYD'}
   - type: Label
     properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: You are free to make changes in this environment., font_size: null,
+      font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: true, underline: false, icon: ''}
+    name: label_4
+    layout_properties: {grid_position: 'CTINQT,RBUNRJ KUDFXN,GVCAYG'}
+  - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
       visible: true, text: 'Software Version: v4.4
 
         Data: Last refreshed Feb 2018
@@ -116,6 +123,13 @@ components:
     name: link_4
     layout_properties: {grid_position: 'WXORAZ,BVBGCG MBPXCW,EUDNHO'}
   - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: red,
+      visible: true, text: Please don't make changes in this environment until the UAT period has officially begun.,
+      font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+      italic: false, background: '', bold: true, underline: false, icon: ''}
+    name: label_1
+    layout_properties: {grid_position: 'WXORAZ,BVBGCG NRZODP,SJZJQH'}
+  - type: Label
     properties: {role: null, width: default, align: left, border: '', foreground: '',
       visible: true, text: "Software Version: v4.4\nData: Next refresh on 5th March\
         \ 2018\n\nThis environment is non-live and used for User Acceptance Testing\
@@ -147,6 +161,13 @@ components:
       bold: false, underline: false, icon: ''}
     name: link_3
     layout_properties: {grid_position: 'VVSAXA,MRJQLY CLQBOL,KCMWGV'}
+  - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: red,
+      visible: true, text: Please don't make changes in this environment until the UAT period has officially begun.,
+      font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+      italic: false, background: '', bold: true, underline: false, icon: ''}
+    name: label_2
+    layout_properties: {grid_position: 'VVSAXA,MRJQLY REIIZN,VXRSVQ'}
   - type: Label
     properties: {role: null, width: default, align: left, border: '', foreground: '',
       visible: true, text: "Software Version: v4.6\nData: Next refresh on 5th March\
