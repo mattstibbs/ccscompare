@@ -10,9 +10,10 @@ from anvil.server import http_endpoint, request
 @http_endpoint('/check_pending_users', require_credentials=True)
 def check_pending():
   if request.username == anvil.secrets.get_secret('endpoint_username') and request.password == anvil.secrets.get_secret('endpoint_password'):
-    waiting_users = app_tables.users.search(confirmed_email=True, enabled=False)
+    waiting_users = app_tables.users.search(confirmed_email=True, enabled=False, admin_notified=False)
     
     for user in waiting_users:
+      
       google.mail.send(to = 'mattstibbs@gmail.com',
                        subject = "User waiting for authorisation",
                        text = "{} is waiting for you to enable their account".format(user['email'])
