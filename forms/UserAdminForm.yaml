@@ -1,0 +1,10 @@
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}
+components:
+- type: RepeatingPanel
+  properties: {item_template: UserItem}
+  name: repeating_panel_1
+  layout_properties: {grid_position: 'KZFWQF,RZYMKC'}
+  data_bindings:
+  - {property: items, code: 'self.item['''']'}

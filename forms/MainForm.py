@@ -10,6 +10,7 @@ from tables import app_tables
 from CCSCompareForm import CCSCompareForm
 from HomeForm import HomeForm
 from InfoForm import InfoForm
+from UserAdminForm import UserAdminForm
 
 class MainForm (MainFormTemplate):
   def __init__(self, **properties):
@@ -25,6 +26,8 @@ class MainForm (MainFormTemplate):
        
     self.content_panel.clear()
     self.content_panel.add_component(HomeForm())
+    
+    self.render_menu_items_from_permissions()
 
   def add_login_logout_links(self):
     if anvil.users.get_user():
@@ -54,6 +57,7 @@ class MainForm (MainFormTemplate):
         self.content_panel.clear()
         app_tables.log_logins.add_row(timestamp=datetime.datetime.now(), user=anvil.users.get_user())
         self.add_login_logout_links()
+        self.render_menu_items_from_permissions()
         return True
       else:
         return False
@@ -69,6 +73,7 @@ class MainForm (MainFormTemplate):
       self.content_panel.clear()
       anvil.users.logout()
       self.logout_button.remove_from_parent()
+      self.render_menu_items_from_permissions()
       self.add_component(self.login_button, slot="sidebar")
       self.content_panel.add_component(HomeForm())
  
@@ -79,3 +84,25 @@ class MainForm (MainFormTemplate):
   def lnk_home_click (self, **event_args):
     self.content_panel.clear()
     self.content_panel.add_component(HomeForm())
+    
+  def lnk_useradmin_click (self, **event_args):
+    self.content_panel.clear()
+    self.content_panel.add_component(UserAdminForm())
+
+  def render_menu_items_from_permissions(self):
+    if anvil.users.get_user():
+      u_permissions = anvil.server.call('get_permission_codes')
+    
+      if 'MENU_CCS_COMPARE' in u_permissions:
+        self.lnk_ccs_compare.visible = True
+      else:
+        self.lnk_ccs_compare.visible = False
+      
+      if 'MENU_USER_ADMIN' in u_permissions:
+        self.lnk_menu_useradmin.visible = True
+      else:
+        self.lnk_menu_useradmin.visible = False
+     
+    else:
+      self.lnk_ccs_compare.visible = False
+      self.lnk_menu_useradmin.visible = False
