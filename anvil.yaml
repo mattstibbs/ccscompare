@@ -1,10 +1,16 @@
 package_name: DoSTools
 secrets:
+  endpoint_password:
+    value: {? '' : 2cd1P6eZRIIx0MoToYR1thxYd1CUuAWENrK1p2nywloiUzz0OZRmW2ZLvvzNMVUVnLHzlu+1lvxXHod412c6cPvjG5vE94hm03U9wcs5yEp/1CnMZKB0sEs=}
+    type: secret
   dos_username_digital_uat3:
     value: {? '' : tvVfrNv84aWMqJwzyFlVDkKTPU8Nr0jNM2tiK5iD+lnCSOvZx9Jl5EYRWUdquI4+UTdEdp6KsMeVkzbsZUrAcQlxzxcFCXwn+UvEOt0Njwu2L+7QaG6qvm3Qb/A=}
     type: secret
   dos_password_digital_uat3:
     value: {? '' : cJOS3Qd9oUGbw1FK9EcNXsXK/jCIhJizvBJZK/b554SJvc6BG8HzzXKqE1tgtH/IJbZD0F0fJaggqxFWu8Z+krISF/V6T3yyP6oQtxxn4jTcnyeLHk0Tlxx3Bg==}
+    type: secret
+  endpoint_username:
+    value: {? '' : Wva6Z8KD6XquPDgNFjKGAVTDgJshfU8vPGuEAd1iHawDiXyKVHHogwUihZ4p7GjjoOhua3u+oWqOxFItSSYjb4V5aefoV5j0YNryHIkItFqq2sACdgPek4jzmSc=}
     type: secret
   dos_password_pathways_uat1:
     value: {? '' : Gymm7cBFpIa3fegi6SoWp5Sd1NEAQA80FyIsEYjgmZ19323Po0NBXYFFq22XUUQZNlccA+Gh9TasMsww8jJl9t4lkKPut3OpcJuR4GKnOUg4rhoy9+HhBLyyoQ==}
@@ -66,3 +72,6 @@ services:
   client_config: {allow_signup: true, enable_automatically: false, use_email: true,
     confirm_email: true, allow_remember_me: true, remember_me_days: 1}
   server_config: {user_table: 9063}
+- source: /runtime/services/google.yml
+  client_config: {}
+  server_config: {delegation_refresh_token: 1/ZVY3Gewhsp1QULIFO_Z4CaI6vXPzKjX93F_1vaKWSSITwUHQRoLG2Lm1AKR7Zxya}
