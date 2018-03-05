@@ -12,7 +12,8 @@ def check_pending():
   if request.username == anvil.secrets.get_secret('endpoint_username') and request.password == anvil.secrets.get_secret('endpoint_password'):
     waiting_users = app_tables.users.search(confirmed_email=True, enabled=False)
     for user in waiting_users:
-      google.mail.send(to = user['email'],
+      print(user['email'])
+      google.mail.send(to = user['dos-tools-admin@stibbsy.co.uk'],
                     subject = "User waiting for authorisation",
                     text = "{} is waiting for you to enable their account".format(user['email']))
     response = anvil.server.HttpResponse(200, "Request successful")
