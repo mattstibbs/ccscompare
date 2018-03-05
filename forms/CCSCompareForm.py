@@ -27,6 +27,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
   def btn_search_click (self, **event_args):
     
     if not self.ensure_fields_populated():
+      alert("You have not chosen settings for all of the necessary fields")
       return
     
     if self.rb_res1_own.selected == True:
@@ -193,10 +194,6 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.results_list_1.refresh_data_bindings()
     self.results_list_2.list_items = []
     self.results_list_2.refresh_data_bindings()
-
-
-  def btn_surgery_help_click (self, **event_args):
-    alert("Type a GP surgery code into the text box, or select a nearby GP surgery from the drop-down. Leave both blank for 'Unknown Surgery'")
 
   def btn_repeat_search_click (self, **event_args):
     self.btn_repeat_search.enabled = False

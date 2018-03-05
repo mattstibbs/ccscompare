@@ -1,6 +1,8 @@
 container:
   type: ColumnPanel
-  properties: {col_widths: '{}'}
+  properties: {role: null, width: default, border: '', foreground: '', visible: true,
+    row_spacing: 10, wrap_on: never, spacing_above: small, col_widths: '{}', spacing_below: small,
+    background: ''}
   event_bindings: {refreshing_data_bindings: form_refreshing_data_bindings}
 components:
 - type: ColumnPanel
@@ -49,35 +51,22 @@ components:
         underline: false, icon: ''}
       name: lbl_bad_postcode
       layout_properties: {row: UQIBCU, width_xs: 4, col_xs: 8, width: 185.5}
-    - type: Button
-      properties: {role: null, width: default, align: center, border: '', enabled: true,
-        foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
-        icon_align: top, spacing_below: small, italic: false, background: '', bold: false,
-        underline: false, icon: 'fa:question-circle'}
-      name: btn_surgery_help
-      layout_properties: {row: SFMOGL, width_xs: 2, col_xs: 0, width: 77.75}
-      event_bindings: {click: btn_surgery_help_click}
     - type: Label
       properties: {role: null, width: default, align: right, border: '', foreground: '',
         visible: true, text: Surgery Code, font_size: null, font: '', spacing_above: small,
         icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
         underline: false, icon: ''}
       name: label_7
-      layout_properties: {row: SFMOGL, width_xs: 2, col_xs: 2, width: 77.75}
+      layout_properties: {row: SFMOGL, width_xs: 3, col_xs: 1, width: 77.75}
     - type: TextBox
-      properties: {}
+      properties: {role: null, width: default, align: left, hide_text: false, placeholder: e.g. G345231,
+        border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+        font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false}
       name: txt_surgery_code
-      layout_properties: {row: SFMOGL, width_xs: 3, col_xs: 4}
+      layout_properties: {row: SFMOGL, width_xs: 3, col_xs: 4, width: 105.61699999999999}
       data_bindings: []
       event_bindings: {pressed_enter: txt_surgery_code_pressed_enter, change: txt_surgery_code_change}
-    - type: Button
-      properties: {role: null, width: default, align: center, border: '', enabled: true,
-        foreground: '', visible: true, text: Find local surgeries, font_size: null,
-        font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-        background: '', bold: false, underline: false, icon: ''}
-      name: btn_find_surgeries
-      layout_properties: {row: SFMOGL, width_xs: 4, col_xs: 7, width: 77.75}
-      event_bindings: {click: load_local_surgeries}
     - type: DropDown
       properties:
         role: null
@@ -99,6 +88,14 @@ components:
       name: dd_surgery
       layout_properties: {row: SFMOGL, width_xs: 5, col_xs: 7, width: 165.5}
       event_bindings: {change: dd_surgery_change}
+    - type: Button
+      properties: {role: null, width: default, align: center, border: '', enabled: true,
+        foreground: '', visible: true, text: Find local surgeries, font_size: null,
+        font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false, icon: ''}
+      name: btn_find_surgeries
+      layout_properties: {row: SFMOGL, width_xs: 4, col_xs: 7, width: 77.75}
+      event_bindings: {click: load_local_surgeries}
     - type: Label
       properties: {role: null, width: default, align: right, border: '', foreground: '',
         visible: true, text: Symptom Group, font_size: null, font: '', spacing_above: small,
