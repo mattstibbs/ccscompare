@@ -172,6 +172,14 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.label_8.text = self.rb_res1_uat1.get_group_value()    
     self.clear_results_lists()
 
+  def res1_own_role_clicked(self, **event_args):
+    alert("Note: Your account will need the appropriate security permissions for using the WebService / APIs.")
+    self.rb_res1_role_clicked()
+    
+  def res2_own_role_clicked(self, **event_args):
+    alert("Note: Your account will need the appropriate security permissions for using the WebService / APIs")
+    self.rb_res2_role_clicked()
+  
   def rb_res1_role_clicked(self, **event_args):
     selected_option = self.rb_res1_own.get_group_value()
     if selected_option == 'own':

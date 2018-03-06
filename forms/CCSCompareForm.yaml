@@ -303,7 +303,7 @@ components:
           background: '', bold: false, group_name: res1_role, underline: false}
         name: rb_res1_own
         layout_properties: {grid_position: 'HVWHEP,VUXTJR', full_width_row: true}
-        event_bindings: {clicked: rb_res1_role_clicked}
+        event_bindings: {clicked: res1_own_role_clicked}
       - type: ColumnPanel
         properties: {role: null, width: default, border: '', foreground: '', visible: false,
           row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"SBQNIB":15,"EROYMC":45,"PZUQJI":15,"QCQMXK":45}',
@@ -408,7 +408,7 @@ components:
           background: '', bold: false, group_name: res2_role, underline: false}
         name: rb_res2_own
         layout_properties: {grid_position: 'PETIBD,MKUNWO', full_width_row: true}
-        event_bindings: {clicked: rb_res2_role_clicked}
+        event_bindings: {clicked: res2_own_role_clicked}
       - type: ColumnPanel
         properties: {role: null, width: default, border: '', foreground: '', visible: false,
           row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"CCSRPK":15,"OVLPCY":45,"YBKKSV":15,"EQJAHD":45}',
