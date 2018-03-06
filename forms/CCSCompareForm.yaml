@@ -35,13 +35,13 @@ components:
       layout_properties: {grid_position: 'IDZUVM,QFDARC', row: UQIBCU, width_xs: 2,
         col_xs: 2, width: 116.617}
     - type: TextBox
-      properties: {role: null, width: default, align: left, hide_text: false, placeholder: '',
-        border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-        font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-        background: '', bold: false, underline: false}
+      properties: {role: glowing-red-border, width: default, align: left, hide_text: false,
+        placeholder: e.g. LS17NZ, border: '', enabled: true, foreground: '', visible: true,
+        text: '', font_size: null, font: '', spacing_above: small, type: text, spacing_below: small,
+        italic: false, background: '', bold: false, underline: false}
       name: txt_postcode
       layout_properties: {grid_position: 'IDZUVM,BLJHDW', row: UQIBCU, width_xs: 4,
-        col_xs: 4, width: 240}
+        col_xs: 4, width: 159.5}
       event_bindings: {pressed_enter: txt_postcode_change, lost_focus: txt_postcode_change}
       data_bindings: []
     - type: Label

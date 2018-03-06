@@ -99,6 +99,18 @@ body.anvil-highlight .nav-elt.placeholder {
 	box-shadow: 0 0 10px red;
 }
 
+.anvil-role-glowing-red-border:placeholder-shown {
+    outline: none;
+    border-color: red;
+	box-shadow: 0 0 10px red;
+}
+
+.anvil-role-glowing-red-border:-ms-input-placeholder {
+    outline: none;
+    border-color: red;
+	box-shadow: 0 0 10px red;
+}
+
 
 /* Responsive bits: Make the menu overlay the screen
    (and hidden by default) rather than displacing it

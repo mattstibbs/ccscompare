@@ -319,7 +319,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
     
     # For each of the inputs, check that they contain valid values, and add a red border if not
     if self.txt_postcode.text == '':
-      self.txt_postcode.role = 'glowing-red-border'
+#       self.txt_postcode.role = 'glowing-red-border'
       empty_fields = True
     if self.dd_sg.selected_value in [None, 0]:
       self.dd_sg.role = 'glowing-red-border'
