@@ -13,7 +13,7 @@ def check_pending():
     print("Checking for unauthorised users")
     for u in app_tables.users.search(confirmed_email=True, enabled=False):
       print(u['admin_notified'])
-    waiting_users = app_tables.users.search(confirmed_email=True, enabled=False, admin_notified=False)
+    waiting_users = app_tables.users.search(confirmed_email=True, enabled=False, admin_notified=None)
      
     if len(waiting_users) > 0:
       for user in waiting_users:   
