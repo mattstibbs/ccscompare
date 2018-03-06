@@ -17,7 +17,7 @@ class MainForm (MainFormTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
 
-    self.logout_button = Link(text="Logout")
+    self.logout_button = Link(text="Logout", icon="fa:power-off")
     self.logout_button.set_event_handler("click", self.lnk_logout_click)
   
     self.login_button = Link(text="Login")
@@ -96,6 +96,9 @@ class MainForm (MainFormTemplate):
 
   def render_menu_items_from_permissions(self):
     if anvil.users.get_user():
+      
+      self.lnk_change_password.visible = True
+      
       u_permissions = anvil.server.call('get_permission_codes')
     
       if 'MENU_CCS_COMPARE' in u_permissions:
@@ -117,5 +120,14 @@ class MainForm (MainFormTemplate):
       self.lnk_ccs_compare.visible = False
       self.lnk_menu_useradmin.visible = False
       self.lnk_menu_logins.visible = False
+      self.lnk_change_password.visible = False
+
+  def link_change_password_clicked (self, **event_args):
+    u = anvil.users.get_user()
+    if u:
+      print("Initiating password reset")
+      anvil.users.send_password_reset_email(u['email'])
+      alert("You will receive an email with instructions for resetting your password.")
+
 
 

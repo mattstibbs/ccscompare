@@ -1,10 +1,12 @@
 components:
 - type: Label
   properties: {role: null, width: default, align: center, border: 2pt solid red, foreground: red,
-    visible: true, text: "v4.6 UAT period does not start until 7th March. \n\nPlease\
-      \ do not make changes in UAT 2 or UAT 3 until the period has officially begun.",
-    font_size: 20, font: '', spacing_above: small, icon_align: left, spacing_below: small,
-    italic: false, background: '', bold: true, underline: false, icon: ''}
+    visible: true, text: 'v4.6 UAT period runs from 7th to the 14th March.
+
+
+      Use UAT 2 and UAT 3 to compare changes.', font_size: 20, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+    underline: false, icon: ''}
   name: label_1
   layout_properties: {grid_position: 'NBOCSN,GBPYIG'}
 - type: LinearPanel
@@ -38,7 +40,7 @@ components:
       properties: {role: null, width: default, align: full, border: '', enabled: true,
         foreground: '', visible: true, text: View Info, font_size: null, font: '',
         spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-        background: '', bold: true, underline: false, icon: 'fa:search'}
+        background: '', bold: true, underline: false, icon: 'fa:info'}
       name: button_1_copy
       layout_properties: {grid_position: 'MXKYBW,JNNHBJ'}
       event_bindings: {click: load_info_form}

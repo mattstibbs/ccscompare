@@ -18,11 +18,11 @@ components:
     - {property: text, code: 'self.item[''email'']'}
   - type: CheckBox
     properties: {role: null, width: default, align: left, border: '', enabled: true,
-      foreground: '', visible: true, text: Active, font_size: 20, font: '', spacing_above: small,
-      spacing_below: small, italic: false, background: '', bold: false, checked: false,
-      underline: false}
+      foreground: '', visible: true, text: Account is active, font_size: 20, font: '',
+      spacing_above: small, spacing_below: small, italic: false, background: '', bold: false,
+      checked: false, underline: false}
     name: check_box_1
-    layout_properties: {row: BHGOUR, width_xs: 2, col_xs: 5, width: 82.75}
+    layout_properties: {row: BHGOUR, width_xs: 4, col_xs: 5, width: 82.75}
     data_bindings:
     - {property: checked, code: 'self.item[''enabled'']', writeback: true}
 item_type: {table_id: 9063}
