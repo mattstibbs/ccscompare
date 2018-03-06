@@ -8,7 +8,6 @@ import anvil.server
 
 class ResultItem (ResultItemTemplate):
   def __init__(self, **properties):
-    # You must call self.init_components() before doing anything else in this function
     self.init_components(**properties)
     
   def get_bg_colour(self):
@@ -42,6 +41,4 @@ class ResultItem (ResultItemTemplate):
       return 'fa:ban'
     
   def get_distance(self):
-#     in_miles = float(self.item['distance']) * 0.621371
-#     print(in_miles)
-    return '{} km'.format(self.item['distance'])
+    return '{} mi'.format(self.item['distance'])

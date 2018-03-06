@@ -10,9 +10,3 @@ class UserItem (UserItemTemplate):
   def __init__(self, **properties):
     # You must call self.init_components() before doing anything else in this function
     self.init_components(**properties)
-
-    self.has_ccs_compare_permission()
-    
-  def has_ccs_compare_permission(self):
-    permissions = self.item['permissions']
-    print(permissions)

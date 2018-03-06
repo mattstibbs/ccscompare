@@ -258,6 +258,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
       self.rb_res1_own.raise_event('clicked')
     else:
       self.rb_res1_pathways.selected = True
+      self.rb_res1_digital.raise_event('clicked')
       
     prev_role_2 = previous_search['right_referral_role']
     if prev_role_2 == 'digital':
@@ -267,7 +268,8 @@ class CCSCompareForm (CCSCompareFormTemplate):
       self.rb_res2_own.selected = True
       self.rb_res2_own.raise_event('clicked')
     else:
-      self.rb_res1_pathways.selected = True
+      self.rb_res2_pathways.selected = True
+      self.rb_res2_own.raise_event('clicked')
 
     prev_dist = previous_search['search_distance']
     if prev_dist == 15:

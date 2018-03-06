@@ -21,4 +21,4 @@ class UserAdminForm (UserAdminFormTemplate):
       get_open_form().lnk_home_click
       
 #     self.repeating_panel_1.items = app_tables.users.search()
-    self.repeating_panel_1.items = anvil.server.call('get_users_and_permissions')
+    self.repeating_panel_1.items = anvil.server.call('get_users')

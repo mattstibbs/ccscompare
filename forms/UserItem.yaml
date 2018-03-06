@@ -22,14 +22,7 @@ components:
       spacing_below: small, italic: false, background: '', bold: false, checked: false,
       underline: false}
     name: check_box_1
-    layout_properties: {row: BHGOUR, width_xs: 2, col_xs: 10, width: 82.75}
+    layout_properties: {row: BHGOUR, width_xs: 2, col_xs: 5, width: 82.75}
     data_bindings:
     - {property: checked, code: 'self.item[''enabled'']', writeback: true}
-  - type: CheckBox
-    properties: {role: null, width: default, align: left, border: '', enabled: true,
-      foreground: '', visible: true, text: CCS Compare, font_size: 16, font: '', spacing_above: small,
-      spacing_below: small, italic: false, background: '', bold: false, checked: false,
-      underline: false}
-    name: check_box_2
-    layout_properties: {row: QRTISD, width_xs: 3, col_xs: 0, width: 82.75}
 item_type: {table_id: 9063}

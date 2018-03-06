@@ -10,5 +10,9 @@ import anvil.server
 def get_users_and_permissions():
   userpermissions = app_tables.userpermissions.search()
   return userpermissions
-  
 
+
+@anvil.server.callable
+def get_users():
+  return app_tables.users.search()
+  
