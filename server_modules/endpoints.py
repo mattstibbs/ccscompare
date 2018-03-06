@@ -20,7 +20,7 @@ def check_pending():
                       )
       
       user['admin_notified'] = True
-      
+      print("Sent admin notification email for {}".format(user['email']))
     response = anvil.server.HttpResponse(200, "Request successful")
     return response
   
