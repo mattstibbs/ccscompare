@@ -116,5 +116,6 @@ class MainForm (MainFormTemplate):
     else:
       self.lnk_ccs_compare.visible = False
       self.lnk_menu_useradmin.visible = False
+      self.lnk_menu_logins.visible = False
 
 
