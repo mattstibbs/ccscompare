@@ -6,6 +6,6 @@ import anvil.users
 import tables
 from tables import app_tables
 
-class UserItem (UserItemTemplate):
+class UserLoginItem (UserLoginItemTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)

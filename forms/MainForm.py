@@ -11,6 +11,7 @@ from CCSCompareForm import CCSCompareForm
 from HomeForm import HomeForm
 from InfoForm import InfoForm
 from UserAdminForm import UserAdminForm
+from UserLoginsForm import UserLoginsForm
 
 class MainForm (MainFormTemplate):
   def __init__(self, **properties):
@@ -88,6 +89,10 @@ class MainForm (MainFormTemplate):
   def lnk_useradmin_click (self, **event_args):
     self.content_panel.clear()
     self.content_panel.add_component(UserAdminForm())
+    
+  def lnk_menu_logins_click (self, **event_args):
+    self.content_panel.clear()
+    self.content_panel.add_component(UserLoginsForm())
 
   def render_menu_items_from_permissions(self):
     if anvil.users.get_user():
@@ -102,7 +107,14 @@ class MainForm (MainFormTemplate):
         self.lnk_menu_useradmin.visible = True
       else:
         self.lnk_menu_useradmin.visible = False
-     
+
+      if 'MENU_USER_LOGINS' in u_permissions:
+        self.lnk_menu_logins.visible = True
+      else:
+        self.lnk_menu_logins.visible = False     
+
     else:
       self.lnk_ccs_compare.visible = False
       self.lnk_menu_useradmin.visible = False
+
+
