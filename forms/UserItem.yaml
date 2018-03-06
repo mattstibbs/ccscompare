@@ -3,17 +3,18 @@ container:
   properties: {col_widths: '{}'}
 components:
 - type: GridPanel
-  properties: {}
+  properties: {role: null, width: default, border: '', foreground: '', visible: true,
+    row_spacing: 10, spacing_above: small, spacing_below: small, background: ''}
   name: grid_panel_1
-  layout_properties: {grid_position: 'JSPPZM,KADESN'}
+  layout_properties: {grid_position: 'JSPPZM,KADESN', full_width_row: true}
   components:
   - type: Label
     properties: {role: null, width: default, align: left, border: '', foreground: '',
-      visible: true, text: '', font_size: 18, font: '', spacing_above: small, icon_align: left,
+      visible: true, text: '', font_size: 20, font: '', spacing_above: small, icon_align: left,
       spacing_below: small, italic: false, background: '', bold: false, underline: false,
       icon: ''}
     name: lbl_email
-    layout_properties: {row: BHGOUR, width_xs: 5, col_xs: 0, width: 195.5}
+    layout_properties: {row: BHGOUR, width_xs: 4, col_xs: 0, width: 195.5}
     data_bindings:
     - {property: text, code: 'self.item[''email'']'}
   - type: CheckBox
@@ -22,7 +23,15 @@ components:
       spacing_above: small, spacing_below: small, italic: false, background: '', bold: false,
       checked: false, underline: false}
     name: check_box_1
-    layout_properties: {row: BHGOUR, width_xs: 4, col_xs: 5, width: 82.75}
+    layout_properties: {row: BHGOUR, width_xs: 4, col_xs: 4, width: 82.75}
     data_bindings:
     - {property: checked, code: 'self.item[''enabled'']', writeback: true}
+  - type: Button
+    properties: {role: null, width: default, align: right, border: '', enabled: true,
+      foreground: '', visible: true, text: Send Password Reset Email, font_size: 16,
+      font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: 'fa:repeat'}
+    name: reset_password
+    layout_properties: {row: BHGOUR, width_xs: 4, col_xs: 8, width: 195.5}
+    event_bindings: {click: reset_password_click}
 item_type: {table_id: 9063}
