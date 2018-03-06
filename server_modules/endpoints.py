@@ -11,6 +11,8 @@ from anvil.server import http_endpoint, request
 def check_pending():
   if request.username == anvil.secrets.get_secret('endpoint_username') and request.password == anvil.secrets.get_secret('endpoint_password'):
     print("Checking for unauthorised users")
+    for u in app_tables.users.search(confirmed_email=True, enabled=False, admin_notified=False):
+      print(u['admin_notified'])
     waiting_users = app_tables.users.search(confirmed_email=True, enabled=False, admin_notified=False)
      
     if len(waiting_users) > 0:
