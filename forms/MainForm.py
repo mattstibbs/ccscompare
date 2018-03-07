@@ -33,6 +33,8 @@ class MainForm (MainFormTemplate):
     self.content_panel.add_component(HomeForm())
     
     self.render_menu_items_from_permissions()
+    
+    analytics.identify(anvil.users.get_user()['email'], {'email': anvil.users.get_user()['email']})
 
   def add_login_logout_links(self):
     if anvil.users.get_user():
@@ -89,7 +91,7 @@ class MainForm (MainFormTemplate):
       self.logout()
 
   def lnk_home_click (self, **event_args):
-    analytics.track('Clicked Home Button', { 'location': 'sidebar', 'item': 'lnk_home' })
+    analytics.track(anvil.users.get_user()['email'], 'Clicked Home Button', { 'location': 'sidebar', 'item': 'lnk_home' })
     self.content_panel.clear()
     self.content_panel.add_component(HomeForm())
     
