@@ -66,6 +66,7 @@ class MainForm (MainFormTemplate):
         return False
   
   def lnk_login_click (self, **event_args):
+    analytics.track('Clicked Login Button', { 'location': 'sidebar', 'item': 'lnk_login' })
     if self.do_login():
       self.content_panel.clear()
       self.content_panel.add_component(HomeForm())
@@ -81,20 +82,22 @@ class MainForm (MainFormTemplate):
       self.content_panel.add_component(HomeForm())
  
   def lnk_logout_click (self, **event_args):
-    analytics.track('Clicked Logout Button', { 'location': 'menu', 'type': 'menuitem' })
+    analytics.track('Clicked Logout Button', { 'location': 'sidebar', 'item': 'lnk_logout' })
     if confirm("Are you sure you want to log out?"):
       self.logout()
 
   def lnk_home_click (self, **event_args):
-    analytics.track('Clicked Home Button', { 'location': 'menu', 'type': 'menuitem' })
+    analytics.track('Clicked Home Button', { 'location': 'sidebar', 'item': 'lnk_home' })
     self.content_panel.clear()
     self.content_panel.add_component(HomeForm())
     
   def lnk_useradmin_click (self, **event_args):
+    analytics.track('Clicked User Admin Button', { 'location': 'sidebar', 'item': 'lnk_useradmin' })
     self.content_panel.clear()
     self.content_panel.add_component(UserAdminForm())
     
   def lnk_menu_logins_click (self, **event_args):
+    analytics.track('Clicked User Logins Button', { 'location': 'sidebar', 'item': 'lnk_userlogins' })
     self.content_panel.clear()
     self.content_panel.add_component(UserLoginsForm())
 
