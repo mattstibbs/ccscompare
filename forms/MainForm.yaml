@@ -45,7 +45,7 @@ components:
   layout_properties: {slot: nav-right}
 - type: Label
   properties: {role: null, width: default, align: center, border: '', foreground: '',
-    visible: true, text: v1.6.4, font_size: 12, font: '', spacing_above: small, icon_align: left,
+    visible: true, text: v1.6.5, font_size: 12, font: '', spacing_above: small, icon_align: left,
     spacing_below: small, italic: true, background: '', bold: false, underline: false,
     icon: ''}
   name: lbl_version

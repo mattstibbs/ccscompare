@@ -16,7 +16,8 @@ def extract_result(result):
   new_result = {
     'name': result['name'],
     'address': "".join(result['address']),
-    'odscode': result['odsCode']
+    'odscode': result['odsCode'],
+    'distance': result['patientDistance']
   }
   return new_result
 
@@ -75,7 +76,7 @@ def check_capacity_summary(postcode, surgery, age_group, sex, sg_code, sd_code, 
 @anvil.server.callable
 def search_surgeries(postcode):
   try:
-    result = anvil.http.request(url='https://www.pathwaysdos.nhs.uk/app/controllers/api/v1.0/services/byServiceType/TEST/{}/20/0/0/0/0/100/100'.format(postcode), 
+    result = anvil.http.request(url='https://www.pathwaysdos.nhs.uk/app/controllers/api/v1.0/services/byServiceType/TEST/{}/50/0/0/0/0/100/100'.format(postcode), 
                                 username=anvil.secrets.get_secret('dos_username_pathways_live'),
                                 password=anvil.secrets.get_secret('dos_password_pathways_live'), 
                                 json=True)
@@ -87,4 +88,6 @@ def search_surgeries(postcode):
       results = []
 
   new_result_list = [extract_result(r) for r in results]
+  print(len(new_result_list))
+  print(new_result_list[0])
   return new_result_list
