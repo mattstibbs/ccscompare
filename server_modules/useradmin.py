@@ -38,9 +38,18 @@ def activate_user(u):
       data={"from": "DoS Tools <admin@mg.dos-tools.tech>",
               "to": "Matt Stibbs <m.stibbs@nhs.net>",
               "subject": "User activated",
-              "text": "User {} has been activated".format(u['enabled'])
+              "text": "User {} has been activated".format(u['email'])
            },
       username="api",
       password=anvil.secrets.get_secret('mailgun_key'))
   
-  print("response = ",resp)
+  resp = anvil.http.request(
+      url="https://api.mailgun.net/v3/mg.dos-tools.tech/messages",
+      method="POST",
+      data={"from": "DoS Tools <admin@mg.dos-tools.tech>",
+              "to": u['email'],
+              "subject": "DoS Compare Tool account activated",
+              "text": "Account for {} has been activated".format(u['email'])
+           },
+      username="api",
+      password=anvil.secrets.get_secret('mailgun_key'))  
