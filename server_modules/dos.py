@@ -88,6 +88,4 @@ def search_surgeries(postcode):
       results = []
 
   new_result_list = [extract_result(r) for r in results]
-  print(len(new_result_list))
-  print(new_result_list[0])
   return new_result_list
