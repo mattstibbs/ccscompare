@@ -7,7 +7,7 @@ import anvil.users
 import tables
 from tables import app_tables
 
-class UserLoginsForm (UserLoginsFormTemplate):
+class UserSearchesForm (UserSearchesFormTemplate):
   def __init__(self, **properties):
     # You must call self.init_components() before doing anything else in this function
     self.init_components(**properties)
@@ -20,7 +20,7 @@ class UserLoginsForm (UserLoginsFormTemplate):
       get_open_form().content_panel.clear()
       get_open_form().lnk_home_click
     
-    logins = app_tables.log_logins.search(tables.order_by("timestamp", ascending=False))[:40]
+    logins = app_tables.log_searches.search(tables.order_by("timestamp", ascending=False))[:40]
 
-    self.pnl_user_logins_list.items = logins
+    self.pnl_user_searches_list.items = logins
     

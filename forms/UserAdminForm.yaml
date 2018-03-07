@@ -4,12 +4,11 @@ container:
 components:
 - type: RepeatingPanel
   properties: {role: null, width: default, border: '', foreground: '', items: null,
-    visible: true, spacing_above: small, spacing_below: small, item_template: UserItem,
+    visible: true, spacing_above: small, spacing_below: small, item_template: UserAdminItem,
     background: ''}
   name: repeating_panel_1
-  layout_properties: {grid_position: 'KZFWQF,RZYMKC', full_width_row: true}
-  data_bindings:
-  - {property: items, code: 'self.item['''']'}
+  layout_properties: {grid_position: 'KZFWQF,BTCGIM', full_width_row: true}
+  data_bindings: []
 - type: form:GoogleAnalytics
   properties: {}
   name: google_analytics_1

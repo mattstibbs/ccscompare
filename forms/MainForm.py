@@ -14,6 +14,8 @@ from InfoForm import InfoForm
 from UserAdminForm import UserAdminForm
 from UserLoginsForm import UserLoginsForm
 from HelpForm import HelpForm
+from UserSearchesForm import UserSearchesForm
+
 
 class MainForm (MainFormTemplate):
   def __init__(self, **properties):
@@ -100,6 +102,11 @@ class MainForm (MainFormTemplate):
     analytics.track('Clicked User Logins Button', { 'location': 'sidebar', 'item': 'lnk_userlogins' })
     self.content_panel.clear()
     self.content_panel.add_component(UserLoginsForm())
+    
+  def lnk_menu_searches_click (self, **event_args):
+    analytics.track('Clicked User Searches Button', { 'location': 'sidebar', 'item': 'lnk_usersearches' })
+    self.content_panel.clear()
+    self.content_panel.add_component(UserSearchesForm())
 
   def render_menu_items_from_permissions(self):
     if anvil.users.get_user():
@@ -115,13 +122,12 @@ class MainForm (MainFormTemplate):
       
       if 'MENU_USER_ADMIN' in u_permissions:
         self.lnk_menu_useradmin.visible = True
+        self.lnk_menu_logins.visible = True
+        self.lnk_menu_searches.visible = True
       else:
         self.lnk_menu_useradmin.visible = False
-
-      if 'MENU_USER_LOGINS' in u_permissions:
-        self.lnk_menu_logins.visible = True
-      else:
-        self.lnk_menu_logins.visible = False     
+        self.lnk_menu_logins.visible = False
+        self.lnk_menu_searches.visible = False
 
     else:
       self.lnk_ccs_compare.visible = False

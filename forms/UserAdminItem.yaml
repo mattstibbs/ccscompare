@@ -10,26 +10,27 @@ components:
   components:
   - type: Label
     properties: {role: null, width: default, align: left, border: '', foreground: '',
-      visible: true, text: '', font_size: 20, font: '', spacing_above: small, icon_align: left,
+      visible: true, text: '', font_size: 16, font: '', spacing_above: small, icon_align: left,
       spacing_below: small, italic: false, background: '', bold: false, underline: false,
       icon: ''}
     name: lbl_email
     layout_properties: {row: BHGOUR, width_xs: 4, col_xs: 0, width: 195.5}
     data_bindings:
     - {property: text, code: 'self.item[''email'']'}
-  - type: CheckBox
-    properties: {role: null, width: default, align: left, border: '', enabled: true,
-      foreground: '', visible: true, text: Account is active, font_size: 20, font: '',
-      spacing_above: small, spacing_below: small, italic: false, background: '', bold: false,
-      checked: false, underline: false}
-    name: check_box_1
-    layout_properties: {row: BHGOUR, width_xs: 4, col_xs: 4, width: 82.75}
-    data_bindings:
-    - {property: checked, code: 'self.item[''enabled'']', writeback: true}
   - type: Button
-    properties: {role: null, width: default, align: right, border: '', enabled: true,
-      foreground: '', visible: true, text: Send Password Reset Email, font_size: 16,
-      font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+    properties: {role: null, width: default, align: center, border: '', enabled: true,
+      foreground: '', visible: true, text: Activate User, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: 'fa:power-off'}
+    name: button_1
+    layout_properties: {row: BHGOUR, width_xs: 3, col_xs: 5, width: 139.117}
+    data_bindings:
+    - {property: text, code: self.get_user_activated_status()}
+    event_bindings: {click: button_1_click}
+  - type: Button
+    properties: {role: null, width: default, align: center, border: '', enabled: true,
+      foreground: '', visible: true, text: Password Reset, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: 'fa:repeat'}
     name: reset_password
     layout_properties: {row: BHGOUR, width_xs: 4, col_xs: 8, width: 195.5}
