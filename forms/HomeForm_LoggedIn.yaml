@@ -1,14 +1,23 @@
 components:
 - type: Label
   properties: {role: null, width: default, align: center, border: 2pt solid red, foreground: red,
-    visible: true, text: 'v4.6 UAT period runs from 7th to the 14th March.
+    visible: true, text: 'Note: This is an Alpha product. For more information visit
+      the Help section.', font_size: 20, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: true, underline: false,
+    icon: ''}
+  name: label_1
+  layout_properties: {grid_position: 'KFGPUY,WWPNVP'}
+- type: Label
+  properties: {role: null, width: default, align: center, border: 2pt solid green,
+    foreground: green, visible: true, text: 'v4.6 UAT period runs from 7th to the
+      14th March.
 
 
       Use UAT 2 and UAT 3 to compare changes.', font_size: 20, font: '', spacing_above: small,
     icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
     underline: false, icon: ''}
-  name: label_1
-  layout_properties: {grid_position: 'NBOCSN,GBPYIG'}
+  name: label_1_copy
+  layout_properties: {grid_position: 'LVLYYP,IYLWPI'}
 - type: LinearPanel
   properties: {role: null, width: default, border: '', foreground: '', visible: true,
     row_spacing: 10, spacing_above: small, spacing_below: small, background: ''}
