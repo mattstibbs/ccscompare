@@ -194,6 +194,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.results_list_2.refresh_data_bindings()
 
   def btn_repeat_search_click (self, **event_args):
+    analytics.track('Clicked Use Previous Results Button', { 'location': 'ccs_compare', 'item': 'btn_use_previous' })
     self.btn_repeat_search.enabled = False
     previous_search = anvil.server.call('get_previous_search')
     if previous_search:

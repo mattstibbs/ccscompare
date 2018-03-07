@@ -137,5 +137,6 @@ class MainForm (MainFormTemplate):
       alert("You will receive an email with instructions for resetting your password.")
 
   def lnk_help_click (self, **event_args):
+    analytics.track('Clicked Help Button', { 'location': 'sidebar', 'item': 'lnk_help' })
     self.content_panel.clear()
     self.content_panel.add_component(HelpForm())
