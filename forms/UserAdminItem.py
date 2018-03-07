@@ -28,5 +28,7 @@ class UserAdminItem (UserAdminItemTemplate):
       return "#FF9999"
     
   def button_1_click (self, **event_args):
-    anvil.server.call('trigger_user_activation', self.item['email'])
+    result = anvil.server.call('trigger_user_activation', self.item['email'])
+    if result:
+      alert("User activated and email notification sent to {}".format(self.item['email']))
     self.parent.items = anvil.server.call('get_users')

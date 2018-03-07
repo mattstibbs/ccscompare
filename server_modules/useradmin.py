@@ -17,12 +17,13 @@ def trigger_user_activation(user_email):
   u = app_tables.users.get(email=user_email)
   
   if u['enabled'] == True:
-    deactivate_user(u)
+    return deactivate_user(u)
   elif u['enabled'] == False:
-    activate_user(u)
+    return activate_user(u)
 
 def deactivate_user(u):
   u['enabled'] = False
+  return False
   
 def activate_user(u):
   u['enabled'] = True
@@ -53,3 +54,5 @@ def activate_user(u):
            },
       username="api",
       password=anvil.secrets.get_secret('mailgun_key'))  
+  
+  return True
