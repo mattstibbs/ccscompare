@@ -3,6 +3,9 @@ secrets:
   endpoint_password:
     value: {? '' : 2cd1P6eZRIIx0MoToYR1thxYd1CUuAWENrK1p2nywloiUzz0OZRmW2ZLvvzNMVUVnLHzlu+1lvxXHod412c6cPvjG5vE94hm03U9wcs5yEp/1CnMZKB0sEs=}
     type: secret
+  mailgun_key:
+    value: {? '' : W+GYPmXUxphIXmi6gg+TV1Cb0PG5ebfk9yAve0V3nLSUuOYAkYj61WPlfJhg8S2GslrHZy/LjB/XlNxMCGjtB7pe59NEE+Y8VOcb9mt//ZZTji3gMSl3XvA0EX9w3jzrlVz6TvJ8U/JRCw3gsm/Cj04K6w==}
+    type: secret
   dos_username_digital_uat3:
     value: {? '' : tvVfrNv84aWMqJwzyFlVDkKTPU8Nr0jNM2tiK5iD+lnCSOvZx9Jl5EYRWUdquI4+UTdEdp6KsMeVkzbsZUrAcQlxzxcFCXwn+UvEOt0Njwu2L+7QaG6qvm3Qb/A=}
     type: secret
