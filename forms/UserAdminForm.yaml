@@ -10,3 +10,7 @@ components:
   layout_properties: {grid_position: 'KZFWQF,RZYMKC', full_width_row: true}
   data_bindings:
   - {property: items, code: 'self.item['''']'}
+- type: form:GoogleAnalytics
+  properties: {}
+  name: google_analytics_1
+  layout_properties: {grid_position: 'KDESTQ,OLMYRW'}

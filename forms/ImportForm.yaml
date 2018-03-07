@@ -54,3 +54,7 @@ components:
   name: file_loader_2
   layout_properties: {grid_position: 'VKDYBR,DCGZLF'}
   event_bindings: {change: file_loader_2_change}
+- type: form:GoogleAnalytics
+  properties: {}
+  name: google_analytics_1
+  layout_properties: {grid_position: 'JEYALS,LDNGZC'}
