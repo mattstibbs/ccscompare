@@ -37,13 +37,14 @@ def get_sd_list(sg_code):
 @anvil.server.callable
 def get_surgeries(postcode):
   all_results = dos.search_surgeries(postcode)
+  all_results = list(all_results)
+  all_results.append({'name': 'Unknown Surgery', 'odscode': 'UNK', 'distance': "0.0"})
+  all_results = sorted(all_results, key=lambda result: result['distance'])
+  
   results = []
   if len(all_results) > 0:
     results = [("{} ({}) - {}mi".format(result['name'], result['odscode'], result['distance']), result['odscode']) for result in all_results]
-  results.append((" Unknown Surgery", "UNK"))
-  results = set(results)
-  results = list(results)
-  results = sorted(results)
+#   results.append(("1 - Unknown Surgery", "UNK"))
   return results
 
 @anvil.server.callable
