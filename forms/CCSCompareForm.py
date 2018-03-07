@@ -28,6 +28,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.dd_disposition.items = anvil.server.call('get_dispositions')
 
   def btn_search_click (self, **event_args):
+    analytics.track('Clicked Search Button', { 'location': 'ccs_compare', 'item': 'btn_search' })
     
     if not self.ensure_fields_populated():
       alert("You have not chosen settings for all of the necessary fields")
