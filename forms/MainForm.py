@@ -13,6 +13,7 @@ from HomeForm import HomeForm
 from InfoForm import InfoForm
 from UserAdminForm import UserAdminForm
 from UserLoginsForm import UserLoginsForm
+from HelpForm import HelpForm
 
 class MainForm (MainFormTemplate):
   def __init__(self, **properties):
@@ -130,5 +131,6 @@ class MainForm (MainFormTemplate):
       anvil.users.send_password_reset_email(u['email'])
       alert("You will receive an email with instructions for resetting your password.")
 
-
-
+  def lnk_help_click (self, **event_args):
+    self.content_panel.clear()
+    self.content_panel.add_component(HelpForm())
