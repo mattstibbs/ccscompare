@@ -38,7 +38,8 @@ def get_sd_list(sg_code):
 def get_surgeries(postcode):
   all_results = dos.search_surgeries(postcode)
   results = [("{} ({})".format(result['name'],result['odscode']), result['odscode']) for result in all_results]
-  results.append(("", "UNK"))
+  results.append((" Unknown Surgery", "UNK"))
+  print(len(results))
   results = set(results)
   results = sorted(list(results))
   return results

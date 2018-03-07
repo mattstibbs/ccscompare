@@ -289,7 +289,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
     if self.txt_postcode.text != '':      
       results = anvil.server.call('get_surgeries', self.txt_postcode.text.replace(' ',''))
       
-      if len(results) > 1:
+      if len(results) > 0:
         self.lbl_bad_postcode.visible = False
         self.btn_find_surgeries.visible = False
         self.dd_surgery.items = results
