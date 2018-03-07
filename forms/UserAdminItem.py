@@ -21,6 +21,12 @@ class UserAdminItem (UserAdminItemTemplate):
     elif self.item['enabled'] == False:
       return "Activate User"
 
+  def get_user_background(self, **event_args):
+    if self.item['enabled'] == True:
+      return ""
+    elif self.item['enabled'] == False:
+      return "#FF9999"
+    
   def button_1_click (self, **event_args):
     anvil.server.call('trigger_user_activation', self.item['email'])
     self.parent.items = anvil.server.call('get_users')

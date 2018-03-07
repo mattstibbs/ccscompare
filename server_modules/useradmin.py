@@ -8,12 +8,6 @@ import anvil.server
 
 
 @anvil.server.callable
-def get_users_and_permissions():
-  userpermissions = app_tables.userpermissions.search()
-  return userpermissions
-
-
-@anvil.server.callable
 def get_users():
   return app_tables.users.search()
 
@@ -26,7 +20,6 @@ def trigger_user_activation(user_email):
   elif u['enabled'] == False:
     activate_user(u)
 
-    
 def deactivate_user(u):
   u['enabled'] = False
   

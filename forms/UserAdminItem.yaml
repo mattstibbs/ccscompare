@@ -1,6 +1,8 @@
 container:
   type: ColumnPanel
-  properties: {col_widths: '{}'}
+  properties: {role: null, width: default, border: '', foreground: '', visible: true,
+    row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{}', spacing_below: small,
+    background: ''}
 components:
 - type: GridPanel
   properties: {role: null, width: default, border: '', foreground: '', visible: true,
@@ -35,4 +37,6 @@ components:
     name: reset_password
     layout_properties: {row: BHGOUR, width_xs: 4, col_xs: 8, width: 195.5}
     event_bindings: {click: reset_password_click}
+  data_bindings:
+  - {property: background, code: self.get_user_background()}
 item_type: {table_id: 9063}
