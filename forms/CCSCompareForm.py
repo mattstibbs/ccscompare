@@ -225,6 +225,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
       self.rb_res1_uat2.selected = True
     elif prev_instance_1 == 'uat3':
       self.rb_res1_uat3.selected = True
+    self.rb_res1_clicked()
       
     prev_instance_2 = previous_search['right_instance']
     if prev_instance_2 == 'live':
@@ -235,6 +236,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
       self.rb_res2_uat2.selected = True
     elif prev_instance_2 == 'uat3':
       self.rb_res2_uat3.selected = True
+    self.rb_res2_clicked()
       
     prev_role_1 = previous_search['left_referral_role']
     if prev_role_1 == 'digital':
