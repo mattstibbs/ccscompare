@@ -74,5 +74,5 @@ services:
   client_config: {}
   server_config: {delegation_refresh_token: 1/ZVY3Gewhsp1QULIFO_Z4CaI6vXPzKjX93F_1vaKWSSITwUHQRoLG2Lm1AKR7Zxya}
 - source: /runtime/services/segment.yml
-  client_config: {write_key: cARwzyOvId38sIhTS5tjUcfkhmosf6gU}
+  client_config: {write_key: xmKC58RlL73AzPFfILUQva7PcX4knkXD}
   server_config: {}

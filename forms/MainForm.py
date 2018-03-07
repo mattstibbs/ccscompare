@@ -81,10 +81,12 @@ class MainForm (MainFormTemplate):
       self.content_panel.add_component(HomeForm())
  
   def lnk_logout_click (self, **event_args):
+    analytics.track('Clicked Logout Button', { 'location': 'menu', 'type': 'menuitem' })
     if confirm("Are you sure you want to log out?"):
       self.logout()
 
   def lnk_home_click (self, **event_args):
+    analytics.track('Clicked Home Button', { 'location': 'menu', 'type': 'menuitem' })
     self.content_panel.clear()
     self.content_panel.add_component(HomeForm())
     
