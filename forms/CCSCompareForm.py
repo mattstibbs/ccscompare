@@ -131,19 +131,6 @@ class CCSCompareForm (CCSCompareFormTemplate):
       self.clear_red_border(self.txt_postcode)
       self.lbl_bad_postcode.visible = False
       self.load_local_surgeries()
-      
-#       if len(results) > 1:
-#         self.btn_find_surgeries.visible = False
-#         self.clear_red_border(self.txt_postcode)
-#         self.dd_surgery.items = results
-#         self.dd_surgery.visible = True
-#       else:
-#         self.dd_surgery.visible = False
-#         self.lbl_bad_postcode.visible = True
-#         self.set_red_border(self.txt_postcode)
-#         self.txt_postcode.text = ''
-#         self.txt_surgery_code.text = ''
-
     else:
       self.lbl_bad_postcode.visible = True
       self.set_red_border(self.txt_postcode)
@@ -258,7 +245,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
       self.rb_res1_own.raise_event('clicked')
     else:
       self.rb_res1_pathways.selected = True
-      self.rb_res1_digital.raise_event('clicked')
+      self.rb_res1_pathways.raise_event('clicked')
       
     prev_role_2 = previous_search['right_referral_role']
     if prev_role_2 == 'digital':
@@ -269,7 +256,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
       self.rb_res2_own.raise_event('clicked')
     else:
       self.rb_res2_pathways.selected = True
-      self.rb_res2_own.raise_event('clicked')
+      self.rb_res2_pathways.raise_event('clicked')
 
     prev_dist = previous_search['search_distance']
     if prev_dist == 15:
