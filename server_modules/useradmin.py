@@ -7,6 +7,7 @@ import anvil.secrets
 import anvil.server
 import anvil.http
 
+from mailgun_email import send_mailgun_email
 
 @anvil.server.callable
 def get_users():
@@ -33,26 +34,34 @@ def activate_user(u):
       permissions=[app_tables.permissions.get(code='MENU_CCS_COMPARE')]
     )
     
-  resp = anvil.http.request(
-      url="https://api.mailgun.net/v3/mg.dos-tools.tech/messages",
-      method="POST",
-      data={"from": "DoS Tools <admin@mg.dos-tools.tech>",
-              "to": anvil.users.get_user()['email'],
-              "subject": "User activated",
-              "text": "User {} has been activated and they have been notified".format(u['email'])
-           },
-      username="api",
-      password=anvil.secrets.get_secret('mailgun_key'))
+  send_mailgun_email(to=anvil.users.get_user()['email'],
+                   subject="User activated",
+                   body="User {} has been activated and they have been notified".format(u['email'])
+                  )
+#   resp = anvil.http.request(
+#       url="https://api.mailgun.net/v3/mg.dos-tools.tech/messages",
+#       method="POST",
+#       data={"from": "DoS Tools <admin@mg.dos-tools.tech>",
+#               "to": anvil.users.get_user()['email'],
+#               "subject": "User activated",
+#               "text": "User {} has been activated and they have been notified".format(u['email'])
+#            },
+#       username="api",
+#       password=anvil.secrets.get_secret('mailgun_key'))
+  send_mailgun_email(to=u['email'],
+                   subject="DoS Compare Tool account activated",
+                   body="Account for {} has been activated".format(u['email'])
+                  )
   
-  resp = anvil.http.request(
-      url="https://api.mailgun.net/v3/mg.dos-tools.tech/messages",
-      method="POST",
-      data={"from": "DoS Tools <admin@mg.dos-tools.tech>",
-              "to": u['email'],
-              "subject": "DoS Compare Tool account activated",
-              "text": "Account for {} has been activated".format(u['email'])
-           },
-      username="api",
-      password=anvil.secrets.get_secret('mailgun_key'))  
+#   resp = anvil.http.request(
+#       url="https://api.mailgun.net/v3/mg.dos-tools.tech/messages",
+#       method="POST",
+#       data={"from": "DoS Tools <admin@mg.dos-tools.tech>",
+#               "to": u['email'],
+#               "subject": "DoS Compare Tool account activated",
+#               "text": "Account for {} has been activated".format(u['email'])
+#            },
+#       username="api",
+#       password=anvil.secrets.get_secret('mailgun_key'))  
   
   return True

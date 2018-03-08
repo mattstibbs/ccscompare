@@ -1,5 +1,5 @@
 from anvil import *
-import segment.client as analytics
+# import segment.client as analytics
 import google.auth, google.drive
 from google.drive import app_files
 import anvil.server
@@ -28,7 +28,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.dd_disposition.items = anvil.server.call('get_dispositions')
 
   def btn_search_click (self, **event_args):
-    analytics.track('Clicked Search Button', { 'location': 'ccs_compare', 'item': 'btn_search' })
+#     analytics.track('Clicked Search Button', { 'location': 'ccs_compare', 'item': 'btn_search' })
     
     if not self.ensure_fields_populated():
       alert("You have not chosen settings for all of the necessary fields")
@@ -194,7 +194,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.results_list_2.refresh_data_bindings()
 
   def btn_repeat_search_click (self, **event_args):
-    analytics.track('Clicked Use Previous Results Button', { 'location': 'ccs_compare', 'item': 'btn_use_previous' })
+#     analytics.track('Clicked Use Previous Results Button', { 'location': 'ccs_compare', 'item': 'btn_use_previous' })
     self.btn_repeat_search.enabled = False
     previous_search = anvil.server.call('get_previous_search')
     if previous_search:
