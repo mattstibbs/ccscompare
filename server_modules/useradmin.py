@@ -34,15 +34,14 @@ def activate_user(u):
       permissions=[app_tables.permissions.get(code='MENU_CCS_COMPARE')]
     )
     
-  send_mailgun_email(to=['dos.enquiries@nhs.net', anvil.users.get_user()['email']],
-                   subject="User activated",
-                   body="User {} has been activated and they have been notified".format(u['email'])
-                  )
+  send_mailgun_email(to=anvil.users.get_user()['email'],
+                     subject="User activated",
+                     body="User {} has been activated and they have been notified".format(u['email'])
+                    )
 
   send_mailgun_email(to=u['email'],
                    subject="DoS Compare Tool account activated",
                    body="Account for {} has been activated".format(u['email'])
                   )
-
   
   return True

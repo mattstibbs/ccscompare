@@ -52,6 +52,10 @@ components:
       name: lbl_bad_postcode
       layout_properties: {row: UQIBCU, width_xs: 4, col_xs: 8, width: 185.5}
     - type: Label
+      properties: {}
+      name: lbl_ccg_stp
+      layout_properties: {row: YQJGOD, width_xs: 8, col_xs: 4}
+    - type: Label
       properties: {role: null, width: default, align: right, border: '', foreground: '',
         visible: true, text: Surgery Code, font_size: null, font: '', spacing_above: small,
         icon_align: left, spacing_below: small, italic: false, background: '', bold: false,

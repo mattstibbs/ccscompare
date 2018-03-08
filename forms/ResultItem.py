@@ -9,6 +9,7 @@ import anvil.server
 class ResultItem (ResultItemTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
+
     
   def get_bg_colour(self):
     if self.item['difference'] == 'Same':

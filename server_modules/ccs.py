@@ -10,6 +10,7 @@ import payloads
 import collections
 import xmltodict
 import json
+import online_api
 
 class CCSError(Exception):
   pass
@@ -124,7 +125,12 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
     user2 = get_user(instance2, instance2_referral_role)
 
   case = get_case(postcode, surgery, age_group, sg_code, sd_code, disposition, search_distance, sex)
-
+  
+  try:
+    whitelist = online_api.get_postcode_whitelist(postcode)['serviceIdWhitelist']
+  except:
+    print("Failed getting whitelist")
+  
   try:
     # do left-hand search  
     payload = payloads.generate_ccs_payload(user1, case)
@@ -148,7 +154,9 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
     
     for idx, r in enumerate(result_list_2):
       result_map_2[r['id']] = r 
-      
+    
+    print(result_list_1)
+    print('----------------')
     for key, res2 in result_map_2.items():
       try:
         res1 = result_map_1[res2['id']]
@@ -171,6 +179,28 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
         except KeyError:
           res2['difference'] = 'NoMatch'
   
+    print(result_list_1)
+    print('----------------')
+    whitelist = ['1338216856']
+    if instance1_referral_role == 'digital':
+      for r in result_list_1:
+        r['inWhitelist'] = r['id'] in whitelist
+        print(r['id'] in whitelist)
+    else:
+      for r in result_list_1:
+        r['inWhitelist'] = False      
+        
+    if instance2_referral_role == 'digital':
+      for r in result_list_2:
+        r['inWhitelist'] = r['id'] in whitelist
+        print(r['id'] in whitelist)
+      else:
+        for r in result_list_2:
+          r['inWhitelist'] = False   
+    
+    print(result_list_1)
+    print('----------------')   
+    
     return {'results1': result_list_1, 'results2': result_list_2}
     
   except CCSError as e:

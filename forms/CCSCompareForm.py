@@ -50,6 +50,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.btn_repeat_search.enabled = False
     self.btn_find_surgeries.enabled = False
     self.btn_search.text = 'Comparing...'
+    
     try:
       self.do_search()
     except:
@@ -77,6 +78,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
     
     results1_instance = self.rb_res1_uat1.get_group_value()
     results2_instance = self.rb_res2_uat1.get_group_value()
+    
     result_dict = anvil.server.call('check_capacity_summary', 
                                     postcode=self.txt_postcode.text.replace(' ', ''),
                                     age_group=self.dd_age_group.selected_value,
@@ -99,6 +101,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
         self.results_list_1.refresh_data_bindings()
         self.results_list_2.list_items = result_dict['results2']
         self.results_list_2.refresh_data_bindings()
+
     except KeyError:
       if result_dict['error']:
         alert(result_dict['error'])
@@ -132,6 +135,11 @@ class CCSCompareForm (CCSCompareFormTemplate):
       self.clear_red_border(self.txt_postcode)
       self.lbl_bad_postcode.visible = False
       self.load_local_surgeries()
+      
+      self.postcode_info = anvil.server.call_s('get_postcode_whitelist', self.txt_postcode.text)    
+      if self.postcode_info:
+        self.lbl_ccg_stp.text = "CCG: {}    STP: {}".format(self.postcode_info['ccg'], self.postcode_info['stpName'])
+    
     else:
       self.lbl_bad_postcode.visible = True
       self.set_red_border(self.txt_postcode)

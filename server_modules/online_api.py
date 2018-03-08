@@ -7,10 +7,13 @@ import anvil.secrets
 import anvil.server
 import anvil.http
 
-def get_postcode_info(postcode):
-  url = 'https://int3-ccgservice.staging.111.service.nhs.uk/api/ccg/{}'.format(postcode)
-  result = anvil.http.request(url, json=True)
-  if result:
-    print(result)
+@anvil.server.callable
+def get_postcode_whitelist(postcode):
+  url = 'https://int3-ccgservice.staging.111.service.nhs.uk/api/ccg/details/{}'.format(postcode)
 
-get_postcode_info('ME13DX')
+  try:
+    result = anvil.http.request(url, json=True)
+    return result
+  except anvil.http.HttpError as e:
+    if e.status == 404:
+      return None
