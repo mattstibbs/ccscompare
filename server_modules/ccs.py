@@ -180,8 +180,6 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
     if instance1_referral_role == 'digital':
       for r in result_list_1:
         r['inWhitelist'] = r['id'] in whitelist
-        print(r['id'])
-        print(r['id'] in whitelist)
     else:
       for r in result_list_1:
         r['inWhitelist'] = False      
@@ -189,8 +187,6 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
     if instance2_referral_role == 'digital':
       for r in result_list_2:
         r['inWhitelist'] = r['id'] in whitelist
-        print(r['id'])
-        print(r['id'] in whitelist)
     else:
       for r in result_list_2:
         r['inWhitelist'] = False   

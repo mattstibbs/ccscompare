@@ -136,7 +136,7 @@ class CCSCompareForm (CCSCompareFormTemplate):
       self.lbl_bad_postcode.visible = False
       self.load_local_surgeries()
       
-      self.postcode_info = anvil.server.call_s('get_postcode_whitelist', self.txt_postcode.text)    
+      self.postcode_info = anvil.server.call_s('get_postcode_whitelist', self.txt_postcode.text.replace(' ',''))    
       if self.postcode_info:
         self.lbl_ccg_stp.text = "CCG: {}    STP: {}".format(self.postcode_info['ccg'], self.postcode_info['stpName'])
     
