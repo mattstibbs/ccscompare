@@ -13,8 +13,8 @@ components:
   - type: Label
     properties: {role: position-tag, width: default, align: center, border: 1pt solid grey,
       foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
-      icon_align: right, spacing_below: none, italic: false, background: '', bold: false,
-      underline: false, icon: 'fa:ban'}
+      icon_align: right, spacing_below: none, italic: false, background: '#f1c2be',
+      bold: false, underline: false, icon: 'fa:ban'}
     name: lbl_difference
     layout_properties: {grid_position: 'FKNFBH,PKXESW', full_width_row: false}
     data_bindings:
