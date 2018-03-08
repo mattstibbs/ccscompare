@@ -154,9 +154,7 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
     
     for idx, r in enumerate(result_list_2):
       result_map_2[r['id']] = r 
-    
-    print(result_list_1)
-    print('----------------')
+
     for key, res2 in result_map_2.items():
       try:
         res1 = result_map_1[res2['id']]
@@ -178,13 +176,11 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
             pass
         except KeyError:
           res2['difference'] = 'NoMatch'
-  
-    print(result_list_1)
-    print('----------------')
-    whitelist = ['1338216856']
+
     if instance1_referral_role == 'digital':
       for r in result_list_1:
         r['inWhitelist'] = r['id'] in whitelist
+        print(r['id'])
         print(r['id'] in whitelist)
     else:
       for r in result_list_1:
@@ -193,13 +189,11 @@ def get_services(postcode, surgery, age_group, sg_code, sd_code, disposition, se
     if instance2_referral_role == 'digital':
       for r in result_list_2:
         r['inWhitelist'] = r['id'] in whitelist
+        print(r['id'])
         print(r['id'] in whitelist)
-      else:
-        for r in result_list_2:
-          r['inWhitelist'] = False   
-    
-    print(result_list_1)
-    print('----------------')   
+    else:
+      for r in result_list_2:
+        r['inWhitelist'] = False   
     
     return {'results1': result_list_1, 'results2': result_list_2}
     

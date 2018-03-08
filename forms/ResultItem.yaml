@@ -5,7 +5,7 @@ components:
 - type: ColumnPanel
   properties: {role: fixed-height-dos-result, width: default, border: 1pt solid grey,
     foreground: '', visible: true, row_spacing: 10, wrap_on: mobile, spacing_above: small,
-    col_widths: '{"UJXNFT":10,"SBIJAS":50,"RGDYVB":50,"KGBYXK":40,"AGTSOB":20}', spacing_below: small,
+    col_widths: '{"UJXNFT":10,"SBIJAS":50,"KGBYXK":40,"AGTSOB":20}', spacing_below: small,
     background: ''}
   name: column_panel_1
   layout_properties: {grid_position: 'BSPINX,UMSSLD', full_width_row: true}
@@ -45,7 +45,7 @@ components:
       icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
       underline: false, icon: ''}
     name: lbl_name
-    layout_properties: {grid_position: 'UWOFIU,SBIJAS WCOWGK,RGDYVB'}
+    layout_properties: {grid_position: 'UWOFIU,SBIJAS WCOWGK,JYVZSZ'}
     data_bindings:
     - {property: text, code: 'self.item[''name'']'}
   - type: Label
@@ -66,6 +66,7 @@ components:
     layout_properties: {grid_position: 'UWOFIU,SBIJAS HXKXDV,AGTSOB'}
     data_bindings:
     - {property: text, code: 'self.item[''id'']'}
+    - {property: foreground, code: self.get_service_id_color()}
   - type: Label
     properties: {role: null, width: default, align: left, border: '', foreground: '',
       visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,

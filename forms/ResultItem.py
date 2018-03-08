@@ -10,6 +10,11 @@ class ResultItem (ResultItemTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
 
+  def get_service_id_color(self):
+    if self.item['inWhitelist'] == True:
+      return 'blue'
+    else:
+      return ''
     
   def get_bg_colour(self):
     if self.item['difference'] == 'Same':
