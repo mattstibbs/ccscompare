@@ -21,7 +21,7 @@ def trigger_user_activation(user_email):
     return deactivate_user(u)
   elif u['enabled'] == False:
     return activate_user(u)
-
+  
 def deactivate_user(u):
   u['enabled'] = False
   return False
@@ -38,30 +38,11 @@ def activate_user(u):
                    subject="User activated",
                    body="User {} has been activated and they have been notified".format(u['email'])
                   )
-#   resp = anvil.http.request(
-#       url="https://api.mailgun.net/v3/mg.dos-tools.tech/messages",
-#       method="POST",
-#       data={"from": "DoS Tools <admin@mg.dos-tools.tech>",
-#               "to": anvil.users.get_user()['email'],
-#               "subject": "User activated",
-#               "text": "User {} has been activated and they have been notified".format(u['email'])
-#            },
-#       username="api",
-#       password=anvil.secrets.get_secret('mailgun_key'))
+
   send_mailgun_email(to=u['email'],
                    subject="DoS Compare Tool account activated",
                    body="Account for {} has been activated".format(u['email'])
                   )
-  
-#   resp = anvil.http.request(
-#       url="https://api.mailgun.net/v3/mg.dos-tools.tech/messages",
-#       method="POST",
-#       data={"from": "DoS Tools <admin@mg.dos-tools.tech>",
-#               "to": u['email'],
-#               "subject": "DoS Compare Tool account activated",
-#               "text": "Account for {} has been activated".format(u['email'])
-#            },
-#       username="api",
-#       password=anvil.secrets.get_secret('mailgun_key'))  
+
   
   return True
