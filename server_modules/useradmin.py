@@ -34,7 +34,7 @@ def activate_user(u):
       permissions=[app_tables.permissions.get(code='MENU_CCS_COMPARE')]
     )
     
-  send_mailgun_email(to=anvil.users.get_user()['email'],
+  send_mailgun_email(to=['dos.enquiries@nhs.net', anvil.users.get_user()['email']],
                    subject="User activated",
                    body="User {} has been activated and they have been notified".format(u['email'])
                   )

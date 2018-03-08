@@ -89,3 +89,16 @@ def search_surgeries(postcode):
 
   new_result_list = [extract_result(r) for r in results]
   return new_result_list
+
+
+@anvil.server.callable
+def validate_postcode(postcode):
+  try:
+    result = anvil.http.request(url='https://www.pathwaysdos.nhs.uk/app/controllers/api/v1.0/services/byServiceType/TEST/{}/1/0/0/0/0/-1/1'.format(postcode),
+                                username=anvil.secrets.get_secret('dos_username_pathways_live'),
+                                password=anvil.secrets.get_secret('dos_password_pathways_live'), 
+                                json=True)
+    print(result)
+  
+  except:
+    pass

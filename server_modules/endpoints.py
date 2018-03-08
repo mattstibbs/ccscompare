@@ -6,6 +6,8 @@ from tables import app_tables
 import anvil.secrets
 import anvil.server
 from anvil.server import http_endpoint, request
+import mailgun_email
+
 
 @http_endpoint('/check_pending_users', require_credentials=True)
 def check_pending():
@@ -18,10 +20,11 @@ def check_pending():
     if len(waiting_users) > 0:
       for user in waiting_users:   
         print("{} is waiting".format(user['email']))
-        google.mail.send(to = 'mattstibbs@gmail.com',
-                          subject = "User waiting for authorisation",
-                          text = "{} is waiting for you to enable their account".format(user['email'])
-                        )
+
+        mailgun_email.send_mailgun_email(to=['dos.enquiries@nhs.net', 'm.stibbs@nhs.net'],
+                                         subject="Compare Tool - User waiting for authorisation",
+                                         text = "{} is waiting for you to enable their account".format(user['email'])
+                                        )
         
         user['admin_notified'] = True
         print("Sent admin notification email for {}".format(user['email']))
