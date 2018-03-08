@@ -1,5 +1,4 @@
 from anvil import *
-import segment.client as analytics
 import anvil.server
 import google.auth, google.drive
 from google.drive import app_files
