@@ -10,6 +10,10 @@ import anvil.http
 from mailgun_email import send_mailgun_email
 
 @anvil.server.callable
+def get_user_by_email(email):
+  return app_tables.users.search(email=email)[0]
+
+@anvil.server.callable
 def get_users():
   return app_tables.users.search()
 

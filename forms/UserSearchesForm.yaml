@@ -6,6 +6,13 @@ components:
     underline: false, icon: ''}
   name: label_1
   layout_properties: {grid_position: 'DFQFYM,WGANXT'}
+- type: DropDown
+  properties: {}
+  name: dd_user
+  layout_properties: {grid_position: 'DFQFYM,SKEBXC'}
+  data_bindings:
+  - {property: items, code: self.get_users()}
+  event_bindings: {change: filter_search_list}
 - type: RepeatingPanel
   properties: {role: null, width: default, border: '', foreground: '', items: null,
     visible: true, spacing_above: small, spacing_below: small, item_template: UserSearchItem,

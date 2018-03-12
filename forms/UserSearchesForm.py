@@ -19,7 +19,33 @@ class UserSearchesForm (UserSearchesFormTemplate):
       get_open_form().content_panel.clear()
       get_open_form().lnk_home_click
     
-    logins = app_tables.log_searches.search(tables.order_by("timestamp", ascending=False))[:100]
-
-    self.pnl_user_searches_list.items = logins
+    self.get_searches()
     
+  def get_users(self):
+    
+    results = anvil.server.call('get_users')
+    
+    users_list = []
+    
+    users_list.append((' All Users',''))
+    
+    for result in results:
+      users_list.append((result['email'],result['email']))
+      
+    return users_list
+  
+  def get_searches(self, email=None):
+    if email:
+      u = anvil.server.call('get_user_by_email', email)
+      print(u)
+      logins = app_tables.log_searches.search(tables.order_by("timestamp", ascending=False), user=u)[:100]  
+    else:
+      logins = app_tables.log_searches.search(tables.order_by("timestamp", ascending=False))[:100]
+    
+    self.pnl_user_searches_list.items = logins
+
+  def filter_search_list(self, **properties):
+    if self.dd_user.selected_value == '':
+      self.get_searches()
+    else:
+      self.get_searches(self.dd_user.selected_value)
