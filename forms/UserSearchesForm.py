@@ -37,7 +37,6 @@ class UserSearchesForm (UserSearchesFormTemplate):
   def get_searches(self, email=None):
     if email:
       u = anvil.server.call('get_user_by_email', email)
-      print(u)
       logins = app_tables.log_searches.search(tables.order_by("timestamp", ascending=False), user=u)[:100]  
     else:
       logins = app_tables.log_searches.search(tables.order_by("timestamp", ascending=False))[:100]
