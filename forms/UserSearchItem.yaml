@@ -1,7 +1,7 @@
 components:
 - type: ColumnPanel
   properties: {role: null, width: default, border: 1pt dotted grey, foreground: '',
-    visible: true, row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{}',
+    visible: true, row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"LOYLDJ":20,"FEAPPV":20,"BQWNOD":10,"KBGVBC":10}',
     spacing_below: small, background: ''}
   name: column_panel_1
   layout_properties: {grid_position: 'ZLZGUW,CEIMDZ', full_width_row: true}
@@ -30,24 +30,6 @@ components:
     layout_properties: {grid_position: 'ONTHTC,KBGVBC'}
     data_bindings:
     - {property: text, code: 'self.item[''right_instance'']'}
-  - type: Label
-    properties: {}
-    name: label_5
-    layout_properties: {grid_position: 'EZTGXQ,KJRIAR'}
-    data_bindings:
-    - {property: text, code: 'self.item[''postcode'']'}
-  - type: Label
-    properties: {}
-    name: label_6
-    layout_properties: {grid_position: 'EZTGXQ,OQVMQF'}
-    data_bindings:
-    - {property: text, code: 'self.item[''sgsd'']'}
-  - type: Label
-    properties: {}
-    name: label_7
-    layout_properties: {grid_position: 'EZTGXQ,MEFHZC'}
-    data_bindings:
-    - {property: text, code: 'self.item[''surgery'']'}
 container:
   type: ColumnPanel
   properties: {col_widths: '{}'}
