@@ -19,7 +19,7 @@ class UserSearchesForm (UserSearchesFormTemplate):
       get_open_form().content_panel.clear()
       get_open_form().lnk_home_click
     
-    logins = app_tables.log_searches.search(tables.order_by("timestamp", ascending=False))[:40]
+    logins = app_tables.log_searches.search(tables.order_by("timestamp", ascending=False))[:100]
 
     self.pnl_user_searches_list.items = logins
     

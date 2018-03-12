@@ -1,7 +1,7 @@
 components:
 - type: Label
   properties: {role: null, width: default, align: left, border: '', foreground: '',
-    visible: true, text: Most recent 50 searches..., font_size: 20, font: '', spacing_above: small,
+    visible: true, text: Most recent 100 searches..., font_size: 20, font: '', spacing_above: small,
     icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
     underline: false, icon: ''}
   name: label_1
