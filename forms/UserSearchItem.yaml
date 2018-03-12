@@ -1,7 +1,7 @@
 components:
 - type: ColumnPanel
   properties: {role: null, width: default, border: 1pt dotted grey, foreground: '',
-    visible: true, row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"LOYLDJ":20,"FEAPPV":20,"BQWNOD":10,"KBGVBC":10}',
+    visible: true, row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"LOYLDJ":25,"FEAPPV":20,"BQWNOD":10,"KBGVBC":10,"IDUNRF":7}',
     spacing_below: small, background: ''}
   name: column_panel_1
   layout_properties: {grid_position: 'ZLZGUW,CEIMDZ', full_width_row: true}
@@ -30,6 +30,36 @@ components:
     layout_properties: {grid_position: 'ONTHTC,KBGVBC'}
     data_bindings:
     - {property: text, code: 'self.item[''right_instance'']'}
+  - type: Link
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: '', font_size: 20, row_spacing: 10, wrap_on: mobile, font: '',
+      spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
+      italic: false, background: '', bold: false, underline: false, icon: 'fa:angle-double-down'}
+    name: link_1
+    layout_properties: {grid_position: 'ONTHTC,IDUNRF'}
+- type: ColumnPanel
+  properties: {role: null, width: default, border: '', foreground: '', visible: false,
+    row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{}', spacing_below: small,
+    background: ''}
+  name: column_panel_2
+  layout_properties: {grid_position: 'DJQQFP,PPYDZX'}
+  components:
+  - type: Label
+    properties: {}
+    name: lbl_postcode
+    layout_properties: {grid_position: 'DLDBUW,WAGPEZ'}
+  - type: Label
+    properties: {}
+    name: lbl_surgery
+    layout_properties: {grid_position: 'DLDBUW,VVGZNV'}
+  - type: Label
+    properties: {}
+    name: lbl_disposition
+    layout_properties: {grid_position: 'DLDBUW,WRCAQT'}
+  - type: Label
+    properties: {}
+    name: lbl_sgsd
+    layout_properties: {grid_position: 'VKYJYU,AVLDPC'}
 container:
   type: ColumnPanel
   properties: {col_widths: '{}'}
