@@ -15,7 +15,11 @@ class ImportForm (ImportFormTemplate):
     
   def file_loader_1_change (self, files, **event_args):
     for f in files:
-      anvil.server.call('import_sgsd_csv',f)
+      print(f)
+      print(f.get_bytes())
+#       anvil.server.call('import_sgsd_csv',f)
+    x = anvil.BlobMedia("text/plain", "foo")
+    anvil.server.call('import_sgsd_csv',x)
 
   def file_loader_2_change (self, files, **event_args):
     for f in files:
