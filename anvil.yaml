@@ -58,7 +58,7 @@ secrets:
     value: {? '' : 2uWbKKYCHXh8lRIxoZiWqdW7U7euI9+Q5ntBIAdcgzZ2tfTHmFS7iGUvCfaIeVF7z1SbVCFkXtgk8t2y+HnWK8ahBkC8cOKHs141yvo04lUqWGSYur4FLQRyjL8=}
     type: secret
 name: DoS Tools
-startup_form: ImportForm
+startup_form: MainForm
 renamed: true
 runtime_options: {server_version: python3-full}
 dependencies: []

@@ -14,6 +14,7 @@ from UserAdminForm import UserAdminForm
 from UserLoginsForm import UserLoginsForm
 from HelpForm import HelpForm
 from UserSearchesForm import UserSearchesForm
+from ImportForm import ImportForm
 
 
 class MainForm (MainFormTemplate):
@@ -122,6 +123,7 @@ class MainForm (MainFormTemplate):
         self.lnk_menu_useradmin.visible = True
         self.lnk_menu_logins.visible = True
         self.lnk_menu_searches.visible = True
+        self.lnk_import.visible = True
       else:
         self.lnk_menu_useradmin.visible = False
         self.lnk_menu_logins.visible = False
@@ -145,3 +147,8 @@ class MainForm (MainFormTemplate):
 #     analytics.track('Clicked Help Button', { 'location': 'sidebar', 'item': 'lnk_help' })
     self.content_panel.clear()
     self.content_panel.add_component(HelpForm())
+
+  def lnk_import_click (self, **event_args):
+    self.content_panel.clear()
+    self.content_panel.add_component(ImportForm())
+
