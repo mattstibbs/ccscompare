@@ -14,9 +14,9 @@ def import_sgsd_csv(csv_object):
   csv_bytes=csv_object.get_bytes()
   # Convert bytes to a string.
   csv_string=str(csv_bytes,"utf-8")
+  print(csv_string)
   # Create a list of lines split on \n
   line_list=csv_string.split('\n')
-  print(line_list)
   reader = csv.DictReader(line_list)
   for row in reader:
     app_tables.sg_sd.add_row(sg_code=row['SG'], sg_description=row['SGDescription'], sd_code=row['SD'], sd_description=row['SDDescription'])
