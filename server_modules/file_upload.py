@@ -11,11 +11,15 @@ import csv
 def import_sgsd_csv(csv_object):
   print(csv_object)
   # Get the data as bytes.
+  print("Getting bytes...")
   csv_bytes=csv_object.get_bytes()
+  print(csv_bytes)
   # Convert bytes to a string.
+  print("Getting string...")
   csv_string=str(csv_bytes,"utf-8")
   print(csv_string)
   # Create a list of lines split on \n
+  print("Getting lines...")
   line_list=csv_string.split('\n')
   reader = csv.DictReader(line_list)
   for row in reader:
