@@ -13,13 +13,10 @@ class ImportForm (ImportFormTemplate):
 
     # Any code you write here will run when the form opens.
     
-  def file_loader_1_change (self, files, **event_args):
-    for f in files:
-      print(f)
-      print(f.get_bytes())
-#       anvil.server.call('import_sgsd_csv',f)
-    x = anvil.BlobMedia("text/plain", "foo")
-    anvil.server.call('import_sgsd_csv',x)
+  def file_loader_1_change (self, file, **event_args):
+    print(file)
+    print(file.get_bytes())
+    anvil.server.call('import_sgsd_csv',file)
 
   def file_loader_2_change (self, files, **event_args):
     for f in files:
