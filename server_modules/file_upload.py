@@ -16,10 +16,11 @@ def import_sgsd_csv(csv_object):
   # Create a list of lines split on \n
   line_list=csv_string.split('\n')
   reader = csv.DictReader(line_list)
+  print(reader)
   
   for row in reader:
     app_tables.sg_sd.add_row(sg_code=row['SG'], sg_description=row['SGDescription'], sd_code=row['SD'], sd_description=row['SDDescription'])
-
+  
 
 @anvil.server.callable
 def import_dispositions(csv_object):
