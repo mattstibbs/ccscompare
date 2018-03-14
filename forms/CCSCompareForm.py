@@ -1,7 +1,5 @@
 from anvil import *
-# import google.auth, google.drive
-from google.drive import app_files
-import anvil.server
+# import anvil.server
 import anvil.users
 import tables
 from tables import app_tables
@@ -25,6 +23,11 @@ class CCSCompareForm (CCSCompareFormTemplate):
     self.rb_60.selected = True
     self.dd_sg.items = anvil.server.call('get_sg_list')
     self.dd_disposition.items = anvil.server.call('get_dispositions')
+    
+    try:
+      self.populate_previous_search_values(properties['previous_search'])
+    except KeyError:
+      pass
 
   def btn_search_click (self, **event_args):
 #     analytics.track('Clicked Search Button', { 'location': 'ccs_compare', 'item': 'btn_search' })

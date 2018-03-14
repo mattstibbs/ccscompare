@@ -1,6 +1,4 @@
 from anvil import *
-# import google.auth, google.drive
-from google.drive import app_files
 import anvil.server
 import anvil.users
 import tables
@@ -45,7 +43,7 @@ class MainForm (MainFormTemplate):
   def load_ccs_compare_form(self, **event_args):
     if self.do_login():
       self.content_panel.clear()
-      self.content_panel.add_component(CCSCompareForm(), full_width_row = True)
+      self.content_panel.add_component(CCSCompareForm(**event_args), full_width_row = True)
     else:  
       pass
     

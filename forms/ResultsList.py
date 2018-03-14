@@ -1,6 +1,4 @@
 from anvil import *
-import google.auth, google.drive
-from google.drive import app_files
 import anvil.users
 import tables
 from tables import app_tables

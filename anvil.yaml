@@ -73,6 +73,3 @@ services:
   client_config: {allow_signup: true, enable_automatically: false, use_email: true,
     confirm_email: true, allow_remember_me: true, remember_me_days: 0.3333}
   server_config: {user_table: 9063}
-- source: /runtime/services/google.yml
-  client_config: {}
-  server_config: {delegation_refresh_token: 1/ZVY3Gewhsp1QULIFO_Z4CaI6vXPzKjX93F_1vaKWSSITwUHQRoLG2Lm1AKR7Zxya}
