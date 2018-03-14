@@ -128,6 +128,7 @@ class MainForm (MainFormTemplate):
         self.lnk_menu_useradmin.visible = False
         self.lnk_menu_logins.visible = False
         self.lnk_menu_searches.visible = False
+        self.lnk_import.visible = False
 
     else:
       self.lnk_ccs_compare.visible = False
