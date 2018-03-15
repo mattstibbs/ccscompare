@@ -40,10 +40,10 @@ components:
     event_bindings: {click: link_1_click}
 - type: ColumnPanel
   properties: {role: null, width: default, border: 1pt dotted grey, foreground: '',
-    visible: false, row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{}',
+    visible: false, row_spacing: 10, wrap_on: mobile, spacing_above: small, col_widths: '{"WAGPEZ":12,"UIUNOS":8,"VVGZNV":16,"OJICME":12,"WRCAQT":12,"AVLDPC":12,"OFTMQJ":8,"CNKIQP":16,"QZXMXE":14,"YWCIBX":10}',
     spacing_below: small, background: ''}
   name: pnl_details
-  layout_properties: {grid_position: 'DJQQFP,PPYDZX'}
+  layout_properties: {grid_position: 'DJQQFP,KXWQRW'}
   components:
   - type: Label
     properties: {}
@@ -52,11 +52,26 @@ components:
     data_bindings:
     - {property: text, code: 'self.item[''postcode'']'}
   - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: 'Surgery:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_5
+    layout_properties: {grid_position: 'DLDBUW,UIUNOS'}
+    event_bindings: {show: label_5_show}
+  - type: Label
     properties: {}
     name: lbl_surgery
     layout_properties: {grid_position: 'DLDBUW,VVGZNV'}
     data_bindings:
     - {property: text, code: 'self.item[''surgery'']'}
+  - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: 'Disposition:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_6
+    layout_properties: {grid_position: 'DLDBUW,OJICME'}
   - type: Label
     properties: {}
     name: lbl_disposition
@@ -70,11 +85,25 @@ components:
     data_bindings:
     - {property: text, code: 'self.item[''sgsd'']'}
   - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: 'Sex:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_8
+    layout_properties: {grid_position: 'VKYJYU,OFTMQJ'}
+  - type: Label
     properties: {}
     name: lbl_sex
     layout_properties: {grid_position: 'VKYJYU,CNKIQP'}
     data_bindings:
     - {property: text, code: 'self.item[''sex'']'}
+  - type: Label
+    properties: {role: null, width: default, align: left, border: '', foreground: '',
+      visible: true, text: 'Age Group:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_7
+    layout_properties: {grid_position: 'VKYJYU,QZXMXE'}
   - type: Label
     properties: {}
     name: lbl_age
@@ -83,7 +112,7 @@ components:
     - {property: text, code: 'self.item[''age_group'']'}
 - type: Button
   properties: {role: null, width: default, align: center, border: '', enabled: true,
-    foreground: '', visible: true, text: Repeat Search, font_size: null, font: '',
+    foreground: '', visible: false, text: Repeat Search, font_size: null, font: '',
     spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
     bold: false, underline: false, icon: ''}
   name: button_1

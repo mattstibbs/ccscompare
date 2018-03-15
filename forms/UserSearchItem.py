@@ -22,3 +22,8 @@ class UserSearchItem (UserSearchItemTemplate):
     previous_search['sg_code'] = "{}{}".format("SG", previous_search['sgsd'].split(':')[0])
     previous_search['sd_code'] = "{}{}".format("SD", previous_search['sgsd'].split(':')[1])
     get_open_form().load_ccs_compare_form(previous_search=self.item)
+
+  def label_5_show (self, **event_args):
+    # This method is called when the Label is shown on the screen
+    pass
+
