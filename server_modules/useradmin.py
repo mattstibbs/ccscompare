@@ -1,3 +1,4 @@
+import anvil.email
 import anvil.users
 import tables
 from tables import app_tables
@@ -40,6 +41,12 @@ def activate_user(u):
                      subject="User activated",
                      body="User {} has been activated and they have been notified".format(u['email'])
                     )
+  
+  anvil.email.send(from_name="My App Support", 
+                   to="alice@example.com", 
+                   subject="Welcome",
+                   text="Welcome to My App!")
+  
 
   send_mailgun_email(to=u['email'],
                    subject="DoS Compare Tool account activated",
